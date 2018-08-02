@@ -20,3 +20,10 @@ Route::get('/register','Auth.RegisterController@vista');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+#Transaction routes/Rutas de Transacciones
+Route::get('/createBuy','TransactionsController@createBuy')->name('createBuy');
+Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy');
+
+Route::get('/createSell','TransactionsController@createSell')->name('createSell');
+Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');

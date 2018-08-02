@@ -162,11 +162,19 @@
                                                     <label class="control-label col-md-3" for="password">Contraseña</label>
                                                     <div class="col-md-8">
                                                         <div class="col-md-10">
-                                                            <input id="password" name="password" type="text" tabindex="3" class="form-control">
+                                                            <input id="password" name="password" type="password" tabindex="3" class="form-control">
                                                             <span class="help-block">La contraseña debe incluir: números, caracteres especiales y una combinación de letras mayúsculas y minúsculas.</span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group ">
+                                                        <label class="control-label col-md-3" for="password">Repetir Contraseña</label>
+                                                        <div class="col-md-8">
+                                                            <div class="col-md-10">
+                                                                <input id="password" name="password_confirmation" type="password" tabindex="3" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </fieldset>
                                         
                                     </div>

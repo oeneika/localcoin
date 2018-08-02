@@ -7,10 +7,10 @@
                     <a href="index-2.html"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href="package.html"><i class="fa fa-database"></i> <span class="name">Compra de BTC</span></a>
+                    <a href="{{ route('createBuy') }}"><i class="fa fa-database"></i> <span class="name">Compra de BTC</span></a>
                 </li>
                 <li class="">
-                    <a href="package.html"><i class="fa fa-database"></i> <span class="name">Venta de BTC</span></a>
+                    <a href="{{ route('createSell') }}"><i class="fa fa-database"></i> <span class="name">Venta de BTC</span></a>
                 </li>
     </div></ul>
 

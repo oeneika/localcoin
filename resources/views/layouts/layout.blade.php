@@ -17,6 +17,10 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    <!-- Toastr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet"/>
+
     <!-- Styles -->
     
     <link href="{{ asset('css/application.min.css') }}" rel="stylesheet">
@@ -26,6 +30,7 @@
         @include('layouts.menu')
         @include('layouts.header')
         <div class="wrap">
+            @include('inc.messages')
             @yield('content')
         </div>
         
@@ -56,5 +61,16 @@
         <!-- page application js -->
         <script src="{{ asset('js/index.js') }}"></script>
         <script src="{{ asset('js/chat.js') }}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.js.map"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+        <!-- important routes -->
+        <script>
+                var url = {
+                    storeSell: '{{ route('storeSell') }}',
+                    storeBuy: '{{ route('storeBuy') }}'}
+        </script>
+        @yield('footer_section')
 </body>
 </html>

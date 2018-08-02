@@ -24,6 +24,7 @@
 </head>
 <body>
     <div id="app">
+        @include('inc.messages')
         @yield('content')
     </div>
 

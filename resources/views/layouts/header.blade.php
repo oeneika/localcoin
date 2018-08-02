@@ -15,7 +15,7 @@
                         <ul id="account-menu" class="dropdown-menu account" role="menu">
                             <li role="presentation" class="account-picture">
                                 <img src="img/2.png" alt="">
-                                Philip Daineka
+                                {{ Auth::user()->name }}
                             </li>
                             <li role="presentation">
                                 <a href="form_account.html" class="link">
