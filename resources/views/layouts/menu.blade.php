@@ -4,13 +4,13 @@
 <nav id="sidebar" class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
                 <li class="active">
-                    <a href="index-2.html"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+                    <a href="{{ route('home') }}"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href="{{ route('createBuy') }}"><i class="fa fa-database"></i> <span class="name">Compra de BTC</span></a>
+                    <a href="{{ route('mySells') }}"><i class="fa fa-database"></i> <span class="name">Compra de BTC</span></a>
                 </li>
                 <li class="">
-                    <a href="{{ route('createSell') }}"><i class="fa fa-database"></i> <span class="name">Venta de BTC</span></a>
+                    <a href="{{ route('myBuys') }}"><i class="fa fa-database"></i> <span class="name">Venta de BTC</span></a>
                 </li>
     </div></ul>
 

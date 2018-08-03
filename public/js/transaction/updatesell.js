@@ -1,17 +1,21 @@
-function openModal(){
-    $('#createBuyModal').modal('show');
+function openModalEdit(id,price, currency, bank,payment_method){
+    $('#id_transaction').val(id);
+    $('#edit_price').val(price)
+    $('#edit_currency').val(currency).change();
+    $('#edit_bank').val(bank).change();
+    $('#edit_payment_method').val(payment_method).change();
+    $('#editSellModal').modal('show');
 }
 
 /**
  * Ajax call
  */
-function storeBuy(){
+function updateSell(){
     $.ajax({
-        type : "POST",
-        async: false,
-        url : url.storeBuy,
+        type : "PUT",
+        url : url.updateSell,
         dataType: 'json',
-        data : $('#store_buy_form').serialize(),
+        data : $('#update_sell_form').serialize(),
         success : function(json) {
             if(json.success == 1) {
                 setTimeout(function(){
@@ -34,15 +38,15 @@ function storeBuy(){
 /**
  * Events
  */
-$('#store_buy_btn').click(function(e){
+$('#update_sell_btn').click(function(e){
     e.defaultPrevented;
-    storeBuy();
+    updateSell();
 });
 
-$('form#store_buy_form input').keypress(function(e){
+$('form#update_sell_form input').keypress(function(e){
     e.defaultPrevented;
     if(e.which == 13) {
-        storeBuy();
+        updateSell();
 
         return false;
     }

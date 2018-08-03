@@ -1,4 +1,4 @@
-<div class="modal inmodal" id="createSellModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal" id="editBuyModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content animated flipInY">
                 <div class="modal-header">
@@ -7,19 +7,20 @@
                     <small class="font-bold">Franklins Gold</small>
                 </div>
                 <div class="modal-body">
-                    <form id="store_sell_form">
+                    <form id="update_buy_form">
+                        <input type="hidden" name="id_transaction" id="id_transaction" value="">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
                                     <label>Precio</label>
-                                    <input class="form-control" type="number" name="price" id="">
+                                    <input class="form-control" type="number" name="price" id="edit_price">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select name="currency" id="" class="form-control">
+                                    <select name="currency" id="edit_currency" class="form-control">
                                         <option selected value>Seleccione moneda</option>
                                         @foreach($currencies as $currency)
                                             <option value="{{ $currency->id_currency }}">{{ $currency->name }}</option>
@@ -32,7 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Banco</label>
-                                    <select name="bank" id="" class="form-control">
+                                    <select name="bank" id="edit_bank" class="form-control">
                                         <option selected value>Seleccione Banco</option>
                                         @foreach($banks as $bank)
                                             <option value="{{ $bank->id_bank }}">{{ $bank->name }}</option>
@@ -43,7 +44,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tipo de Pago</label>
-                                    <select name="payment_method" id="" class="form-control">
+                                    <select name="payment_method" id="edit_payment_method" class="form-control">
                                         <option selected value>Seleccione tipo de pago</option>
                                         @foreach($methods as $method)
                                             <option value="{{ $method->id_payment_method }}">{{ $method->name }}</option>
@@ -56,7 +57,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="store_sell_btn" class="btn btn-primary">Crear</button>
+                    <button type="button" id="update_buy_btn" class="btn btn-primary">Crear</button>
                 </div>
             </div>
         </div>

@@ -1,3 +1,8 @@
+function openModal(){
+    console.log('log');
+    $('#createSellModal').modal('show');
+}
+
 /**
  * Ajax call
  */

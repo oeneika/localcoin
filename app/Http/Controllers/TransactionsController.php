@@ -13,6 +13,17 @@ use App\PaymentMethod;
 
 class TransactionsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,17 +35,29 @@ class TransactionsController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myBuys()
+    {
+        //dump(\App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_buyer',auth()->user('id')['id'])->get());
+        return view('transactions.mybuys',array(
+            'transactions' => \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_buyer',auth()->user('id')['id'])->get(),
+            'banks'=> \App\Bank::all(),
+            'currencies' => \App\Currency::all(),
+            'methods' => \App\PaymentMethod::all()
+        ));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function createBuy()
     {
-        return view('transactions.buy',array(
-            'banks'=> \App\Bank::all(),
-            'currencies' => \App\Currency::all(),
-            'methods' => \App\PaymentMethod::all()
-        ));
+        return view('home');
     }
 
     /**
@@ -68,6 +91,53 @@ class TransactionsController extends Controller
         }
 
         return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateBuy(Request $request)
+    {
+        #Field validation\Validacion de campos
+        $validator = Validator::make($request->all(),[
+            'bank'=>'required',
+            'payment_method'=>'required',
+            'price'=>'required|numeric',
+            'currency'=>'required'
+        ]);
+
+        #If validation passes without errors\Si la validacion pasa
+        if ($validator->passes()){
+            $transaction = Transaction::find($request->input('id_transaction'));
+            $transaction->id_bank = $request->input('bank');
+            $transaction->id_payment_method = $request->input('payment_method');
+            $transaction->price = $request->input('price');
+            $transaction->id_currency = $request->input('currency');
+
+            $transaction->save();
+
+            return response()->json(array('success'=>1,'message'=>'Compra editada con éxito'));
+        }
+
+        return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
+    }
+
+    /**
+     * Show sells meda by user in session
+     */
+    public function mySells()
+    {
+        //dump(\App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_seller',auth()->user('id')['id'])->get());
+        return view('transactions.mysells',array(
+            'transactions' => \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_seller',auth()->user('id')['id'])->get(),
+            'banks'=> \App\Bank::all(),
+            'currencies' => \App\Currency::all(),
+            'methods' => \App\PaymentMethod::all()
+        ));
     }
 
     /**
@@ -118,35 +188,45 @@ class TransactionsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateSell(Request $request)
+    {
+        #Field validation\Validacion de campos
+        $validator = Validator::make($request->all(),[
+            'bank'=>'required',
+            'payment_method'=>'required',
+            'price'=>'required|numeric',
+            'currency'=>'required'
+        ]);
+
+        #If validation passes without errors\Si la validacion pasa
+        if ($validator->passes()){
+            $transaction = Transaction::find($request->input('id_transaction'));
+            $transaction->id_bank = $request->input('bank');
+            $transaction->id_payment_method = $request->input('payment_method');
+            $transaction->price = $request->input('price');
+            $transaction->id_currency = $request->input('currency');
+
+            $transaction->save();
+
+            return response()->json(array('success'=>1,'message'=>'Compra editada con éxito'));
+        }
+
+        return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         //
     }
@@ -159,6 +239,9 @@ class TransactionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaction = Transaction::find($id);
+        $transaction->delete();
+
+        return response()->json(['success'=>1,'message'=>'Eliminado exitosamente']);
     }
 }

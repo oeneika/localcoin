@@ -65,11 +65,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.js.map"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
+        <!-- SweetAlert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script src="{{ asset('js/delete_item.js') }}"></script>
+
         <!-- important routes -->
         <script>
                 var url = {
                     storeSell: '{{ route('storeSell') }}',
-                    storeBuy: '{{ route('storeBuy') }}'}
+                    storeBuy: '{{ route('storeBuy') }}',
+                    updateBuy: '{{ route('updateBuy') }}',
+                    updateSell: '{{ route('updateSell') }}'}
         </script>
         @yield('footer_section')
 </body>

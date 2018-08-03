@@ -133,5 +133,9 @@ return [
         'subject'               => 'asunto',
         'message'               => 'mensaje',
         'required'              => 'Requerido',
+        'price'                 => 'precio',
+        'bank'                  => 'banco',
+        'currency'              => 'moneda',
+        'payment_method'        => 'forma de pago',
     ],
 ];
