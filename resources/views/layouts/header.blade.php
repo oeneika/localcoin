@@ -18,9 +18,9 @@
                                 {{ Auth::user()->name }}
                             </li>
                             <li role="presentation">
-                                <a href="form_account.html" class="link">
+                                <a href="{{ route('myProfile') }}" class="link">
                                     <i class="fa fa-user"></i>
-                                    Profile
+                                    Perfil
                                 </a>
                             </li>
                             <li role="presentation">

@@ -76,7 +76,8 @@
                     storeSell: '{{ route('storeSell') }}',
                     storeBuy: '{{ route('storeBuy') }}',
                     updateBuy: '{{ route('updateBuy') }}',
-                    updateSell: '{{ route('updateSell') }}'}
+                    updateSell: '{{ route('updateSell') }}',
+                    storeBankAccount: '{{ route('storeBankAccount') }}'}
         </script>
         @yield('footer_section')
 </body>

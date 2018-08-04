@@ -137,5 +137,6 @@ return [
         'bank'                  => 'banco',
         'currency'              => 'moneda',
         'payment_method'        => 'forma de pago',
+        'account_number'        => 'número de cuenta',
     ],
 ];

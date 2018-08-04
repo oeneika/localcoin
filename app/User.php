@@ -28,4 +28,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get Bank Accounts of conected user
+     */
+    public function BankAccounts(){
+        return $this->hasMany('App\BankAccount','id_user');
+    }
 }
