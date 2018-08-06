@@ -1,4 +1,4 @@
-function openModal(){
+function openModalBuy(){
     $('#createBuyModal').modal('show');
 }
 

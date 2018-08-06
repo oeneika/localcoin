@@ -41,23 +41,12 @@ class TransactionsController extends Controller
      */
     public function myBuys()
     {
-        //dump(\App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_buyer',auth()->user('id')['id'])->get());
+        $transactions = \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',0)->get();
         return view('transactions.mybuys',array(
-            'transactions' => \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_buyer',auth()->user('id')['id'])->get(),
-            'banks'=> \App\Bank::all(),
-            'currencies' => \App\Currency::all(),
-            'methods' => \App\PaymentMethod::all()
+            'transactions' => $transactions,
+            'bank_accounts'=> \App\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
+            'currencies' => \App\Currency::all()
         ));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createBuy()
-    {
-        return view('home');
     }
 
     /**
@@ -70,20 +59,19 @@ class TransactionsController extends Controller
     {
         #Validamos campos
         $validator = Validator::make($request->all(),[
-            'bank'=>'required',
-            'payment_method'=>'required',
+            'bank_account'=>'required',
             'price'=>'required|numeric',
+            'quantity'=>'required|numeric',
             'currency'=>'required'
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
-            $transaction->id_bank = $request->input('bank');
-            $transaction->id_payment_method = $request->input('payment_method');
             $transaction->price = $request->input('price');
             $transaction->id_currency = $request->input('currency');
+            $transaction->quantity = $request->input('quantity');
             $transaction->type = 0;
-            $transaction->id_user_buyer = auth()->user('id')['id'];
+            $transaction->id_submitting_account = $request->input('bank_account');
 
             $transaction->save();
 
@@ -104,18 +92,19 @@ class TransactionsController extends Controller
     {
         #Field validation\Validacion de campos
         $validator = Validator::make($request->all(),[
-            'bank'=>'required',
-            'payment_method'=>'required',
+            'bank_account'=>'required',
             'price'=>'required|numeric',
+            'quantity'=>'required|numeric',
             'currency'=>'required'
         ]);
 
         #If validation passes without errors\Si la validacion pasa
         if ($validator->passes()){
             $transaction = Transaction::find($request->input('id_transaction'));
-            $transaction->id_bank = $request->input('bank');
-            $transaction->id_payment_method = $request->input('payment_method');
+
+            $transaction->id_submitting_account = $request->input('bank_account');
             $transaction->price = $request->input('price');
+            $transaction->quantity = $request->input('quantity');
             $transaction->id_currency = $request->input('currency');
 
             $transaction->save();
@@ -131,26 +120,11 @@ class TransactionsController extends Controller
      */
     public function mySells()
     {
-        //dump(\App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_seller',auth()->user('id')['id'])->get());
+        $transactions = \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',1)->get();
         return view('transactions.mysells',array(
-            'transactions' => \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_user_seller',auth()->user('id')['id'])->get(),
-            'banks'=> \App\Bank::all(),
-            'currencies' => \App\Currency::all(),
-            'methods' => \App\PaymentMethod::all()
-        ));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createSell()
-    {
-        return view('transactions.sell',array(
-            'banks'=> \App\Bank::all(),
-            'currencies' => \App\Currency::all(),
-            'methods' => \App\PaymentMethod::all()
+            'transactions' => $transactions,
+            'bank_accounts'=> \App\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
+            'currencies' => \App\Currency::all()
         ));
     }
 
@@ -162,26 +136,25 @@ class TransactionsController extends Controller
      */
     public function storeSell(Request $request)
     {
-        #Field validation\Validacion de campos
+        #Validamos campos
         $validator = Validator::make($request->all(),[
-            'bank'=>'required',
-            'payment_method'=>'required',
+            'bank_account'=>'required',
             'price'=>'required|numeric',
+            'quantity'=>'required|numeric',
             'currency'=>'required'
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
-            $transaction->id_bank = $request->input('bank');
-            $transaction->id_payment_method = $request->input('payment_method');
             $transaction->price = $request->input('price');
+            $transaction->quantity = $request->input('quantity');
             $transaction->id_currency = $request->input('currency');
             $transaction->type = 1;
-            $transaction->id_user_seller = auth()->user('id')['id'];
+            $transaction->id_submitting_account = $request->input('bank_account');
 
             $transaction->save();
 
-            return response()->json(array('success'=>1,'message'=>'Compra creada con éxito'));
+            return response()->json(array('success'=>1,'message'=>'Venta creada con éxito'));
         }
 
         return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
@@ -198,23 +171,45 @@ class TransactionsController extends Controller
     {
         #Field validation\Validacion de campos
         $validator = Validator::make($request->all(),[
-            'bank'=>'required',
-            'payment_method'=>'required',
+            'bank_account'=>'required',
             'price'=>'required|numeric',
+            'quantity'=>'required|numeric',
             'currency'=>'required'
         ]);
 
         #If validation passes without errors\Si la validacion pasa
         if ($validator->passes()){
             $transaction = Transaction::find($request->input('id_transaction'));
-            $transaction->id_bank = $request->input('bank');
-            $transaction->id_payment_method = $request->input('payment_method');
+
+            $transaction->id_submitting_account = $request->input('bank_account');
             $transaction->price = $request->input('price');
+            $transaction->quantity = $request->input('quantity');
             $transaction->id_currency = $request->input('currency');
 
             $transaction->save();
 
-            return response()->json(array('success'=>1,'message'=>'Compra editada con éxito'));
+            return response()->json(array('success'=>1,'message'=>'Venta editada con éxito'));
+        }
+
+        return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
+    }
+
+    /**
+     * Makes transaction
+     */
+    public function make(Request $request){
+
+        $validator = Validator::make($request->all(),[
+            'bank_account'=>'required'
+        ]);
+
+        if($validator->passes()){
+            $transaction = \App\Transaction::find($request->input('id_transaction'));
+            $transaction->status = 2;
+            $transaction->id_recieving_account = $request->input('bank_account');
+            $transaction->save();
+
+            return response()->json(array('success'=>1,'message'=>'Transacción realizada con éxito'));
         }
 
         return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));

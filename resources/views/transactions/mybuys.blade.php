@@ -7,7 +7,7 @@
     </h2>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModal()"> Crear Venta </button>
+            <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalBuy()"> Crear Venta </button>
         </div>
     </div>
     <section class="widget">
@@ -47,7 +47,7 @@
                             @endif
                             <td>{{ date('m/d/Y', date_timestamp_get($transaction->created_at)) }}</td>
                             <td>
-                                <a class="btn btn-info" onclick="openModalEdit({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_bank }},{{ $transaction->id_payment_method }})"><i class="fa fa-sliders"></i></a>
+                                <a class="btn btn-info" onclick="openModalEditBuy({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_submitting_account }},{{ $transaction->quantity }})"><i class="fa fa-sliders"></i></a>
                                 <a class="btn btn-danger" onclick="delete_item('{{ route('deleteTransaction',['id'=>$transaction->id_transaction]) }}','{{ csrf_token() }}')"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -57,7 +57,7 @@
             </div>
     </section>
 </div>
-@include('transactions.buy')
+@include('transactions.submitbuy')
 @include('transactions.editbuy')
 @include('layouts.footer')
     </div>

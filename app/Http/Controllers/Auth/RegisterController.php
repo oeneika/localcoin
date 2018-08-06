@@ -50,12 +50,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
+            'name' => 'required|alpha|string|max:255',
+            'lastname' => 'required|alpha|string|max:255',
+            'country' => 'required|alpha|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|alpha|string|max:255',
+            'state' => 'required|alpha|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'user' => 'required|max:255|unique:users',
+            'passport' => 'required|file|image',
+            'identification' => 'required|file|image',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -68,12 +72,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        #Get the passports and identification files\Obtenemos los archivos de  pasaporte e identificacion
+        $request = request();
+
+        $passport_path = $request->passport->store('passport');
+        $identification_path = $request->identification->store('identification');
+
+
         return User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'birthday' => $data['expiration-date'],
             'gender' => $data['gender'],
             'address' => $data['address'],
+            'passport' => $passport_path,
+            'identificationi' => $identification_path,
             'city' => $data['city'],
             'state' => $data['state'],
             'fax' => $data['fax'],

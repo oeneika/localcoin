@@ -135,8 +135,11 @@ return [
         'required'              => 'Requerido',
         'price'                 => 'precio',
         'bank'                  => 'banco',
+        'bank_account'          => 'cuenta bancaria',
         'currency'              => 'moneda',
         'payment_method'        => 'forma de pago',
         'account_number'        => 'número de cuenta',
+        'passport'              => 'pasaporte',
+        'identification'        => 'documento de identificación',
     ],
 ];

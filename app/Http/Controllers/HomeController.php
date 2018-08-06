@@ -24,9 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $transactions = \App\Transaction::all();
+        $sells = \App\Transaction::join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
+        ->join('users','users.id','=','bank_account.id_user')
+        ->join('bank','bank_account.id_bank','=','bank.id_bank')
+        ->where('type',1)->selectRaw('transaction.*,users.*,bank.name AS bank_name')->get();
+
+        $buys = \App\Transaction::join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
+        ->join('users','users.id','=','bank_account.id_user')
+        ->join('bank','bank_account.id_bank','=','bank.id_bank')
+        ->where('type',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name')->get();
+        
         return view('home',array(
-            'transactions'=>$transactions
+            'buys'=>$buys,
+            'sells'=>$sells
         ));
     }
 }

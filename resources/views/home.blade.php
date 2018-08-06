@@ -62,40 +62,30 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Email</th>
+                                        <th>Vendedor</th>
+                                        <th>User</th>
+                                        <th>Price</th>
+                                        <th>Cantidad</th>
                                         <th>Acción</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td><a href="#">ottoto@example.com</a></td>
-                                        <td><a href="" class="btn btn-primary">Vender</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td><a href="#">fat.thor@example.com</a></td>
-                                        <td><a href="" class="btn btn-primary">Vender</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td><a href="#">larry@example.com</a></td>
-                                        <td><a href="" class="btn btn-primary">Vender</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Peter</td>
-                                        <td>Horadnia</td>
-                                        <td><a href="#">peter@example.com</a></td>
-                                        <td><a href="" class="btn btn-primary">Vender</a></td>
+                                        @foreach($sells as $sell)
+                                            @if($sell->status == 2)
+                                                @continue
+                                            @endif
+                                            <tr>
+                                                <td>{{ $sell->id_transaction }}</td>
+                                                <td>{{ $sell->name }} {{ $sell->lastname }}</td>
+                                                <td>{{ $sell->user }}</td>
+                                                <td>{{ $sell->price }}</td>
+                                                <td>{{ $sell->quantity }}</td>
+                                                @if(Auth::user()->id != $sell->id)
+                                                    <td><button type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
                                     </tr>
                                     </tbody>
                                 </table>
@@ -117,41 +107,31 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Email</th>
-                                    <th>Accion</th>
+                                    <th>Comprador</th>
+                                    <th>User</th>
+                                    <th>Price</th>
+                                    <th>Cantidad</th>
+                                    <th>Acción</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><a href="#">ottoto@example.com</a></td>
-                                    <td><a href="" class="btn btn-primary">Comprar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td><a href="#">fat.thor@example.com</a></td>
-                                    <td><a href="" class="btn btn-primary">Comprar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td><a href="#">larry@example.com</a></td>
-                                    <td><a href="" class="btn btn-primary">Comprar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Peter</td>
-                                    <td>Horadnia</td>
-                                    <td><a href="#">peter@example.com</a></td>
-                                    <td><a href="" class="btn btn-primary">Comprar</a></td>
-                                </tr>
+                                    @foreach($buys as $buy)
+                                        <tr>
+                                            @if($buy->status == 2)
+                                                @continue
+                                            @endif
+                                            <tr>
+                                                <td>{{ $buy->id_transaction }}</td>
+                                                <td>{{ $buy->name }} {{ $buy->lastname }}</td>
+                                                <td>{{ $buy->user }}</td>
+                                                <td>{{ $buy->price }}</td>
+                                                <td>{{ $buy->quantity }}</td>
+                                                @if(Auth::user()->id != $buy->id)
+                                                    <td><button type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
+                                                @endif
+                                            </tr>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                     </div>
@@ -159,10 +139,15 @@
                 
             </div>
         </div>
+            @include('transactions.buy')
             @include('layouts.footer')
         </div>
         <div class="loader-wrap hiding hide">
             <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
     </div>
+@endsection
+@section('footer_section')
+    <script>var transaction = 0;</script>
+    <script src="{{ asset('js/transaction/buy.js') }}"></script>
 @endsection

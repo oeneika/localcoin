@@ -6,12 +6,17 @@
                 <li class="active">
                     <a href="{{ route('home') }}"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
                 </li>
-                <li class="">
-                    <a href="{{ route('mySells') }}"><i class="fa fa-database"></i> <span class="name">Compra de BTC</span></a>
+                <li class="panel">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#menu-levels-collapse" aria-expanded="false"><i class="fa fa-database"></i> <span class="name">Mis Transacciones</span></a>
+                    <ul id="menu-levels-collapse" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                            <li class="">
+                                <a href="{{ route('mySells') }}"> <span class="name">Compra de BTC</span></a>
+                            </li>
+                            <li class="">
+                                <a href="{{ route('myBuys') }}"> <span class="name">Venta de BTC</span></a>
+                            </li>
+                    </ul>
                 </li>
-                <li class="">
-                    <a href="{{ route('myBuys') }}"><i class="fa fa-database"></i> <span class="name">Venta de BTC</span></a>
-                </li>
-    </div></ul>
+            </ul>
 
 </nav> 

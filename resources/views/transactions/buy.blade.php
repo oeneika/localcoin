@@ -1,63 +1,61 @@
-<div class="modal inmodal" id="createBuyModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content animated flipInY">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                <h4 class="modal-title">Creación de Monedas</h4>
-                <small class="font-bold">Franklins Gold</small>
-            </div>
-            <div class="modal-body">
-                <form id="store_buy_form">
-                    {{ csrf_field() }}
+<div class="modal inmodal" id="_BuyModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated flipInY">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title">Comprar</h4>
+                    <small class="font-bold">BinaryCorp</small>
+                </div>
+                <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <label>Precio</label>
-                                <input class="form-control" type="number" name="price" id="">
+                        <div class="col-sm-4">
+                            <div class="text-align-center">
+                                <img class="img-circle" src="img/3.png" alt="64x64" style="height: 112px;">
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Moneda</label>
-                                <select name="currency" id="" class="form-control">
-                                    <option selected value>Seleccione moneda</option>
-                                    @foreach($currencies as $currency)
-                                        <option value="{{ $currency->id_currency }}">{{ $currency->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="col-sm-8">
+                            <h3 class="mt-sm mb-xs" id="names_details"></h3>
+                            <address>
+                                <abbr style="color:black;!important" id="email_details">e-mail:</abbr> <a href="mailto:#"></a><br>
+                                <abbr style="color:black;!important" title="Teléfono de Casa" id="local_details">Teléfono:</abbr> <br>
+                                <abbr style="color:black;!important" title="Teléfono Móvil" id="mobile_details">Teléfono Móvil:</abbr> <br>
+                                <abbr style="color:black;!important" title="Banco" id="bank_details">Banco:</abbr> <br>
+                            </address>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="color:black; !important">Precio</th>
+                                        <th style="color:black; !important">Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="details_body">
+                                    
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Banco</label>
-                                <select name="bank" id="" class="form-control">
-                                    <option selected value>Seleccione Banco</option>
-                                    @foreach($banks as $bank)
-                                        <option value="{{ $bank->id_bank }}">{{ $bank->name }}</option>
-                                    @endforeach
-                                </select>
+                    <form id="_buy_form">
+                        {{ csrf_field() }}
+                        <input type="hidden" id="id_transaction_details" name="id_transaction" val="">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Cuenta Bancaria</label>
+                                    <select name="bank_account" id="" class="form-control">
+                                        <option selected value>Seleccione una cuenta</option>
+                                        @foreach(Auth::user()->BankAccounts as $account)
+                                            <option value="{{ $account->id_bank_account }}">{{ $account->number }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Tipo de Pago</label>
-                                <select name="payment_method" id="" class="form-control">
-                                    <option selected value>Seleccione tipo de pago</option>
-                                    @foreach($methods as $method)
-                                        <option value="{{ $method->id_payment_method }}">{{ $method->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
-                <button type="button" id="store_buy_btn" class="btn btn-primary">Crear</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="_buy_btn" class="btn btn-primary">Comprar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -1,26 +1,25 @@
-<div class="modal inmodal" id="editSellModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal" id="createSellModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content animated flipInY">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title">Creación de Monedas</h4>
-                    <small class="font-bold">Franklins Gold</small>
+                    <h4 class="modal-title">Crear Venta</h4>
+                    <small class="font-bold">BinaryCorp</small>
                 </div>
                 <div class="modal-body">
-                    <form id="update_sell_form">
-                        <input type="hidden" name="id_transaction" id="id_transaction" value="">
+                    <form id="store_sell_form">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label>Precio</label>
-                                    <input class="form-control" type="number" name="price" id="edit_price">
+                                    <input class="form-control" type="number" name="price" id="">
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select name="currency" id="edit_currency" class="form-control">
+                                    <select name="currency" id="" class="form-control">
                                         <option selected value>Seleccione moneda</option>
                                         @foreach($currencies as $currency)
                                             <option value="{{ $currency->id_currency }}">{{ $currency->name }}</option>
@@ -33,16 +32,16 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Cantidad BTC</label>
-                                    <input class="form-control" type="number" name="quantity" id="edit_quantity">
+                                    <input class="form-control" type="number" name="quantity" id="">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Cuenta Bancaria</label>
-                                    <select name="bank_account" id="edit_bank_account" class="form-control">
-                                        <option selected value>Seleccione una Cuenta Bancaria</option>
+                                    <label>Banco</label>
+                                    <select name="bank_account" id="" class="form-control">
+                                        <option selected value>Seleccione Cuenta Bancaria</option>
                                         @foreach($bank_accounts as $account)
                                             <option value="{{ $account->id_bank_account }}">{{ $account->number }}</option>
                                         @endforeach
@@ -54,7 +53,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="update_sell_btn" class="btn btn-primary">Crear</button>
+                    <button type="button" id="store_sell_btn" class="btn btn-primary">Crear</button>
                 </div>
             </div>
         </div>

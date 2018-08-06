@@ -30,7 +30,7 @@ class BankAccountsController extends Controller
         #Fields Validation/Validacion de campos
         $validator = Validator::make($request->all(),[
             'bank'=>'required',
-            'account_number'=>'required|numeric|digits:20'
+            'account_number'=>'required|numeric|digits:20|unique:bank_account,number'
         ]);
 
         if ($validator->passes()){

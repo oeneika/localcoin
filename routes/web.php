@@ -34,9 +34,14 @@ Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell'
 
 Route::delete('/delete/{id}','TransactionsController@destroy')->name('deleteTransaction');
 
+Route::put('/makeTransaction','TransactionsController@make')->name('makeTransaction');
+
 #Profile route
 Route::get('myProfile','ProfilesController@show')->name('myProfile');
 
 #Bank Accounts Routes
 Route::post('storeBankAccount','BankAccountsController@store')->name('storeBankAccount');
 Route::delete('/deleteBankAccount/{id}','BankAccountsController@destroy')->name('deleteBankAccount');
+
+#User detail
+Route::get('/showUser/{id}','UsersController@show')->name('showUser');

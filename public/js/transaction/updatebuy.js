@@ -1,9 +1,9 @@
-function openModalEdit(id,price, currency, bank,payment_method){
+function openModalEditBuy(id,price, currency, bank_account,quantity){
     $('#id_transaction').val(id);
-    $('#edit_price').val(price)
+    $('#edit_price').val(price) 
+    $('#edit_quantity').val(quantity) 
     $('#edit_currency').val(currency).change();
-    $('#edit_bank').val(bank).change();
-    $('#edit_payment_method').val(payment_method).change();
+    $('#edit_bank_account').val(bank_account).change();
     $('#editBuyModal').modal('show');
 }
 

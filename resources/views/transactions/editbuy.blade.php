@@ -30,24 +30,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Banco</label>
-                                    <select name="bank" id="edit_bank" class="form-control">
-                                        <option selected value>Seleccione Banco</option>
-                                        @foreach($banks as $bank)
-                                            <option value="{{ $bank->id_bank }}">{{ $bank->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label>Cantidad BTC</label>
+                                    <input class="form-control" type="number" name="quantity" id="edit_quantity">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Tipo de Pago</label>
-                                    <select name="payment_method" id="edit_payment_method" class="form-control">
-                                        <option selected value>Seleccione tipo de pago</option>
-                                        @foreach($methods as $method)
-                                            <option value="{{ $method->id_payment_method }}">{{ $method->name }}</option>
+                                    <label>Cuenta Bancaria</label>
+                                    <select name="bank_account" id="edit_bank_account" class="form-control">
+                                        <option selected value>Seleccione Banco</option>
+                                        @foreach($bank_accounts as $account)
+                                            <option value="{{ $account->id_bank_account }}">{{ $account->number }}</option>
                                         @endforeach
                                     </select>
                                 </div>

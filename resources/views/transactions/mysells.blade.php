@@ -7,7 +7,7 @@
     </h2>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModal()"> Crear Compra </button>
+            <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalSell()"> Crear Compra </button>
         </div>
     </div>
     <section class="widget">
@@ -38,17 +38,19 @@
                             <td>{{ $transaction->id_transaction }}</td>
                             <td>{{ number_format($transaction->price,2,',','.') }}</td>
                             <td>{{ $transaction->name }}</td>
-                            @if($transaction->status = 0)
+                            @if($transaction->status == 0)
                                 <td><span class="label label-primary">Abierta</span></td>
-                            @elseif($transaction->status = 1)
+                            @elseif($transaction->status == 1)
                                 <td><span class="label label-info">Pendiente</span></td>
                             @else
                                 <td><span class="label label-danger">Procesada</span></td>
                             @endif
                             <td>{{ date('m/d/Y', date_timestamp_get($transaction->created_at)) }}</td>
                             <td>
-                                <a class="btn btn-info" onclick="openModalEdit({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_bank }},{{ $transaction->id_payment_method }})"><i class="fa fa-sliders"></i></a>
-                                <a class="btn btn-danger" onclick="delete_item('{{ route('deleteTransaction',['id'=>$transaction->id_transaction]) }}','{{ csrf_token() }}')"><i class="fa fa-trash"></i></a>
+                                @if($transaction->status != 2)
+                                    <a class="btn btn-info" onclick="openModalEditSell({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_submitting_account }},{{ $transaction->quantity }})"><i class="fa fa-sliders"></i></a>
+                                    <a class="btn btn-danger" onclick="delete_item('{{ route('deleteTransaction',['id'=>$transaction->id_transaction]) }}','{{ csrf_token() }}')"><i class="fa fa-trash"></i></a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -57,7 +59,7 @@
             </div>
     </section>
 </div>
-@include('transactions.sell')
+@include('transactions.submitsell')
 @include('transactions.editsell')
 @include('layouts.footer')
     </div>

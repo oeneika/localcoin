@@ -73,11 +73,12 @@
         <!-- important routes -->
         <script>
                 var url = {
-                    storeSell: '{{ route('storeSell') }}',
-                    storeBuy: '{{ route('storeBuy') }}',
-                    updateBuy: '{{ route('updateBuy') }}',
-                    updateSell: '{{ route('updateSell') }}',
-                    storeBankAccount: '{{ route('storeBankAccount') }}'}
+                    storeSell:              '{{ route('storeSell') }}',
+                    storeBuy:               '{{ route('storeBuy') }}',
+                    updateBuy:              '{{ route('updateBuy') }}',
+                    updateSell:             '{{ route('updateSell') }}',
+                    makeTransaction:        '{{ route('makeTransaction') }}',
+                    storeBankAccount:       '{{ route('storeBankAccount') }}'}
         </script>
         @yield('footer_section')
 </body>

@@ -1,4 +1,4 @@
-function openModal(){
+function openModalSell(){
     console.log('log');
     $('#createSellModal').modal('show');
 }
