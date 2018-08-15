@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace CorpBinary\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use CorpBinary\User;
+use CorpBinary\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'country' => 'required|alpha|string|max:255',
             'address' => 'required|string|max:255',
             'city' => 'required|alpha|string|max:255',
-            'state' => 'required|alpha|string|max:255',
+            'state' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'user' => 'required|max:255|unique:users',
             'passport' => 'required|file|image',
@@ -68,7 +68,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \CorpBinary\User
      */
     protected function create(array $data)
     {
@@ -89,7 +89,6 @@ class RegisterController extends Controller
             'identificationi' => $identification_path,
             'city' => $data['city'],
             'state' => $data['state'],
-            'fax' => $data['fax'],
             'mobile' => $data['mobile'],
             'country' => $data['country'],
             'phone' => $data['phone'],

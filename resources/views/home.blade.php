@@ -21,28 +21,8 @@
                         </div>
                     </header>
                     <div class="body no-margin">
-                        <div id="visits-chart" class="chart visits-chart">
+                        <div id="bitcoin-chart" class="chart">
                             <svg></svg>
-                        </div>
-                        <div class="visits-info well well-sm">
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="key"><i class="fa fa-users"></i> Total Traffic</div>
-                                    <div class="value">24 541 <i class="fa fa-caret-up color-green"></i></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="key"><i class="fa fa-bolt"></i> Unique Visits</div>
-                                    <div class="value">14 778 <i class="fa fa-caret-down color-red"></i></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="key"><i class="fa fa-plus-square"></i> Revenue</div>
-                                    <div class="value">$3 583.18 <i class="fa fa-caret-up color-green"></i></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="key"><i class="fa fa-user"></i> Total Sales</div>
-                                    <div class="value">$59 871.12 <i class="fa fa-caret-down color-red"></i></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -148,6 +128,31 @@
     </div>
 @endsection
 @section('footer_section')
-    <script>var transaction = 0;</script>
     <script src="{{ asset('js/transaction/buy.js') }}"></script>
+    <script>
+        nv.addGraph(function () {
+            var a = nv.models.lineChart().useInteractiveGuideline(!0).margin({
+                top: 0,
+                bottom: 25,
+                left: 25,
+                right: 0
+            }).color(["#6294c9"]);
+            a.legend.margin({
+                top: 3
+            }), a.yAxis.showMaxMin(!1).tickFormat(d3.format(",.f")), a.xAxis.showMaxMin(!1).tickFormat(function (a) {
+                return d3.time.format("%b %d")(new Date(a))
+            });
+            var b = BitcoinData();
+            return b[0].area = !0, d3.select("#bitcoin-chart svg").datum(b).transition().duration(500).call(a), PjaxApp.onResize(a.update), a
+        });
+
+        function BitcoinData() {
+            return stream_layers(3,128,.1).map(function() {
+              return { 
+                key: 3,
+                values: 3
+              };
+        });
+}
+    </script>
 @endsection

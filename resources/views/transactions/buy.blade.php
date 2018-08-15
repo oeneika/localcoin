@@ -8,12 +8,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="text-align-center">
-                                <img class="img-circle" src="img/3.png" alt="64x64" style="height: 112px;">
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <h3 class="mt-sm mb-xs" id="names_details"></h3>
                             <address>
                                 <abbr style="color:black;!important" id="email_details">e-mail:</abbr> <a href="mailto:#"></a><br>

@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CorpBinary\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use CorpBinary\Http\Controllers\Controller;
 use Validator;
-use App\User;
-use App\Transaction;
-use App\Bank;
-use App\Currency;
-use App\PaymentMethod;
+use CorpBinary\User;
+use CorpBinary\Transaction;
+use CorpBinary\Bank;
+use CorpBinary\Currency;
+use CorpBinary\PaymentMethod;
+use CorpBinary\BankAccount;
 
 class TransactionsController extends Controller
 {
@@ -41,11 +42,11 @@ class TransactionsController extends Controller
      */
     public function myBuys()
     {
-        $transactions = \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',0)->get();
+        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',0)->get();
         return view('transactions.mybuys',array(
             'transactions' => $transactions,
-            'bank_accounts'=> \App\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
-            'currencies' => \App\Currency::all()
+            'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
+            'currencies' => \CorpBinary\Currency::all()
         ));
     }
 
@@ -120,11 +121,11 @@ class TransactionsController extends Controller
      */
     public function mySells()
     {
-        $transactions = \App\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',1)->get();
+        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',1)->get();
         return view('transactions.mysells',array(
             'transactions' => $transactions,
-            'bank_accounts'=> \App\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
-            'currencies' => \App\Currency::all()
+            'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
+            'currencies' => \CorpBinary\Currency::all()
         ));
     }
 
@@ -204,7 +205,7 @@ class TransactionsController extends Controller
         ]);
 
         if($validator->passes()){
-            $transaction = \App\Transaction::find($request->input('id_transaction'));
+            $transaction = \CorpBinary\Transaction::find($request->input('id_transaction'));
             $transaction->status = 2;
             $transaction->id_recieving_account = $request->input('bank_account');
             $transaction->save();
@@ -213,6 +214,24 @@ class TransactionsController extends Controller
         }
 
         return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
+    }
+
+    /**
+     * Display all completed transactions
+     */
+    public function completedTransactions(){
+
+        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')
+        ->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
+        ->join('bank_account AS recieving_account','recieving_account.id_bank_account','=','transaction.id_recieving_account')
+        ->join('users','users.id','=','bank_account.id_user')
+        ->where('recieving_account.id_user',auth()->user('id')['id'])
+        ->selectRaw('bank_account.*, users.name, users.lastname, users.user, transaction.*, currency.name AS currency_name')
+        ->get();
+
+        return view('transactions.completedtransactions',array(
+            'transactions'=>$transactions
+        ));
     }
 
     /**

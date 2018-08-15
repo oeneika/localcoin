@@ -23,18 +23,6 @@
                                     Perfil
                                 </a>
                             </li>
-                            <li role="presentation">
-                                <a href="component_calendar.html" class="link">
-                                    <i class="fa fa-calendar"></i>
-                                    Calendar
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="link">
-                                    <i class="fa fa-inbox"></i>
-                                    Inbox
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li class="visible-xs">

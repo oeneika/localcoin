@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace CorpBinary;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -33,6 +33,6 @@ class User extends Authenticatable
      * Get Bank Accounts of conected user
      */
     public function BankAccounts(){
-        return $this->hasMany('App\BankAccount','id_user');
+        return $this->hasMany('CorpBinary\BankAccount','id_user');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace CorpBinary;
 
 use Illuminate\Database\Eloquent\Model;
 

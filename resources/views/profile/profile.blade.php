@@ -10,14 +10,11 @@
                     <h4><i class="fa fa-user"></i> Prefil de cuenta</h4>
                 </header>
                 <div class="body">
-                    <form id="user-form" class="form-horizontal form-label-left" novalidate="" method="post" data-parsley-priority-enabled="false" data-parsley-excluded="input[name=gender]">
+                    <form id="user-form" class="form-horizontal form-label-left" novalidate="" method="post" data-parsley-priority-enabled="false" type='POST' action="{{ route('editUser',['id'=>Auth::user()->id]) }}">
+                        {{ csrf_field() }}
+                        @method('PUT')
                         <div class="row">
-                            <div class="col-sm-4">
-                                <div class="text-align-center">
-                                    <img class="img-circle" src="img/3.png" alt="64x64" style="height: 112px;">
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-12">
                                 <h3 class="mt-sm mb-xs">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</h3>
                                 <address>
                                     <abbr>e-mail:</abbr> <a href="mailto:#">{{ Auth::user()->email }}</a><br>
@@ -33,11 +30,11 @@
                             <legend class="section">Información Personal</legend>
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="first-name">Nombre <span class="required">*</span></label>
-                                <div class="col-sm-8"><input type="text" id="first-name" name="first-name" value="{{ Auth::user()->name }}" class="form-control input-transparent" data-parsley-id="6"></div>
+                                <div class="col-sm-8"><input type="text" id="first-name" name="name" value="{{ Auth::user()->name }}" class="form-control input-transparent" data-parsley-id="6"></div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="last-name">Apellido <span class="required">*</span></label>
-                                <div class="col-sm-8"><input type="text" id="last-name" name="last-name" value="{{ Auth::user()->lastname }}" class="form-control input-transparent" data-parsley-id="8"></div>
+                                <div class="col-sm-8"><input type="text" id="last-name" name="lastname" value="{{ Auth::user()->lastname }}" class="form-control input-transparent" data-parsley-id="8"></div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-4">Gender</label>
@@ -74,36 +71,10 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <legend class="section">
-                                Address
-                                <button type="button" class="btn btn-transparent btn-xs pull-right">
-                                    <i class="fa fa-plus"></i>
-                                    Add Address
-                                </button>
-                            </legend>
-                            <div class="form-group">
-                                <label for="address" class="control-label col-sm-4">Address <span class="required">*</span></label>
-                                <div class="col-xs-12 col-sm-6">
-                                    <div class="input-group">
-                                        <input id="address" class="form-control input-transparent" type="text" name="address" data-parsley-id="24">
-                                        <span class="input-group-btn">
-                                             <select id="address-type" class="selectpicker bs-select-hidden" data-style="btn-default" data-width="auto" data-parsley-id="26">
-                                                 <option>Mobile</option>
-                                                 <option>Home</option>
-                                                 <option>Work</option>
-                                             </select><div class="btn-group bootstrap-select" style="width: 82px;"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="address-type" title="Mobile"><span class="filter-option pull-left">Mobile</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open" style="min-width: 0px;"><ul class="dropdown-menu inner" role="menu"><li data-original-index="0" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Mobile</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Home</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Work</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div></div>
-                                        </span>
-                                    </div>
-                                    <input id="address-2" class="form-control input-transparent mt-sm" type="text" value="" name="address-2" data-parsley-id="28">
-                                </div>
-                            </div>
-                        </fieldset>
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-sm-8 col-sm-offset-4">
-                                    <button type="submit" class="btn btn-primary">Validate &amp; Submit</button>
-                                    <button type="button" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Editar</button>
                                 </div>
                             </div>
                         </div>

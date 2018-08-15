@@ -17,6 +17,9 @@
                             </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('completedTransactions') }}"><i class="fa fa-check"></i> <span class="name">Transacciones realizadas</span></a>
+                </li>
             </ul>
 
 </nav> 

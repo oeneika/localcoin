@@ -32,12 +32,15 @@ Route::get('/createSell','TransactionsController@createSell')->name('createSell'
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
 Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell');
 
+Route::get('/completedTransactioins','TransactionsController@completedTransactions')->name('completedTransactions');
+
 Route::delete('/delete/{id}','TransactionsController@destroy')->name('deleteTransaction');
 
 Route::put('/makeTransaction','TransactionsController@make')->name('makeTransaction');
 
 #Profile route
 Route::get('myProfile','ProfilesController@show')->name('myProfile');
+Route::put('editUser/{id}','ProfilesController@edit')->name('editUser');
 
 #Bank Accounts Routes
 Route::post('storeBankAccount','BankAccountsController@store')->name('storeBankAccount');

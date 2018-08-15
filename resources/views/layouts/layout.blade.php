@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>CorpBinary</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -43,7 +43,6 @@
 <script src="{{ asset('lib/underscore/underscore.js') }}"></script>
 
 <!-- common application js -->
-<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/settings.js') }}"></script>
 
 
@@ -59,7 +58,6 @@
         <script src="{{ asset('lib/nvd3/build/nv.d3.min.js') }}"></script>
 
         <!-- page application js -->
-        <script src="{{ asset('js/index.js') }}"></script>
         <script src="{{ asset('js/chat.js') }}"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.js.map"></script>
@@ -80,6 +78,7 @@
                     makeTransaction:        '{{ route('makeTransaction') }}',
                     storeBankAccount:       '{{ route('storeBankAccount') }}'}
         </script>
+        <!-- Page specific scripts -->
         @yield('footer_section')
 </body>
 </html>

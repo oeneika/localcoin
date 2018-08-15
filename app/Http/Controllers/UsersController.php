@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CorpBinary\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
+use CorpBinary\Http\Controllers\Controller;
+use CorpBinary\User;
 
 class UsersController extends Controller
 {
@@ -14,6 +14,6 @@ class UsersController extends Controller
      * @param $id: Id of the user to find
      */
     public function show($id){
-        return \App\User::find($id);
+        return \CorpBinary\User::find($id);
     }
 }

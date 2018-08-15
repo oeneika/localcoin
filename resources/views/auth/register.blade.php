@@ -95,15 +95,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                 <div class="form-group">
-                                                    <label for="fax" class="control-label col-md-3">Fax</label>
-
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input id="fax" name="fax" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </fieldset>
                                         
                                     </div>
@@ -188,10 +179,10 @@
                                     <div class="description ml mr mt-n-md">
                                         <ul class="pager wizard">
                                             <li class="previous">
-                                                <button class="btn btn-primary pull-left"><i class="fa fa-caret-left"></i> Anterior</button>
+                                                <a class="btn btn-primary pull-left"><i class="fa fa-caret-left"></i> Anterior</a>
                                             </li>
                                             <li class="next">
-                                                <button class="btn btn-primary pull-right" >Siguiente <i class="fa fa-caret-right"></i></button>
+                                                <a class="btn btn-primary pull-right" >Siguiente <i class="fa fa-caret-right"></i></a>
                                             </li>
                                             <li class="finish" style="display: none">
                                                 <button class="btn btn-success pull-right" type="submit">Confirmar Registro <i class="fa fa-check"></i></button>

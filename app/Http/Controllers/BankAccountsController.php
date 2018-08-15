@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CorpBinary\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use CorpBinary\Http\Controllers\Controller;
 use Validator;
-use App\BankAccount;
+use CorpBinary\BankAccount;
 
 class BankAccountsController extends Controller
 {

@@ -45,6 +45,6 @@ return array(
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Common/Inflector'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
+    'CorpBinary\\' => array($baseDir . '/app'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
-    'App\\' => array($baseDir . '/app'),
 );
