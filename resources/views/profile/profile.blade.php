@@ -7,7 +7,7 @@
         <div class="col-md-7">
             <section class="widget">
                 <header>
-                    <h4><i class="fa fa-user"></i> Prefil de cuenta</h4>
+                    <h4><i class="fa fa-user"></i> Perfil de cuenta</h4>
                 </header>
                 <div class="body">
                     <form id="user-form" class="form-horizontal form-label-left" novalidate="" method="post" data-parsley-priority-enabled="false" type='POST' action="{{ route('editUser',['id'=>Auth::user()->id]) }}">
@@ -17,9 +17,10 @@
                             <div class="col-sm-12">
                                 <h3 class="mt-sm mb-xs">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</h3>
                                 <address>
-                                    <abbr>e-mail:</abbr> <a href="mailto:#">{{ Auth::user()->email }}</a><br>
-                                    <abbr title="Teléfono de Casa">Teléfono:</abbr> {{ Auth::user()->phone }} <br>
-                                    <abbr title="Teléfono de Casa">Teléfono Móvil:</abbr> {{ Auth::user()->mobile }} <br>
+                                    <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
+                                    <p><strong>Teléfono:</strong> {{ Auth::user()->phone }}</p> 
+                                    <p><strong>Teléfono Móvil:</strong> {{ Auth::user()->mobile }}</p>
+                                    <p><strong>Sexo:</strong> {{ Auth::user()->gender }}</p> 
                                 </address>
                             </div>
                         </div>

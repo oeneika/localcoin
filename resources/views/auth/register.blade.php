@@ -43,7 +43,7 @@
                                                 <div class="form-group">
                                                     <label for="expiration-date" class="control-label col-md-3">Fecha de nacimiento</label>
                                                     <div class="col-md-8">
-                                                        <div class="col-md-10"><input type="text" name="expiration-date" id="expiration-date" class="form-control"></div>
+                                                        <div class="col-md-10"><input type="date" name="expiration-date"  class="form-control"></div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -53,10 +53,10 @@
                                                         <div class="col-md-10">
                                                             <div id="gender" class="btn-group" data-toggle="buttons">
                                                                     <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                        <input type="radio" name="gender" id="gender" value="m"> &nbsp; Masculino &nbsp;
+                                                                        <input type="radio" name="gender" id="m" value="m"> &nbsp; Masculino &nbsp;
                                                                     </label>
                                                                     <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                        <input type="radio" name="gender" id="gender" value="f" checked> Femenino
+                                                                        <input type="radio" name="gender" id="f" value="f" checked> Femenino
                                                                     </label>
                                                             </div>
                                                         </div>
@@ -170,7 +170,7 @@
                                                     <label class="control-label col-md-3" for="password">Repetir Contraseña</label>
                                                     <div class="col-md-8">
                                                         <div class="col-md-10">
-                                                            <input id="password" name="password_confirmation" type="password" tabindex="3" class="form-control">
+                                                            <input id="password_confirmation" name="password_confirmation" type="password" tabindex="3" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -57,6 +57,9 @@
         <script src="{{ asset('lib/d3/d3.min.js') }}"></script>
         <script src="{{ asset('lib/nvd3/build/nv.d3.min.js') }}"></script>
 
+        <script src="{{ asset('js/chartjs-demo.js') }}"></script>
+        <script src="{{ asset('js/chart.min.js') }}"></script>
+
         <!-- page application js -->
         <script src="{{ asset('js/chat.js') }}"></script>
 

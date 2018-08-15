@@ -14,15 +14,15 @@
                             </small>
                         </h4>
                         <div class="widget-controls">
-                            <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
                             <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                         </div>
                     </header>
-                    <div class="body no-margin">
-                        <div id="bitcoin-chart" class="chart">
-                            <svg></svg>
+                    
+                    <div class="ibox ">
+                        <div class="ibox-content">
+                            <div>
+                                <canvas id="lineChart" height="70"></canvas>
+                            </div>
                         </div>
                     </div>
                 </section>
