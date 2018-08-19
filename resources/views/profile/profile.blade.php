@@ -20,7 +20,7 @@
                                     <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
                                     <p><strong>Teléfono:</strong> {{ Auth::user()->phone }}</p> 
                                     <p><strong>Teléfono Móvil:</strong> {{ Auth::user()->mobile }}</p>
-                                    <p><strong>Sexo:</strong> {{ Auth::user()->gender }}</p> 
+                                    <p><strong>Sexo:</strong>@if(Auth::user()->gender == m) Masculino @else Femenino @endif</p> 
                                 </address>
                             </div>
                         </div>

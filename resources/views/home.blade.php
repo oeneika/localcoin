@@ -129,30 +129,5 @@
 @endsection
 @section('footer_section')
     <script src="{{ asset('js/transaction/buy.js') }}"></script>
-    <script>
-        nv.addGraph(function () {
-            var a = nv.models.lineChart().useInteractiveGuideline(!0).margin({
-                top: 0,
-                bottom: 25,
-                left: 25,
-                right: 0
-            }).color(["#6294c9"]);
-            a.legend.margin({
-                top: 3
-            }), a.yAxis.showMaxMin(!1).tickFormat(d3.format(",.f")), a.xAxis.showMaxMin(!1).tickFormat(function (a) {
-                return d3.time.format("%b %d")(new Date(a))
-            });
-            var b = BitcoinData();
-            return b[0].area = !0, d3.select("#bitcoin-chart svg").datum(b).transition().duration(500).call(a), PjaxApp.onResize(a.update), a
-        });
-
-        function BitcoinData() {
-            return stream_layers(3,128,.1).map(function() {
-              return { 
-                key: 3,
-                values: 3
-              };
-        });
-}
-    </script>
+    <script src="{{ asset('js/home/homelinechart.js') }}"></script>
 @endsection

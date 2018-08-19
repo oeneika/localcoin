@@ -41,6 +41,7 @@
 <script src="{{ asset('lib/bootstrap-sass/assets/javascripts/bootstrap.min.js') }}"></script>
 <script src="{{ asset('lib/widgster/widgster.js') }}"></script>
 <script src="{{ asset('lib/underscore/underscore.js') }}"></script>
+<script src="{{ asset('js/php.js') }}"></script>
 
 <!-- common application js -->
 <script src="{{ asset('js/settings.js') }}"></script>
