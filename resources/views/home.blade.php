@@ -32,43 +32,43 @@
                             Ventas
                         </h4>
                         <div class="widget-controls">
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-plus"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-minus"></i></a>
                             <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                         </div>
                     </header>
                         <div class="widget-table-overflow">
-                            <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Vendedor</th>
-                                        <th>User</th>
-                                        <th>Price</th>
-                                        <th>Cantidad</th>
-                                        <th>Acción</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        @foreach($sells as $sell)
-                                            @if($sell->status == 2)
-                                                @continue
-                                            @endif
-                                            <tr>
-                                                <td>{{ $sell->id_transaction }}</td>
-                                                <td>{{ $sell->name }} {{ $sell->lastname }}</td>
-                                                <td>{{ $sell->user }}</td>
-                                                <td>{{ $sell->price }}</td>
-                                                <td>{{ $sell->quantity }}</td>
-                                                @if(Auth::user()->id != $sell->id)
-                                                    <td><button type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Vendedor</th>
+                                            <th>User</th>
+                                            <th>Price</th>
+                                            <th>Cantidad</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            @foreach($sells as $sell)
+                                                @if($sell->status == 2)
+                                                    @continue
                                                 @endif
-                                            </tr>
-                                        @endforeach
-                                    </tr>
-                                    </tbody>
+                                                <tr>
+                                                    <td>{{ $sell->id_transaction }}</td>
+                                                    <td>{{ $sell->name }} {{ $sell->lastname }}</td>
+                                                    <td>{{ $sell->user }}</td>
+                                                    <td>{{ $sell->price }}</td>
+                                                    <td>{{ $sell->quantity }}</td>
+                                                    @if(Auth::user()->id != $sell->id)
+                                                        <td><button type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+                                        </tr>
+                                        </tbody>
                                 </table>
+                            </div>
                         </div>
                 </section>
                 <section class="widget">
@@ -77,13 +77,12 @@
                         Compras
                     </h4>
                     <div class="widget-controls">
-                        <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-plus"></i></a>
-                        <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-minus"></i></a>
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
+                        <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
                     </header>
                     <div class="widget-table-overflow">
-                        <table class="table table-striped">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -114,6 +113,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
                     </div>
                 </section>
                 

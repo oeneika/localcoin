@@ -78,6 +78,8 @@ class RegisterController extends Controller
         $passport_path = $request->passport->store('passport');
         $identification_path = $request->identification->store('identification');
 
+        var_dump($data);
+
 
         return User::create([
             'name' => $data['name'],

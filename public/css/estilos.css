@@ -9,3 +9,7 @@
 a{
 	color: white;
 }
+
+span.invalid-feedback{
+	font-size: 11px!important;
+}

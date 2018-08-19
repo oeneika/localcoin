@@ -1,7 +1,6 @@
 function lineChartData(){
     var dateIni = datePHP('Y-m-d',Math.round((new Date()).getTime() / 1000) - 1296000);
     var dateFin = datePHP('Y-m-d',Math.round((new Date()).getTime() / 1000));
-    console.log('whatsup');
     $.ajax({
     type: 'GET',
     url: `https://api.coindesk.com/v1/bpi/historical/close.json?start=${dateIni}&end=${dateFin}`,

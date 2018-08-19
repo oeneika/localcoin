@@ -28,8 +28,8 @@
 </head>
 <body>
         @include('layouts.menu')
-        @include('layouts.header')
         <div class="wrap">
+            @include('layouts.header')
             @include('inc.messages')
             @yield('content')
         </div>
@@ -49,6 +49,9 @@
 
     <!-- page specific scripts -->
         <!-- page libs -->
+        <script src="{{ asset('js/chartjs-demo.js') }}"></script>
+        <script src="{{ asset('js/chart.min.js') }}"></script>
+
         <script src="{{ asset('lib/slimScroll/jquery.slimscroll.min.js') }}"></script>
         <script src="{{ asset('lib/jquery.sparkline/index.js') }}"></script>
 
@@ -58,8 +61,6 @@
         <script src="{{ asset('lib/d3/d3.min.js') }}"></script>
         <script src="{{ asset('lib/nvd3/build/nv.d3.min.js') }}"></script>
 
-        <script src="{{ asset('js/chartjs-demo.js') }}"></script>
-        <script src="{{ asset('js/chart.min.js') }}"></script>
 
         <!-- page application js -->
         <script src="{{ asset('js/chat.js') }}"></script>
