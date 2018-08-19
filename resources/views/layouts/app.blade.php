@@ -21,6 +21,10 @@
     
     <link href="{{ asset('css/application.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet"/>
 </head>
 <body>
     <div id="app">
@@ -51,5 +55,10 @@
 
         <!-- page application js -->
         <script src="{{ asset('js/forms-wizard.js') }}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.js.map"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+        @include('inc.toastrmessages')
 </body>
 </html>

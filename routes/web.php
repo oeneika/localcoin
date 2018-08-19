@@ -30,7 +30,7 @@ Route::get('/createSell','TransactionsController@createSell')->name('createSell'
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
 Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell');
 
-Route::get('/completedTransactioins','TransactionsController@completedTransactions')->name('completedTransactions');
+Route::get('/completedTransactions','TransactionsController@completedTransactions')->name('completedTransactions');
 
 Route::delete('/delete/{id}','TransactionsController@destroy')->name('deleteTransaction');
 
