@@ -1,206 +1,81 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-        <h2 align="center">Registro</h2>
-        <div class="flotando">
-        <section class="widget">
-                    <div class="body">
-                        <div id="wizard" class="form-wizard">
-                            <ul class="wizard-navigation nav-justified">
-                                <li><a href="#tab1" data-toggle="tab"><small>1.</small><strong>Información Personal</strong></a></li>
-                                <li><a href="#tab2" data-toggle="tab"><small>2.</small> <strong>Información de Contacto</strong></a></li>
-                                <li><a href="#tab3" data-toggle="tab"><small>3.</small> <strong>Información de Domicilio</strong></a></li>
-                                <li><a href="#tab4" data-toggle="tab"><small>4.</small> <strong>Documentos de Identificación</strong></a></li>
-                                <li><a href="#tab5" data-toggle="tab"><small>5.</small> <strong>Confirmación</strong></a></li>
-                            </ul>
-                            <div id="bar" class="progress progress-small">
-                                <div class="progress-bar progress-bar-inverse"></div>
+
+        <!-- begin register -->
+        <div class="register register-with-news-feed">
+            <!-- begin news-feed -->
+            <div class="news-feed">
+                <div class="news-image" style="background-image: url(img/login-bg/login-bg-9.jpg)"></div>
+                <div class="news-caption">
+                    <h4 class="caption-title"><b>Local</b>coin</h4>
+                    <p>
+                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero repudiandae rerum eligendi dolorem ipsa veritatis voluptas corporis cupiditate odit illo eaque accusantium magnam, autem labore, sed impedit error, dolores expedita!
+                    </p>
+                </div>
+            </div>
+            <!-- end news-feed -->
+            <!-- begin right-content -->
+            <div class="right-content">
+                <!-- begin register-header -->
+                <h1 class="register-header">
+                    Registro
+                    <small>Crea tu cuenta en localcoin ¡Es gratis!</small>
+                </h1>
+                <!-- end register-header -->
+                <!-- begin register-content -->
+                <div class="register-content">
+                    <form action="https://seantheme.com/color-admin-v4.1/admin/html/index.html" method="GET" class="margin-bottom-0">
+                        <label class="control-label">Nombre y apellido <span class="text-danger">*</span></label>
+                        <div class="row row-space-10">
+                            <div class="col-md-6 m-b-15">
+                                <input name="name" type="text" class="form-control" placeholder="Nombre" required />
                             </div>
-                            <form class="form-horizontal mt-sm" action="{{ url('/register') }}" method="POST" enctype="multipart/form-data">
-                                <div class="tab-content">
-                                    <div class="tab-pane" id="tab1">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <!-- Nombre -->
-                                                    <label class="control-label col-md-3"  for="name">Nombre</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input type="text" id="name" name="name" placeholder="" class="form-control">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <!-- Email -->
-                                                    <label class="control-label col-md-3"  for="lastname">Apellido</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input type="text" id="lastname" name="lastname" placeholder="" class="form-control">          
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="expiration-date" class="control-label col-md-3">Fecha de nacimiento</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10"><input type="date" name="expiration-date"  class="form-control"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <!-- Password -->
-                                                    <label class="control-label col-md-3" for="sex">Sexo</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <div id="gender" class="btn-group" data-toggle="buttons">
-                                                                    <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                        <input type="radio" name="gender" id="m" value="m"> &nbsp; Masculino &nbsp;
-                                                                    </label>
-                                                                    <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                        <input type="radio" name="gender" id="f" value="f" checked> Femenino
-                                                                    </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </fieldset>
-                                        
-                                    </div>
-                                    <div class="tab-pane" id="tab2">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <label for="country-select" class="control-label col-md-3">Email</label>
-
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input id="email" name="email" type="email" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                 <div class="form-group">
-                                                    <label for="phone" class="control-label col-md-3">Télefono Local</label>
-
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input id="phone" name="phone" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                 <div class="form-group">
-                                                    <label for="mobile" class="control-label col-md-3">Télefono Celular</label>
-
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input id="mobile" name="mobile" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        
-                                    </div>
-                                    <div class="tab-pane" id="tab3">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <label for="country" class="control-label col-md-3">País</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <select id="country" name="country" data-placeholder="" class="chzn-select select-block-level">
-                                                            <option value=""></option>
-                                                            <option value="Venezuela">Venezuela</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label class="control-label col-md-3" for="city">Ciudad</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10"><input id="city" name="city" type="text" tabindex="3" class="form-control"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="state" class="control-label col-md-3">Estado</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10"><input type="text" id="state" name="state" class="form-control"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3"  for="address">Dirección</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10"><input type="text" id="address" name="address" placeholder="" class="form-control"></div>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                    </div>
-                                    <div class="tab-pane" id="tab4">
-                                        <fieldset>
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3"  for="address">Foto del Pasaporte</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10"><input type="file" id="passport" name="passport" class=""></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="country" class="control-label col-md-3">Foto de documento de identificación</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10"><input type="file" id="identification" name="identification" class=""></div>
-                                                    </div>
-                                                </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="tab-pane" id="tab5">
-                                        {{ csrf_field() }}
-                                        <fieldset>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3"  for="user">Usuario</label>
-                                                <div class="col-md-8">
-                                                    <div class="col-md-10"><input type="text" id="user" name="user" placeholder="" class="form-control"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group ">
-                                                <label class="control-label col-md-3" for="password">Contraseña</label>
-                                                <div class="col-md-8">
-                                                    <div class="col-md-10">
-                                                        <input id="password" name="password" type="password" tabindex="3" class="form-control">
-                                                        <span class="help-block">La contraseña debe incluir: números, caracteres especiales y una combinación de letras mayúsculas y minúsculas.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group ">
-                                                    <label class="control-label col-md-3" for="password">Repetir Contraseña</label>
-                                                    <div class="col-md-8">
-                                                        <div class="col-md-10">
-                                                            <input id="password_confirmation" name="password_confirmation" type="password" tabindex="3" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="description ml mr mt-n-md">
-                                        <ul class="pager wizard">
-                                            <li class="previous">
-                                                <a class="btn btn-primary pull-left"><i class="fa fa-caret-left"></i> Anterior</a>
-                                            </li>
-                                            <li class="next">
-                                                <a class="btn btn-primary pull-right" >Siguiente <i class="fa fa-caret-right"></i></a>
-                                            </li>
-                                            <li class="finish" style="display: none">
-                                                <button class="btn btn-success pull-right" type="submit">Confirmar Registro <i class="fa fa-check"></i></button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="col-md-6 m-b-15">
+                                <input name="lastname" type="text" class="form-control" placeholder="Apellido" required />
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <div class="form-actions">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="{{ url('/') }}" class="forgot">¿Ya estás registrado? <strong>¡Inicia sesión!</strong></a>
+                        <label class="control-label">Email <span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="email" type="text" class="form-control" placeholder="Correo electronico" required />
+                            </div>
                         </div>
-                    </div>
-                 </div>
+                        <label class="control-label">Télefono<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="phone" type="text" class="form-control" placeholder="Télefono" required />
+                            </div>
+                        </div>
+                        <label class="control-label">Password <span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="password" type="password" class="form-control" placeholder="Password" required />
+                            </div>
+                        </div>
+                        <div class="checkbox checkbox-css m-b-30">
+                            <div class="checkbox checkbox-css m-b-30">
+                                <input type="checkbox" id="agreement_checkbox" value="">
+                                <label for="agreement_checkbox">
+                                    Acepto los <a href="javascript:;">términos</a> y condiciones, incluyendo el uso<a href="javascript:;">cookies</a>.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="register-buttons">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Registrarse</button>
+                        </div>
+                        <div class="m-t-20 m-b-40 p-b-40 text-inverse">
+                            ¿Ya estás registrado? Haz click <a href="{{ url('/') }}">aqui</a> para ir al login.
+                        </div>
+                        <hr />
+                        <p class="text-center">
+                            &copy; Color Admin All Right Reserved 2018
+                        </p>
+                    </form>
+                </div>
+                <!-- end register-content -->
+            </div>
+            <!-- end right-content -->
         </div>
-    </div>
+        <!-- end register -->
 @endsection

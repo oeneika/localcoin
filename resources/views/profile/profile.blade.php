@@ -1,131 +1,183 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="content container">
-    <h2 class="page-title">Perfil</h2>
-    <div class="row">
-        <div class="col-md-7">
-            <section class="widget">
-                <header>
-                    <h4><i class="fa fa-user"></i> Perfil de cuenta</h4>
-                </header>
-                <div class="body">
-                    <form id="user-form" class="form-horizontal form-label-left" novalidate="" method="post" data-parsley-priority-enabled="false" type='POST' action="{{ route('editUser',['id'=>Auth::user()->id]) }}">
-                        {{ csrf_field() }}
-                        @method('PUT')
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h3 class="mt-sm mb-xs">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</h3>
-                                <address>
-                                    <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
-                                    <p><strong>Teléfono:</strong> {{ Auth::user()->phone }}</p> 
-                                    <p><strong>Teléfono Móvil:</strong> {{ Auth::user()->mobile }}</p>
-                                    <p><strong>Sexo:</strong>@if(Auth::user()->gender == m) Masculino @else Femenino @endif</p> 
-                                </address>
-                            </div>
-                        </div>
-                        <fieldset class="mt-sm">
-                            <legend>Editar información de cuenta</legend>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="section">Información Personal</legend>
-                            <div class="form-group">
-                                <label class="control-label col-sm-4" for="first-name">Nombre <span class="required">*</span></label>
-                                <div class="col-sm-8"><input type="text" id="first-name" name="name" value="{{ Auth::user()->name }}" class="form-control input-transparent" data-parsley-id="6"></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-4" for="last-name">Apellido <span class="required">*</span></label>
-                                <div class="col-sm-8"><input type="text" id="last-name" name="lastname" value="{{ Auth::user()->lastname }}" class="form-control input-transparent" data-parsley-id="8"></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-4">Gender</label>
-                                <div class="col-sm-8">
-                                    <div id="gender" class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                            <input type="radio" name="gender" value="m" @if( Auth::user()->gender == 'm' ) checked @endif> &nbsp; Masculino &nbsp;
-                                        </label>
-                                        <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                            <input type="radio" name="gender" value="f" @if( Auth::user()->gender == 'f' ) checked @endif> Femenino
-                                        </label>
+        <!-- begin #content -->
+        <div id="content" class="content">
+            <!-- begin breadcrumb -->
+            <ol class="breadcrumb pull-right">
+                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+                <li class="breadcrumb-item active">Perfil de usuario</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- begin page-header -->
+            <h1 class="page-header">Perfil de usuario</h1>
+            <!-- end page-header -->
+            
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Perfil de usuario</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h3 class="mt-sm mb-xs"></h3>                                               
+                                        <p><strong>Nombre y Apellido:</strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
+                                        <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
+                                        <p><strong>Teléfono Local:</strong> {{ Auth::user()->phone }}</p> 
+                                        <p><strong>Teléfono Móvil:</strong>Información vacia</p>
+                                        <p><strong>Sexo:</strong>Información vacia</p>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3 class="mt-sm mb-xs"></h3>              
+                                        <p><strong>Fecha de nacimiento:</strong>Información vacia</p>
+                                        <p><strong>País:</strong>Información vacia</p> 
+                                        <p><strong>Ciudad:</strong>Información vacia</p>
+                                        <p><strong>Estado:</strong>Información vacia</p> 
+                                        <p><strong>Dirección:</strong>Información vacia</p>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p><strong>Fotografía del pasaporte:</strong>Información vacia</p>
+                                        <p><strong>Fotografía del documento de identidad:</strong>Información vacia</p>  
+                                        <p><strong>Usuario:</strong>Información vacia</p>  
+                                        <hr>   
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="section">Información de contacto</legend>
-                            <div class="form-group">
-                                <label id="email-label" for="email" class="control-label col-sm-4">Email <span class="required">*</span></label>
-                                <div class="col-xs-12 col-sm-6">
-                                    <input id="email" type="email" value="{{ Auth::user()->email }}" class="form-control input-transparent" name="email" data-parsley-id="14">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="control-label col-sm-4">Telefono Local</label>
-                                <div class="col-xs-12 col-sm-6">
-                                    <input id="phone" class="form-control input-transparent  mask" value="{{ Auth::user()->phone }}" type="text" name="phone" maxlength="28" data-parsley-id="16">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="mobile" class="control-label col-sm-4">Telefono Móvil</label>
-                                <div class="col-xs-12 col-sm-6">
-                                    <input id="phone" class="form-control input-transparent  mask" value="{{ Auth::user()->mobile }}" type="text" name="mobile" maxlength="28" data-parsley-id="16">
-                                </div>
-                            </div>
-                        </fieldset>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-4">
-                                    <button type="submit" class="btn btn-primary">Editar</button>
-                                </div>
-                            </div>
                         </div>
-                    </form>
-                </div>
-            </section>
-        </div>
-        <div class="col-md-5">
-            <section class="widget">
-                <header>
-                    <h4><i class="fa fa-cogs"></i> Cuentas Bancarias</h4>
-                    <div class="actions">
-                        <button class="btn btn-xs btn-inverse" onclick="openStoreAccountModal()"><i class="fa fa-plus"></i>Añadir cuenta</button>
                     </div>
-                </header>
-                <div class="body">
-                        <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Banco</th>
-                                    <th>Número de Cuenta</th>
-                                    <th>Acciones</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($bank_accounts as $bank_account)
-                                <tr>
-                                    <td>{{ $bank_account->name }}</td>
-                                    <td>{{ $bank_account->number }}</td>
-                                    <td>
-                                        <a class="btn btn-danger" onclick="delete_item('{{ route('deleteBankAccount',['id'=>$bank_account->id_bank_account]) }}','{{ csrf_token() }}')" style="margin-left: 25%;"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
                 </div>
-            </section>
+            </div>
+            <!-- end panel -->
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Completar perfil de usuario</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="user-form" method="post" data-parsley-priority-enabled="false" type='POST' action="{{ route('editUser',['id'=>Auth::user()->id]) }}">
+                                {{ csrf_field() }}
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="username" class="control-label">Usuario</label>
+                                                    <input type="text" name="username"  class="form-control" placeholder="Introduce tu usuario">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="name" class="control-label">Teléfono Movil</label>
+                                                    <input type="mobile" name="mobile"  class="form-control" placeholder="Introduce tu teléfono movil">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="expiration-date" class="control-label">Fecha de nacimiento</label>
+                                                        
+                                                            <div class="input-group date" id="datetimepicker1" style="width: 100%">
+                                                                <input type="date" name="expiration-date" class="form-control">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                    <!-- Password -->
+                                                    <label class="control-label" for="sex">Sexo</label>
+                                                    <br>
+                                                    <div id="gender" class="btn-group" data-toggle="buttons">
+                                                        <label class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                        <input type="radio" name="gender" id="m" value="m" checked> &nbsp; Masculino &nbsp;
+                                                        </label>
+                                                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                    <input type="radio" name="gender" id="f" value="f"> Femenino
+                                                                </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label"  for="identification">Documento de identificación</label>
+                                                    <input type="file" id="identification" name="identification" class="">
+                                                </div>
+
+                                    </div>
+                                    <div class="col-md-4">            
+                                        
+                                                <div class="form-group">
+                                                    <label for="country" class="control-label">País</label>
+                                                    <select id="country" name="country" class="form-control">
+                                                    <option value=""></option>
+                                                    <option value="Venezuela">Venezuela</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label" for="city">Ciudad</label>
+                                                    <input id="city" name="city" type="text" tabindex="3" class="form-control" placeholder="Introduce tu ciudad">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="state" class="control-label">Estado</label>
+                                                    <input type="text" id="state" name="state" class="form-control" placeholder="Introduce tu estado">
+                                                </div>
+                                                    
+                                                
+                                                <div class="form-group">
+                                                    <label class="control-label"  for="address">Dirección</label>
+                                                    <input type="text" id="address" name="address" class="form-control" placeholder="Introduce tu dirección">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label"  for="passport">Fotografía del pasaporte</label>
+                                                    <input type="file" id="passport" name="passport" class="">
+                                                </div>
+                                                
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label"  for="address">Nombre</label>
+                                            <input type="text" id="name" name="name" placeholder="" class="form-control" value="{{ Auth::user()->name }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label"  for="address">Apellido</label>
+                                            <input type="text" id="lastname" name="lastname" placeholder="" class="form-control" value="{{ Auth::user()->lastname }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label"  for="address">E-mail</label>
+                                            <input type="text" id="email" name="email" placeholder="" class="form-control" value="{{ Auth::user()->email }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label"  for="phone">Teléfono local</label>
+                                            <input type="text" id="phone" name="phone" placeholder="" class="form-control" value="{{ Auth::user()->phone }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Actualizar Perfil</button>
+                                        
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
         </div>
-    </div>
-</div>
+        <!-- end #content -->
 @include('bankAccounts.create')
-@include('layouts.footer')
-</div>
-    <div class="loader-wrap hiding hide">
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-    </div>
-</div>
-@section('footer_section')
-    <script src="{{ asset('js/bankaccount/store.js') }}"></script>
-    <script src="{{ asset('js/bankaccount/updatebuy.js') }}"></script>
-@endsection
 @endsection

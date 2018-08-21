@@ -1,44 +1,124 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="content container">
-        <h2 class="page-title">Dashboard <small>Estadisticas y datos más relevantes</small></h2>
-        <div class="row">
-            <div class="col-lg-12">
-                <section class="widget">
-                    <header>
-                        <h4>
-                            Bitcoin
-                            <small>
-                                Grafica en tiempo real
-                            </small>
-                        </h4>
-                        <div class="widget-controls">
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+<!-- begin #content -->
+    <div id="content" class="content">
+            <!-- begin breadcrumb -->
+            <ol class="breadcrumb pull-right">
+                <li class="breadcrumb-item"><a href="javascript:;">Inicio</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- begin page-header -->
+            <h1 class="page-header">Dashboard</h1>
+            <!-- end page-header -->   
+
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="chart-js-1">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Bitcoin</h4>
                         </div>
-                    </header>
-                    
-                    <div class="ibox ">
-                        <div class="ibox-content">
+                        <div class="panel-body">
+                            <p>
+                                Bitcoin. Grafica en tiempo real
+                            </p>
                             <div>
-                                <canvas id="lineChart" height="70"></canvas>
+                                <canvas id="line-chart" data-render="chart-js" height="80"></canvas>
                             </div>
                         </div>
                     </div>
-                </section>
-                <section class="widget">
-                    <header>
-                        <h4>
-                            Ventas
-                        </h4>
-                        <div class="widget-controls">
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+            <!-- end row -->
+            
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
+                        <!-- begin panel-heading -->
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Compras</h4>
                         </div>
-                    </header>
-                        <div class="widget-table-overflow">
+                        <!-- end panel-heading -->
+
+                        <!-- begin panel-body -->
+                        <div class="panel-body">
+                            <!-- begin table-responsive -->
                             <div class="table-responsive">
-                                <table class="table table-striped">
-                                        <thead>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Comprador</th>
+                                        <th>User</th>
+                                        <th>Price</th>
+                                        <th>Cantidad</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($buys as $buy)
+                                            <tr>
+                                                @if($buy->status == 2)
+                                                    @continue
+                                                @endif
+                                                <tr>
+                                                    <td>{{ $buy->id_transaction }}</td>
+                                                    <td>{{ $buy->name }} {{ $buy->lastname }}</td>
+                                                    <td>{{ $buy->user }}</td>
+                                                    <td>{{ $buy->price }}</td>
+                                                    <td>{{ $buy->quantity }}</td>
+                                                    @if(Auth::user()->id != $buy->id)
+                                                        <td><button type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
+                                                    @endif
+                                                </tr>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
+                        </div>
+                        <!-- end panel-body -->
+            </div>
+            <!-- end panel -->
+            
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
+                        <!-- begin panel-heading -->
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Ventas</h4>
+                        </div>
+                        <!-- end panel-heading -->
+
+                        <!-- begin panel-body -->
+                        <div class="panel-body">
+                            <!-- begin table-responsive -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                   <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Vendedor</th>
@@ -69,65 +149,18 @@
                                         </tbody>
                                 </table>
                             </div>
+                            <!-- end table-responsive -->
                         </div>
-                </section>
-                <section class="widget">
-                    <header>
-                    <h4>
-                        Compras
-                    </h4>
-                    <div class="widget-controls">
-                        <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                    </div>
-                    </header>
-                    <div class="widget-table-overflow">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Comprador</th>
-                                    <th>User</th>
-                                    <th>Price</th>
-                                    <th>Cantidad</th>
-                                    <th>Acción</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($buys as $buy)
-                                        <tr>
-                                            @if($buy->status == 2)
-                                                @continue
-                                            @endif
-                                            <tr>
-                                                <td>{{ $buy->id_transaction }}</td>
-                                                <td>{{ $buy->name }} {{ $buy->lastname }}</td>
-                                                <td>{{ $buy->user }}</td>
-                                                <td>{{ $buy->price }}</td>
-                                                <td>{{ $buy->quantity }}</td>
-                                                @if(Auth::user()->id != $buy->id)
-                                                    <td><button type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
-                                                @endif
-                                            </tr>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-                
+                        <!-- end panel-body -->
             </div>
-        </div>
-            @include('transactions.buy')
-            @include('layouts.footer')
-        </div>
-        <div class="loader-wrap hiding hide">
-            <i class="fa fa-circle-o-notch fa-spin"></i>
-        </div>
+            <!-- end panel -->
     </div>
+<!-- end #content -->
 @endsection
+
 @section('footer_section')
-    <script src="{{ asset('js/transaction/buy.js') }}"></script>
-    <script src="{{ asset('js/home/homelinechart.js') }}"></script>
+    <script src="{{ asset('js/transaction/storebuy.js') }}"></script>
+    <script src="{{ asset('js/transaction/updatebuy.js') }}"></script>
+    <script src="{{ asset('plugins/chart-js/Chart.min.js') }}"></script>
+    <script src="{{ asset('js/demo/chart-js.demo.min.js') }}"></script>
 @endsection
