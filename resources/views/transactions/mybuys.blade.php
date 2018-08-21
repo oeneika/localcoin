@@ -63,8 +63,8 @@
                                             @endif
                                             <td>{{ date('m/d/Y', date_timestamp_get($transaction->created_at)) }}</td>
                                             <td>
-                                                <a class="btn btn-info" onclick="openModalEditBuy({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_submitting_account }},{{ $transaction->quantity }})"><i class="fa fa-sliders"></i></a>
-                                                <a class="btn btn-danger" onclick="delete_item('{{ route('deleteTransaction',['id'=>$transaction->id_transaction]) }}','{{ csrf_token() }}')"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-info colorwhite" onclick="openModalEditBuy({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_submitting_account }},{{ $transaction->quantity }})"><i class="fa fa-sync"></i></a>
+                                                <a class="btn btn-danger colorwhite" onclick="delete_item('{{ route('deleteTransaction',['id'=>$transaction->id_transaction]) }}','{{ csrf_token() }}')"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

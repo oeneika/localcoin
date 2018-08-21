@@ -15,6 +15,7 @@
     <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/bootstrap/4.1.0/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
     <link href="{{ asset('plugins/animate/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style-responsive.min.css') }}" rel="stylesheet" />
@@ -25,6 +26,8 @@
     <link href="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
     
     <!-- ================== BEGIN BASE JS ================== -->
@@ -50,11 +53,16 @@
     <script src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('plugins/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('js/theme/default.min.js') }}"></script>
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="{{ asset('js/apps.min.js') }}"></script>
+    <script src="{{ asset('js/php.js') }}"></script>
+    <script src="{{ asset('js/delete_item.js') }}"></script>
     <!-- ================== END BASE JS ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
     <script src="{{ asset('plugins/gritter/js/jquery.gritter.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('js/demo/ui-modal-notification.demo.min.js') }}"></script>
     <script src="{{ asset('plugins/flot/jquery.flot.min.js') }}"></script>
     <script src="{{ asset('plugins/flot/jquery.flot.time.min.js') }}"></script>
     <script src="{{ asset('plugins/flot/jquery.flot.resize.min.js') }}"></script>
@@ -69,19 +77,20 @@
     <!-- ================== END PAGE LEVEL JS ================== -->
 
 
-        <!-- Page specific scripts -->
-        @yield('footer_section')
+    <!-- Page specific scripts -->
+    @yield('footer_section')
     
     <script>
         $(document).ready(function() {
             App.init();
-            Dashboard.init();
             ChartJs.init();
+            Dashboard.init();
+            Notification.init();
         });
     </script>
 
-        <!-- important routes -->
-        <script>
+    <!-- important routes -->
+    <script>
             var url = {
                     storeSell:              '{{ route('storeSell') }}',
                     storeBuy:               '{{ route('storeBuy') }}',
@@ -89,7 +98,7 @@
                     updateSell:             '{{ route('updateSell') }}',
                     makeTransaction:        '{{ route('makeTransaction') }}',
                     storeBankAccount:       '{{ route('storeBankAccount') }}'}
-        </script>
+    </script>
         
 </body>
 </html>

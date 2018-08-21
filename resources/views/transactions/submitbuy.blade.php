@@ -10,13 +10,13 @@
                 <form id="store_buy_form">
                     {{ csrf_field() }}
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Precio</label>
                                 <input class="form-control" type="number" name="price" id="">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Moneda</label>
                                 <select name="currency" id="" class="form-control">

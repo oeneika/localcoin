@@ -26,7 +26,7 @@
                 <!-- begin sidebar nav -->
                 <ul class="nav">
                     <li class="nav-header">Navigation</li>
-                    <li><a href="{{ route('home') }}"><i class="fa fa-calendar"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
                     <li class="has-sub">
                         <a href="javascript:;">
                             <b class="caret"></b>

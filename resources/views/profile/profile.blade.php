@@ -95,7 +95,7 @@
                                                         <td>{{ $bank_account->name }}</td>
                                                         <td>{{ $bank_account->number }}</td>
                                                         <td class="with-btn" nowrap>
-                                                            <a href="#" class="btn btn-sm btn-white width-60" >Eliminar</a>
+                                                            <a href="#" class="btn btn-sm btn-white width-60" onclick="delete_item('{{ route('deleteBankAccount',['id'=>$bank_account->id_bank_account]) }}','{{ csrf_token() }}')" >Eliminar</a>
                                                             
                                                         </td>
                                                     </tr>

@@ -157,12 +157,10 @@
     </div>
 <!-- end #content -->
 @include('transactions.buy')
-@include('layouts.footer')
 @endsection
 
 @section('footer_section')
     <script src="{{ asset('js/transaction/buy.js') }}"></script>
-    <script src="{{ asset('plugins/chart-js/Chart.min.js') }}"></script>
     <script src="{{ asset('js/demo/chart-js.demo.min.js') }}"></script>
-<!--     <script src="{{ asset('js/home/homelinechart.js') }}"></script> -->
+<!-- <script src="{{ asset('js/home/homelinechart.js') }}"></script> -->
 @endsection
