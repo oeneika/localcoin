@@ -8,7 +8,7 @@
             <div class="news-feed">
                 <div class="news-image" style="background-image: url(img/login-bg/login-bg-11.jpg)"></div>
                 <div class="news-caption">
-                    <h4 class="caption-title"><b>Local</b>coin</h4>
+                    <h4 class="caption-title"><b>Corp</b>binary</h4>
                     <p>
                         Download the Localcoin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
@@ -20,7 +20,7 @@
                 <!-- begin login-header -->
                 <div class="login-header">
                     <div class="brand">
-                        <span class="logo"></span> <b>Local</b>coin
+                        <span class="logo"></span> <b>Corp</b>binary
                         <small>Lorem ipsum dolor sit amet</small>
                     </div>
                     <div class="icon">
@@ -58,11 +58,11 @@
                             <button type="submit" class="btn btn-success btn-block btn-lg">{{ __('Iniciar Sesión') }}</button>
                         </div>
                         <div class="m-t-20 m-b-40 p-b-40 text-inverse">
-                            Haz click <a href="{{ route('register') }}" class="text-success">aqui</a> para registrarte.
+                            Haz click <a href="{{ route('register') }}" class="text-success">aquí</a> para registrarte.
                         </div>
                         <hr />
                         <p class="text-center text-grey-darker">
-                            &copy; Localcoin | Todos los derechos reservados 2018
+                            &copy; Corpbinary | Todos los derechos reservados 2018
                         </p>
                     </form>
                 </div>

@@ -8,7 +8,7 @@
             <div class="news-feed">
                 <div class="news-image" style="background-image: url(img/login-bg/login-bg-9.jpg)"></div>
                 <div class="news-caption">
-                    <h4 class="caption-title"><b>Local</b>coin</h4>
+                    <h4 class="caption-title"><b>Corp</b>binary</h4>
                     <p>
                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero repudiandae rerum eligendi dolorem ipsa veritatis voluptas corporis cupiditate odit illo eaque accusantium magnam, autem labore, sed impedit error, dolores expedita!
                     </p>
@@ -20,7 +20,7 @@
                 <!-- begin register-header -->
                 <h1 class="register-header">
                     Registro
-                    <small>Crea tu cuenta en localcoin ¡Es gratis!</small>
+                    <small>Crea tu cuenta en corpbinary ¡Es gratis!</small>
                 </h1>
                 <!-- end register-header -->
                 <!-- begin register-content -->
@@ -65,11 +65,11 @@
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Registrarse</button>
                         </div>
                         <div class="m-t-20 m-b-40 p-b-40 text-inverse">
-                            ¿Ya estás registrado? Haz click <a href="{{ url('/') }}">aqui</a> para ir al login.
+                            ¿Ya estás registrado? Haz click <a href="{{ url('/') }}">aquí</a> para ir al login.
                         </div>
                         <hr />
                         <p class="text-center">
-                            &copy; Color Admin All Right Reserved 2018
+                            &copy; Corpbinary All Right Reserved 2018
                         </p>
                     </form>
                 </div>

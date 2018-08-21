@@ -13,53 +13,103 @@
             <h1 class="page-header">Perfil de usuario</h1>
             <!-- end page-header -->
             
-            <!-- begin panel -->
-            <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">Perfil de usuario</h4>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h3 class="mt-sm mb-xs"></h3>                                               
-                                        <p><strong>Nombre y Apellido:</strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
-                                        <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
-                                        <p><strong>Teléfono Local:</strong> {{ Auth::user()->phone }}</p> 
-                                        <p><strong>Teléfono Móvil:</strong>Información vacia</p>
-                                        <p><strong>Sexo:</strong>Información vacia</p>
-                                        <hr>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3 class="mt-sm mb-xs"></h3>              
-                                        <p><strong>Fecha de nacimiento:</strong>Información vacia</p>
-                                        <p><strong>País:</strong>Información vacia</p> 
-                                        <p><strong>Ciudad:</strong>Información vacia</p>
-                                        <p><strong>Estado:</strong>Información vacia</p> 
-                                        <p><strong>Dirección:</strong>Información vacia</p>
-                                        <hr>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p><strong>Fotografía del pasaporte:</strong>Información vacia</p>
-                                        <p><strong>Fotografía del documento de identidad:</strong>Información vacia</p>  
-                                        <p><strong>Usuario:</strong>Información vacia</p>  
-                                        <hr>   
-                                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Perfil de usuario</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h3 class="mt-sm mb-xs"></h3>                                               
+                                                <p><strong>Nombre y Apellido:</strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
+                                                <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
+                                                <p><strong>Teléfono Local:</strong> {{ Auth::user()->phone }}</p> 
+                                                <p><strong>Teléfono Móvil:</strong>Información vacia</p>
+                                                <p><strong>Sexo:</strong>Información vacia</p>
+                                                <hr>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h3 class="mt-sm mb-xs"></h3>              
+                                                <p><strong>Fecha de nacimiento:</strong>Información vacia</p>
+                                                <p><strong>País:</strong>Información vacia</p> 
+                                                <p><strong>Ciudad:</strong>Información vacia</p>
+                                                <p><strong>Estado:</strong>Información vacia</p> 
+                                                <p><strong>Dirección:</strong>Información vacia</p>
+                                                <hr>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p><strong>Fotografía del pasaporte:</strong>Información vacia</p>
+                                                <p><strong>Fotografía del documento de identidad:</strong>Información vacia</p>  
+                                                <p><strong>Usuario:</strong>Información vacia</p>  
+                                                <hr>   
+                                            </div>
+                                        </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- end panel -->
+                </div>
+                <div class="col-md-4">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="table-basic-1">
+                                <!-- begin panel-heading -->
+                                <div class="panel-heading">
+                                    <div class="panel-heading-btn">
+                                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <h4 class="panel-title">Cuentas bancarias
+                                    </h4>
+                                </div>
+                                <!-- end panel-heading -->
+                                <!-- begin panel-body -->
+                                <div class="panel-body">
+                                     <button class="btn btn-xs btn-inverse" onclick="openStoreAccountModal()"><i class="fa fa-plus"></i>Añadir cuenta</button>
+                                        <!-- begin table-responsive -->
+                                        <div class="table-responsive">
+                                                <table class="table table-striped m-b-0">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Banco</th>
+                                                        <th>Número de Cuenta</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($bank_accounts as $bank_account)
+                                                    <tr>
+                                                        <td>{{ $bank_account->name }}</td>
+                                                        <td>{{ $bank_account->number }}</td>
+                                                        <td class="with-btn" nowrap>
+                                                            <a href="#" class="btn btn-sm btn-white width-60" >Eliminar</a>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <!-- end table-responsive -->
+                                </div>
+                                
                 </div>
             </div>
-            <!-- end panel -->
             <!-- begin panel -->
-            <div class="panel panel-inverse">
+            <div class="panel panel-inverse" style="width: 100%">
                 <div class="panel-heading">
                     <div class="panel-heading-btn">
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
@@ -180,4 +230,8 @@
         </div>
         <!-- end #content -->
 @include('bankAccounts.create')
+@section('footer_section')
+    <script src="{{ asset('js/bankaccount/store.js') }}"></script>
+    <script src="{{ asset('js/bankaccount/updatebuy.js') }}"></script>
+@endsection
 @endsection
