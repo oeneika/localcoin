@@ -11,7 +11,13 @@
             <!-- end breadcrumb -->
             <!-- begin page-header -->
             <h1 class="page-header">Transacciones - Mis Ventas</h1>
-            <!-- end page-header -->   
+            <!-- end page-header -->  
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalBuy()"> Crear Venta </button>
+                </div>
+            </div> 
             
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="table-basic-4">
@@ -72,6 +78,8 @@
             <!-- end panel -->        
 </div>
 <!-- end #content -->
+@include('transactions.submitbuy')
+@include('transactions.editbuy')
 @endsection
 
 @section('footer_section')

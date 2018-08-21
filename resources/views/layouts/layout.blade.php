@@ -64,10 +64,13 @@
     <script src="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('plugins/chart-js/Chart.min.js') }}"></script>
-    <script src="{{ asset('js/demo/chart-js.demo.min.js') }}"></script>
     <script src="{{ asset('js/demo/dashboard.min.js') }}"></script>
 
     <!-- ================== END PAGE LEVEL JS ================== -->
+
+
+        <!-- Page specific scripts -->
+        @yield('footer_section')
     
     <script>
         $(document).ready(function() {
@@ -88,7 +91,5 @@
                     storeBankAccount:       '{{ route('storeBankAccount') }}'}
         </script>
         
-        <!-- Page specific scripts -->
-        @yield('footer_section')
 </body>
 </html>

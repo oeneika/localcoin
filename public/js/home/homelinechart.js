@@ -50,7 +50,7 @@ function lineChartData(){
         };
         
         
-        var ctx = document.getElementById("lineChart").getContext("2d");
+        var ctx = document.getElementById("line-chart").getContext("2d");
         var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
     }});
 }

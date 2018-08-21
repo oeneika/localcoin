@@ -8,10 +8,18 @@
                 <li class="breadcrumb-item"><a href="javascript:;">Inicio</a></li>
                 <li class="breadcrumb-item active">Transacciones - Mis compras</li>
             </ol>
+
             <!-- end breadcrumb -->
             <!-- begin page-header -->
             <h1 class="page-header">Transacciones - Mis Compras</h1>
             <!-- end page-header -->   
+
+            <div class="row">
+                <div class="col-md-12">
+                <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalSell()"> Crear Compra </button>
+                </div>
+            </div>
+
             
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="table-basic-4">
@@ -74,6 +82,8 @@
             <!-- end panel -->        
 </div>
 <!-- end #content -->
+@include('transactions.submitsell')
+@include('transactions.editsell')
 @endsection
 @section('footer_section')
     <script src="{{ asset('js/transaction/storesell.js') }}"></script>
