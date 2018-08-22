@@ -1,3 +1,5 @@
+var myNewChart;
+
 function lineChartData(){
     var dateIni = datePHP('Y-m-d',Math.round((new Date()).getTime() / 1000) - 1296000);
     var dateFin = datePHP('Y-m-d',Math.round((new Date()).getTime() / 1000));
@@ -20,7 +22,7 @@ function lineChartData(){
             labels: labels,
             datasets: [
                 {
-                    label: "Example dataset",
+                    label: "Precios",
                     fillColor: "rgba(220,220,220,0.5)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
@@ -51,9 +53,22 @@ function lineChartData(){
         
         
         var ctx = document.getElementById("line-chart").getContext("2d");
-        var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+        myNewChart = new Chart(ctx,{type:'line', data: lineData, options: lineOptions});
     }});
 }
 
+function updateChart(){
+    $.ajax({
+        type: 'GET',
+        url: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+        dataType: 'json',
+        success: function(json){
+            
+            myNewChart.data.datasets[0].data[14] = json.bpi.USD.rate_float;
+            myNewChart.update();
+        }
+    })
+}
+
 setImmediate(lineChartData);
-setInterval(lineChartData,60000);
+setInterval(updateChart,600000);

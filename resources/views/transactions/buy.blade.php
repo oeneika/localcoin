@@ -3,8 +3,8 @@
             <div class="modal-content animated flipInY">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title">Comprar</h4>
-                    <small class="font-bold">BinaryCorp</small>
+                    <h4 class="modal-title">Comprar/Vender</h4>
+                    <small class="font-bold">CorpBinary</small>
                 </div>
                 <div class="modal-body">
                     <div class="row">

@@ -19,6 +19,7 @@ function showDetailsModal(name,lastname,phone,mobile,bank,price,quantity,email,t
 }
 
 function makeTransaction(_url){
+    $('#_buy_btn').attr('disabled','disabled');
     $.ajax({
         type : "PUT",
         url : url.makeTransaction,
@@ -39,7 +40,10 @@ function makeTransaction(_url){
         },
         error : function(xhr, status) {
             toastr.error(status); 
-        }
+        },
+        complete: function(){ 
+            $('#_buy_btn').removeAttr('disabled');
+        } 
     });
 }
 

@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8" />
-    <title>Localcoin</title>
+    <title>{{ config('app.name') }}</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -19,6 +19,7 @@
     <link href="{{ asset('css/default/style.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style-responsive.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/theme/default.css') }}" rel="stylesheet" id="theme" />
+    <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
@@ -48,6 +49,7 @@
     <script src="{{ asset('plugins/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('js/theme/default.min.js') }}"></script>
     <script src="{{ asset('js/apps.min.js') }}"></script>
+    <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
     <!-- ================== END BASE JS ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
@@ -70,6 +72,8 @@
             App.init();
         });
     </script>
+
+    @include('inc.toastrmessages')
 
 </body>
 </html>

@@ -25,32 +25,93 @@
                 <!-- end register-header -->
                 <!-- begin register-content -->
                 <div class="register-content">
-                    <form action="https://seantheme.com/color-admin-v4.1/admin/html/index.html" method="GET" class="margin-bottom-0">
+                    <form action="{{ url('/register') }}" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <label class="control-label">Nombre y apellido <span class="text-danger">*</span></label>
                         <div class="row row-space-10">
                             <div class="col-md-6 m-b-15">
-                                <input name="name" type="text" class="form-control" placeholder="Nombre" required />
+                                <input name="name" type="text" class="form-control" placeholder="Nombre" />
                             </div>
                             <div class="col-md-6 m-b-15">
-                                <input name="lastname" type="text" class="form-control" placeholder="Apellido" required />
+                                <input name="lastname" type="text" class="form-control" placeholder="Apellido" />
                             </div>
                         </div>
                         <label class="control-label">Email <span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="email" type="text" class="form-control" placeholder="Correo electronico" required />
+                                <input name="email" type="text" class="form-control" placeholder="Correo electronico" />
+                            </div>
+                        </div>
+                        <label class="control-label">País<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="country" type="text" class="form-control" placeholder="País" />
+                            </div>
+                        </div>
+                        <label class="control-label">Estado<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-6">
+                                <input name="state" type="text" class="form-control" placeholder="Estado" />
+                            </div>
+                            <div class="col-md-6">
+                                <input name="city" type="text" class="form-control" placeholder="Ciudad" />
+                            </div>
+                        </div>
+                        <label class="control-label">Dirección<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="address" type="text" class="form-control" placeholder="Télefono" />
+                            </div>
+                        </div>
+                        <label class="control-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="birthday" type="date" class="form-control" placeholder="Télefono" />
+                            </div>
+                        </div>
+                        <label class="control-label">Genero<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div id="gender" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="gender" id="m" value="m" > &nbsp; Masculino &nbsp;
+                                </label>
+                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="gender" id="f" value="f"> Femenino
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row m-b-15">
+                            <div class="col-md-6">
+                                <label class="control-label">Pasaporte<span class="text-danger">*</span></label>
+                                <input name="passport" type="file" class="" placeholder="Pasaporte" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label">Documento de Identificación<span class="text-danger">*</span></label>
+                                <input name="identification" type="file" class="" placeholder="Identificacion" />
+                            </div>
+                        </div>
+                        <label class="control-label">Nombre de Usuario<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="user" type="text" class="form-control" placeholder="Nombre de Usuario" />
                             </div>
                         </div>
                         <label class="control-label">Télefono<span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="phone" type="text" class="form-control" placeholder="Télefono" required />
+                                <input name="phone" type="text" class="form-control" placeholder="Télefono" />
                             </div>
                         </div>
                         <label class="control-label">Password <span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="password" type="password" class="form-control" placeholder="Password" required />
+                                <input name="password" type="password" class="form-control" placeholder="Password" />
+                            </div>
+                        </div>
+                        <label class="control-label">Confirmar Password <span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="password_confirmation" type="password" class="form-control" placeholder="Password" />
                             </div>
                         </div>
                         <div class="checkbox checkbox-css m-b-30">

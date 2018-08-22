@@ -161,6 +161,5 @@
 
 @section('footer_section')
     <script src="{{ asset('js/transaction/buy.js') }}"></script>
-    <script src="{{ asset('js/demo/chart-js.demo.min.js') }}"></script>
-<!-- <script src="{{ asset('js/home/homelinechart.js') }}"></script> -->
+    <script src="{{ asset('js/home/homelinechart.js') }}"></script>
 @endsection

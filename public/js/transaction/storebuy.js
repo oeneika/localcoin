@@ -6,6 +6,7 @@ function openModalBuy(){
  * Ajax call
  */
 function storeBuy(){
+    $('#store_buy_btn').attr('disabled','disabled');
     $.ajax({
         type : "POST",
         async: false,
@@ -27,7 +28,10 @@ function storeBuy(){
         },
         error : function(xhr, status) {
             toastr.error(status); 
-        }
+        },
+        complete: function(){ 
+            $('#store_buy_btn').removeAttr('disabled');
+        } 
     });
 }
 

@@ -105,7 +105,7 @@ return [
     'attributes'           => [
         'name'                  => 'nombre',
         'username'              => 'usuario',
-        'user'              => 'usuario',
+        'user'                  => 'usuario',
         'email'                 => 'correo electrónico',
         'first_name'            => 'nombre',
         'last_name'             => 'apellido',
@@ -144,5 +144,7 @@ return [
         'account_number'        => 'número de cuenta',
         'passport'              => 'pasaporte',
         'identification'        => 'documento de identificación',
+        'birthday'              => 'fecha de nacimiento',
+        'quantity'              => 'cantidad',
     ],
 ];

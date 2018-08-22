@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8" />
-    <title>Localcoin</title>
+    <title>{{ config('app.name') }}</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -40,6 +40,7 @@
         <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
             @include('layouts.header')
             @include('layouts.menu')
+            @include('inc.messages')
             @yield('content')
             @yield('layouts.scroll')
         </div>
@@ -88,6 +89,8 @@
             Notification.init();
         });
     </script>
+
+    @include('inc.toastrmessages')
 
     <!-- important routes -->
     <script>

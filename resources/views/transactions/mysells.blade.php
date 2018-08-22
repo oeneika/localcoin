@@ -6,17 +6,17 @@
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
                 <li class="breadcrumb-item"><a href="javascript:;">Inicio</a></li>
-                <li class="breadcrumb-item active">Transacciones - Mis compras</li>
+                <li class="breadcrumb-item active">Transacciones - Mis Ventas</li>
             </ol>
 
             <!-- end breadcrumb -->
             <!-- begin page-header -->
-            <h1 class="page-header">Transacciones - Mis Compras</h1>
+            <h1 class="page-header">Transacciones - Mis Ventas</h1>
             <!-- end page-header -->   
 
             <div class="row">
                 <div class="col-md-12">
-                <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalSell()"> Crear Compra </button>
+                <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalSell()"> Crear Venta </button>
                 </div>
             </div>
 

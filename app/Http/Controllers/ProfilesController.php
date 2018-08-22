@@ -36,22 +36,29 @@ class ProfilesController extends Controller
      */
     public function edit(Request $request, $id){
         $request->validate([
-            'name'=>'required|alpha',
-            'lastname'=>'required|alpha',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+            'username' => 'required|alpha_dash|string|max:255|unique:users,user,'.$id,
+            'lastname' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
             'phone'=>'required|alpha_num',
-            'mobile'=>'required|alpha_num',
             'gender'=>'required',
-            'email'=>'required|email'
+            'birthday'=>'required',
+            'email'=>'required|email|max:255|unique:users,email,'.$id
         ]);
 
         $user = \CorpBinary\User::find($id);
 
         $user->name = $request->input('name');
+        $user->user = $request->input('username');
         $user->lastname = $request->input('lastname');
         $user->phone = $request->input('phone');
         $user->gender = $request->input('gender');
         $user->mobile = $request->input('mobile');
         $user->email = $request->input('email');
+        $user->country = $request->input('country');
+        $user->city = $request->input('city');
+        $user->state = $request->input('state');
+        $user->address = $request->input('address');
+        $user->birthday = $request->input('birthday');
 
         $user->save();
 

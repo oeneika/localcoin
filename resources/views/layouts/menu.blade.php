@@ -34,8 +34,8 @@
                             <span>Mis Transacciones</span>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="{{ route('mySells') }}">Compra BTC</a></li>
-                            <li><a href="{{ route('myBuys') }}">Venta BTC</a></li>
+                            <li><a href="{{ route('mySells') }}">Venta BTC</a></li>
+                            <li><a href="{{ route('myBuys') }}">Compra BTC</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('completedTransactions') }}"><i class="fa fa-calendar"></i> <span>Transacciones realizadas</span></a></li>

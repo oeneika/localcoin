@@ -7,6 +7,7 @@ function openModalSell(){
  * Ajax call
  */
 function storeSell(){
+    $('#store_sell_btn').attr('disabled','disabled');
     $.ajax({
         type : "POST",
         async: false,
@@ -28,7 +29,10 @@ function storeSell(){
         },
         error : function(xhr, status) {
             toastr.error(status); 
-        }
+        },
+        complete: function(){ 
+            $('#store_sell_btn').removeAttr('disabled');
+        } 
     });
 }
 

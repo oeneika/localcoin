@@ -32,26 +32,24 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <h3 class="mt-sm mb-xs"></h3>                                               
-                                                <p><strong>Nombre y Apellido:</strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
-                                                <p><strong>E-mail:</strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
-                                                <p><strong>Teléfono Local:</strong> {{ Auth::user()->phone }}</p> 
-                                                <p><strong>Teléfono Móvil:</strong>Información vacia</p>
-                                                <p><strong>Sexo:</strong>Información vacia</p>
+                                                <p><strong>Nombre y Apellido: </strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
+                                                <p><strong>E-mail: </strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
+                                                <p><strong>Teléfono Local: </strong> {{ Auth::user()->phone }}</p> 
+                                                <p><strong>Teléfono Móvil: </strong>{{ Auth::user()->mobile }}</p>
+                                                <p><strong>Sexo: </strong> @if( Auth::user()->gender == 'm' ) Masculino @else Femenino @endif </p>
                                                 <hr>
                                             </div>
                                             <div class="col-md-4">
                                                 <h3 class="mt-sm mb-xs"></h3>              
-                                                <p><strong>Fecha de nacimiento:</strong>Información vacia</p>
-                                                <p><strong>País:</strong>Información vacia</p> 
-                                                <p><strong>Ciudad:</strong>Información vacia</p>
-                                                <p><strong>Estado:</strong>Información vacia</p> 
-                                                <p><strong>Dirección:</strong>Información vacia</p>
+                                                <p><strong>Fecha de nacimiento: </strong>{{ Auth::user()->birthday }}</p>
+                                                <p><strong>País: </strong>{{ Auth::user()->country }}</p> 
+                                                <p><strong>Ciudad: </strong>{{ Auth::user()->city }}</p>
+                                                <p><strong>Estado: </strong>{{ Auth::user()->state }}</p> 
+                                                <p><strong>Dirección: </strong>{{ Auth::user()->address }}</p>
                                                 <hr>
                                             </div>
                                             <div class="col-md-4">
-                                                <p><strong>Fotografía del pasaporte:</strong>Información vacia</p>
-                                                <p><strong>Fotografía del documento de identidad:</strong>Información vacia</p>  
-                                                <p><strong>Usuario:</strong>Información vacia</p>  
+                                                <p><strong>Usuario: </strong>{{ Auth::user()->user }}</p>  
                                                 <hr>   
                                             </div>
                                         </div>
@@ -129,11 +127,11 @@
                                     <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="username" class="control-label">Usuario</label>
-                                                    <input type="text" name="username"  class="form-control" placeholder="Introduce tu usuario">
+                                                    <input type="text" name="username"  class="form-control" placeholder="Introduce tu usuario" value="{{ Auth::user()->user }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">Teléfono Movil</label>
-                                                    <input type="mobile" name="mobile"  class="form-control" placeholder="Introduce tu teléfono movil">
+                                                    <input type="mobile" name="mobile"  class="form-control" placeholder="Introduce tu teléfono movil" value="{{ Auth::user()->mobile }}">
                                                 </div>
                                                 
                                                 <div class="form-group">
@@ -141,7 +139,7 @@
                                                         <label for="expiration-date" class="control-label">Fecha de nacimiento</label>
                                                         
                                                             <div class="input-group date" id="datetimepicker1" style="width: 100%">
-                                                                <input type="date" name="expiration-date" class="form-control">
+                                                                <input type="date" name="birthday" class="form-control" value="{{ Auth::user()->birthday }}">
                                                                 <div class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
@@ -156,10 +154,10 @@
                                                     <br>
                                                     <div id="gender" class="btn-group" data-toggle="buttons">
                                                         <label class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                        <input type="radio" name="gender" id="m" value="m" checked> &nbsp; Masculino &nbsp;
+                                                        <input type="radio" name="gender" id="m" value="m" @if( Auth::user()->gender == 'm' )checked @endif> &nbsp; Masculino &nbsp;
                                                         </label>
                                                                 <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                    <input type="radio" name="gender" id="f" value="f"> Femenino
+                                                                    <input type="radio" name="gender" id="f" value="f" @if( Auth::user()->gender == 'f' )checked @endif> Femenino
                                                                 </label>
                                                     </div>
                                                 </div>
@@ -175,23 +173,23 @@
                                                     <label for="country" class="control-label">País</label>
                                                     <select id="country" name="country" class="form-control">
                                                     <option value=""></option>
-                                                    <option value="Venezuela">Venezuela</option>
+                                                    <option value="Venezuela" selected>Venezuela</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label class="control-label" for="city">Ciudad</label>
-                                                    <input id="city" name="city" type="text" tabindex="3" class="form-control" placeholder="Introduce tu ciudad">
+                                                    <input id="city" name="city" type="text" tabindex="3" class="form-control" placeholder="Introduce tu ciudad" value="{{ Auth::user()->city }}">
                                                 </div>
                                                 
                                                 <div class="form-group">
                                                     <label for="state" class="control-label">Estado</label>
-                                                    <input type="text" id="state" name="state" class="form-control" placeholder="Introduce tu estado">
+                                                    <input type="text" id="state" name="state" class="form-control" placeholder="Introduce tu estado" value="{{ Auth::user()->state }}">
                                                 </div>
                                                     
                                                 
                                                 <div class="form-group">
                                                     <label class="control-label"  for="address">Dirección</label>
-                                                    <input type="text" id="address" name="address" class="form-control" placeholder="Introduce tu dirección">
+                                                    <input type="text" id="address" name="address" class="form-control" placeholder="Introduce tu dirección" value="{{ Auth::user()->address }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label"  for="passport">Fotografía del pasaporte</label>

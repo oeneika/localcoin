@@ -11,6 +11,7 @@ function openModalEditBuy(id,price, currency, bank_account,quantity){
  * Ajax call
  */
 function updateBuy(){
+    $('#update_buy_btn').attr('disabled','disabled');
     $.ajax({
         type : "PUT",
         url : url.updateBuy,
@@ -31,7 +32,10 @@ function updateBuy(){
         },
         error : function(xhr, status) {
             toastr.error(status); 
-        }
+        },
+        complete: function(){ 
+            $('#update_buy_btn').removeAttr('disabled');
+        } 
     });
 }
 

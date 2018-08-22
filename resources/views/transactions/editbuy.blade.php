@@ -3,8 +3,8 @@
             <div class="modal-content animated flipInY">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title">Creación de Monedas</h4>
-                    <small class="font-bold">Franklins Gold</small>
+                    <h4 class="modal-title">Editar Compra</h4>
+                    <small class="font-bold">CorpBinary</small>
                 </div>
                 <div class="modal-body">
                     <form id="update_buy_form">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="update_buy_btn" class="btn btn-primary">Crear</button>
+                    <button type="button" id="update_buy_btn" class="btn btn-primary">Editar</button>
                 </div>
             </div>
         </div>
