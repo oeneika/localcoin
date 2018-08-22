@@ -10,12 +10,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <h3 class="mt-sm mb-xs" id="names_details"></h3>
-                            <address>
-                                <abbr style="color:black;!important" id="email_details">e-mail:</abbr> <a href="mailto:#"></a><br>
-                                <abbr style="color:black;!important" title="Teléfono de Casa" id="local_details">Teléfono:</abbr> <br>
-                                <abbr style="color:black;!important" title="Teléfono Móvil" id="mobile_details">Teléfono Móvil:</abbr> <br>
-                                <abbr style="color:black;!important" title="Banco" id="bank_details">Banco:</abbr> <br>
-                            </address>
+                            <p><span style="font-weight: bold">Correo electronico:</span><div id="email_details"></div></p>
+                            <p><span style="font-weight: bold">Teléfono:</span><div id="local_details"></div></p>
+                            <p><span style="font-weight: bold">Teléfono:</span><div id="mobile_details"></div></p>
+                            <p><span style="font-weight: bold">Teléfono:</span><div id="mobile_details"></div></p>
+                            
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -33,7 +32,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" id="id_transaction_details" name="id_transaction" val="">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Cuenta Bancaria</label>
                                     <select name="bank_account" id="" class="form-control">
