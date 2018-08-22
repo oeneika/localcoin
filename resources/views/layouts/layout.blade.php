@@ -15,7 +15,7 @@
     <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/bootstrap/4.1.0/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+    <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/animate/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style-responsive.min.css') }}" rel="stylesheet" />
@@ -53,7 +53,7 @@
     <script src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('plugins/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('js/theme/default.min.js') }}"></script>
-    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/apps.min.js') }}"></script>
     <script src="{{ asset('js/php.js') }}"></script>
     <script src="{{ asset('js/delete_item.js') }}"></script>
