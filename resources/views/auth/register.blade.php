@@ -36,58 +36,60 @@
                                 <input name="lastname" type="text" class="form-control" placeholder="Apellido" />
                             </div>
                         </div>
-                        <label class="control-label">Email <span class="text-danger">*</span></label>
+                        
                         <div class="row m-b-15">
-                            <div class="col-md-12">
-                                <input name="email" type="text" class="form-control" placeholder="Correo electronico" />
-                            </div>
-                        </div>
-                        <label class="control-label">País<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label class="control-label">País<span class="text-danger">*</span></label>
                                 <input name="country" type="text" class="form-control" placeholder="País" />
-                            </div>
-                        </div>
-                        <label class="control-label">Estado<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-6">
+                                <br>
+                                <label class="control-label">Estado<span class="text-danger">*</span></label>
                                 <input name="state" type="text" class="form-control" placeholder="Estado" />
-                            </div>
-                            <div class="col-md-6">
-                                <input name="city" type="text" class="form-control" placeholder="Ciudad" />
-                            </div>
-                        </div>
-                        <label class="control-label">Dirección<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
+                                <br>
+                                <label class="control-label">Dirección<span class="text-danger">*</span></label>
                                 <input name="address" type="text" class="form-control" placeholder="Télefono" />
                             </div>
-                        </div>
-                        <label class="control-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label class="control-label">Ciudad<span class="text-danger">*</span></label>
+                                <input name="city" type="text" class="form-control" placeholder="Ciudad" />
+                                <br>
+                                <label class="control-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
                                 <input name="birthday" type="date" class="form-control" placeholder="Télefono" />
+                                <br>
+                                <label class="control-label">Télefono<span class="text-danger">*</span></label>
+                                <input name="phone" type="text" class="form-control" placeholder="Télefono" />
                             </div>
                         </div>
+                        
                         <label class="control-label">Genero<span class="text-danger">*</span></label>
                         <div class="row m-b-15">
-                            <div id="gender" class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <div id="gender" class="btn-group" data-toggle="buttons" style="width: 100%">
+                                <label style="width: 100%" class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                     <input type="radio" name="gender" id="m" value="m" > &nbsp; Masculino &nbsp;
                                 </label>
-                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <label style="width: 100%" class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                     <input type="radio" name="gender" id="f" value="f"> Femenino
                                 </label>
                             </div>
                         </div>
+
+                        <label class="control-label">Pasaporte<span class="text-danger">*</span></label>
                         <div class="row m-b-15">
-                            <div class="col-md-6">
-                                <label class="control-label">Pasaporte<span class="text-danger">*</span></label>
+                            <div class="col-md-12">
                                 <input name="passport" type="file" class="" placeholder="Pasaporte" />
                             </div>
-                            <div class="col-md-6">
-                                <label class="control-label">Documento de Identificación<span class="text-danger">*</span></label>
+                        </div>
+
+                        <label class="control-label">Documento de Identificación<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
                                 <input name="identification" type="file" class="" placeholder="Identificacion" />
+                            </div>
+                        </div>
+
+                        <label class="control-label">Email <span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="email" type="text" class="form-control" placeholder="Correo electronico" />
                             </div>
                         </div>
                         <label class="control-label">Nombre de Usuario<span class="text-danger">*</span></label>
@@ -96,12 +98,7 @@
                                 <input name="user" type="text" class="form-control" placeholder="Nombre de Usuario" />
                             </div>
                         </div>
-                        <label class="control-label">Télefono<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
-                                <input name="phone" type="text" class="form-control" placeholder="Télefono" />
-                            </div>
-                        </div>
+                        
                         <label class="control-label">Password <span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">

@@ -13,7 +13,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Precio</label>
-                                <input class="form-control" type="number" name="price" id="">
+                                <input class="form-control" type="number" name="price" placeholder="0.00">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -32,7 +32,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Cantidad BTC</label>
-                                <input class="form-control" type="number" name="quantity" id="">
+                                <input class="form-control" type="number" name="quantity" placeholder="0">
                             </div>
                         </div>
                     </div>
