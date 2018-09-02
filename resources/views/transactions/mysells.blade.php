@@ -25,12 +25,7 @@
             <div class="panel panel-inverse" data-sortable-id="table-basic-4">
                         <!-- begin panel-heading -->
                         <div class="panel-heading">
-                            <div class="panel-heading-btn">
-                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                            </div>
+                            
                             <h4 class="panel-title">Transacciones</h4>
                         </div>
                         <!-- end panel-heading -->
@@ -47,7 +42,6 @@
                                             <th>Moneda</th>
                                             <th>Estatus</th>
                                             <th>Fecha de Creación</th>
-                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,12 +58,7 @@
                                                 <td><span class="label label-danger">Procesada</span></td>
                                             @endif
                                             <td>{{ date('m/d/Y', date_timestamp_get($transaction->created_at)) }}</td>
-                                            <td>
-                                                @if($transaction->status != 2)
-                                                    <a class="btn btn-info colorwhite" onclick="openModalEditSell({{ $transaction->id_transaction }},{{ $transaction->price }},{{ $transaction->id_currency }},{{ $transaction->id_submitting_account }},{{ $transaction->quantity }})"><i class="fa fa-sync"></i></a>
-                                                    <a class="btn btn-danger colorwhite" onclick="delete_item('{{ route('deleteTransaction',['id'=>$transaction->id_transaction]) }}','{{ csrf_token() }}')"><i class="fa fa-trash"></i></a>
-                                                @endif
-                                            </td>
+                                            
                                         </tr>
                                         @endforeach
                                     </tbody>
