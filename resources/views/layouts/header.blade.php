@@ -17,17 +17,11 @@
                 <li class="dropdown">
                     <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                         <i class="fa fa-bell"></i>
-                        <span class="label">2</span>
+                        <span class="label">1</span>
                     </a>
                     <ul class="dropdown-menu media-list dropdown-menu-right">
-                        <li class="dropdown-header">NOTIFICATIONS (2)</li>
-                        <li class="media">
-                            <a href="javascript:;">
-                                <div class="media-left">
-                                    <i class="fa fa-bug media-object bg-silver-darker"></i>
-                                </div>
-                            </a>
-                        </li>
+                        <li class="dropdown-header">NOTIFICATIONS (1)</li>
+                        
                         <li class="media">
                             <a href="javascript:;">
                                 <div class="media-left">

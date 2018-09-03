@@ -25,16 +25,18 @@
                             <div class="row">
                                 <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <h3 class="mt-sm mb-xs"></h3>                                               
                                                 <p><strong>Nombre y Apellido: </strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
                                                 <p><strong>E-mail: </strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
+                                                <p><strong>Usuario: </strong>{{ Auth::user()->user }}</p>  
+                                                <hr> 
                                                 <p><strong>Teléfono Local: </strong> {{ Auth::user()->phone }}</p> 
                                                 <p><strong>Teléfono Móvil: </strong>{{ Auth::user()->mobile }}</p>
                                                 <p><strong>Sexo: </strong> @if( Auth::user()->gender == 'm' ) Masculino @else Femenino @endif </p>
                                                 <hr>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <h3 class="mt-sm mb-xs"></h3>              
                                                 <p><strong>Fecha de nacimiento: </strong>{{ Auth::user()->birthday }}</p>
                                                 <p><strong>País: </strong>{{ Auth::user()->country }}</p> 
@@ -42,10 +44,6 @@
                                                 <p><strong>Estado: </strong>{{ Auth::user()->state }}</p> 
                                                 <p><strong>Dirección: </strong>{{ Auth::user()->address }}</p>
                                                 <hr>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <p><strong>Usuario: </strong>{{ Auth::user()->user }}</p>  
-                                                <hr>   
                                             </div>
                                         </div>
                                 </div>
@@ -120,9 +118,9 @@
                                                     
                                                     <tr>
                                                         <td>1</td>
-                                                        <td>No. de Waller</td>
+                                                        <td>12345678912345678912</td>
                                                         <td class="with-btn" nowrap>
-                                                            <a href="#" class="btn btn-sm btn-white width-80" onclick="delete_item('{{ route('deleteBankAccount',['id'=>$bank_account->id_bank_account]) }}','{{ csrf_token() }}')" >Eliminar</a>
+                                                            <a href="#" class="btn btn-sm btn-white width-80">Eliminar</a>
                                                             
                                                         </td>
                                                     </tr>

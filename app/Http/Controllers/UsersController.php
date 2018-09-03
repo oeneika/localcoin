@@ -16,4 +16,9 @@ class UsersController extends Controller
     public function show($id){
         return \CorpBinary\User::find($id);
     }
+
+    public function showUsuarios(){
+    	return view('usuarios.usuarios');
+    }
+    
 }
