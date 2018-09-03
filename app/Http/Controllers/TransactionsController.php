@@ -195,6 +195,11 @@ class TransactionsController extends Controller
         return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
     }
 
+
+    public function onHold(){
+        return view('transactions.onhold');
+    }
+
     /**
      * Makes transaction
      */

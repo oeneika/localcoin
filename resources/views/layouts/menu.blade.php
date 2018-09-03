@@ -39,7 +39,8 @@
                         </ul>
                     </li>
                     <li><a href="{{ route('completedTransactions') }}"><i class="fa fa-calendar"></i> <span>Transacciones realizadas</span></a></li>
-                    <li><a href="{{ route('usuarios') }}"><i class="fa fa-calendar"></i> <span>Usuarios</span></a></li>
+                    <li><a href="{{ route('onHold') }}"><i class="fa fa-calendar"></i> <span>Transacciones en espera</span></a></li>
+                    <li><a href="{{ route('usuarios') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
                     
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>

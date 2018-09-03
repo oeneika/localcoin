@@ -31,6 +31,7 @@ Route::get('/mySells','TransactionsController@mySells')->name('mySells');
 Route::get('/createSell','TransactionsController@createSell')->name('createSell');
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
 Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell');
+Route::get('/onHold','TransactionsController@onHold')->name('onHold');
 
 Route::get('/completedTransactions','TransactionsController@completedTransactions')->name('completedTransactions');
 
