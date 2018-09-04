@@ -1,6 +1,6 @@
 function approve(approve_url,token){
     swal({
-        title: "¿Estás seguro de que desea aprovar la transacción?",
+        title: "¿Está usted seguro de querer aprobar esta transacción?",
         icon: "warning",
         buttons: true
       })
@@ -32,7 +32,7 @@ function approve(approve_url,token){
             });
             console.log('Ooopa');
         } else {
-          swal("No se aprovará la transacción");
+          swal("Transacción no aprobada");
         }
       });
 }

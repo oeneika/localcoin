@@ -41,7 +41,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @
+                                
                                         @foreach ($transactions as $transaction)
                                             <tr>
                                                 <td>{{ $transaction->id_transaction }}</td>
@@ -59,6 +59,10 @@
                                                     <!-- Si la transaccion no está aprobada mostrar este boton -->
                                                     <button type="button" onclick='approve( "{{ route('approveTransaction',$transaction->id_transaction) }}","{{ csrf_token() }}" )' class="btn btn-primary" ><i class="fa fa-check text-navy"> </i> Aprobar Transacción</button>
                                                 </td>
+                                                <td>
+                                                    <!-- Si la transaccion no está aprobada mostrar este boton -->
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountsModal"><i class="fa fa-eye text-navy"></i> Ver cuentas</button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         
@@ -72,6 +76,7 @@
             <!-- end panel -->        
 </div>
 <!-- end #content -->
+@include('transactions.accounts')
 @endsection
 @section('footer_section')
     <script src="{{ asset('js/transaction/approve.js') }}"></script>

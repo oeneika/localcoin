@@ -16,26 +16,36 @@
                         </div>
                         <div class="col-md-2">
                             <div class="radio radio-danger">
+                                <label for="rank">1</label>
+                                <br/>
                                 <input type="radio" name="rank" id="rank" value="1">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="radio radio-danger">
+                                <label for="rank">2</label>
+                                <br/>
                                 <input type="radio" name="rank" id="rank" value="2">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="radio radio-danger">
+                                <label for="rank">3</label>
+                                <br/>
                                 <input type="radio" name="rank" id="rank" value="3">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="radio radio-danger">
+                                <label for="rank">4</label>
+                                <br/>
                                 <input type="radio" name="rank" id="rank" value="4">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="radio radio-danger">
+                                <label for="rank">5</label>
+                                <br/>
                                 <input type="radio" name="rank" id="rank" value="5">
                             </div>
                         </div>
