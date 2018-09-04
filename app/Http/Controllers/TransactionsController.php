@@ -11,6 +11,7 @@ use CorpBinary\Bank;
 use CorpBinary\Currency;
 use CorpBinary\PaymentMethod;
 use CorpBinary\BankAccount;
+use CorpBinary\Notifications\approvedTransaction;
 
 class TransactionsController extends Controller
 {
@@ -201,10 +202,14 @@ class TransactionsController extends Controller
         $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')
         ->join('bank_account AS submitting_bank','submitting_bank.id_bank_account','=','transaction.id_submitting_account')
         ->join('bank_account AS receiving_bank','receiving_bank.id_bank_account','=','transaction.id_receiving_account')
-        ->join('users AS submitting_user','submitting_user.id','=','submitting_bank.id_bank_account')
-        ->join('users AS receiving_user','receiving_user.id','=','receiving_bank.id_bank_account')
+        ->join('users AS submitting_user','submitting_user.id','=','submitting_bank.id_user')
+        ->join('users AS receiving_user','receiving_user.id','=','receiving_bank.id_user')
+        ->join('wallet as submitting_wallet','submitting_wallet.id_user','=','submitting_user.id')
+        ->join('wallet as receiving_wallet','receiving_wallet.id_user','=','receiving_user.id')
         ->selectRaw('submitting_user.name as sub_name, submitting_user.lastname sub_lastname,
                      receiving_user.name as rec_name, receiving_user.lastname rec_lastname,
+                     submitting_bank.number AS submitting_number, receiving_bank.number AS receiving_number, 
+                     submitting_wallet.address AS sub_address, receiving_wallet.address AS rec_address,
                      transaction.*, currency.name AS currency_name, currency.abv')
         ->where('transaction.status',1)->get();
 
@@ -253,15 +258,32 @@ class TransactionsController extends Controller
     }
 
     /**
+     * Notify the users about an approved transaction
+     */
+    private function notifyApprovedTransaction(Transaction $transaction){
+        
+        $sub_bank = BankAccount::find($transaction->id_submitting_account);
+        $rec_bank = BankAccount::find($transaction->id_receiving_account);
+
+        $sub_user = User::find($sub_bank->id_user);
+        $rec_user = User::find($rec_bank->id_user);
+
+        $sub_user->notify(new approvedTransaction($transaction));
+        $rec_user->notify(new approvedTransaction($transaction));
+    }
+
+    /**
      * Aprove a transaction/Aprueba una transaccion
      * 
      * @param int $id: Transaction id
      */
     public function approveTransaction($id){
 
-        $transaction = \CorpBinary\Transaction::find($id);
+        $transaction = Transaction::find($id);
 
         $transaction->status = 2;
+
+        $this->notifyApprovedTransaction($transaction);
 
         $transaction->save();
 

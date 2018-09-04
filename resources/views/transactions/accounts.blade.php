@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="accounts_body">
         <div class="row">
           <div class="col-md-6">
             <h3>Vendedor</h3>

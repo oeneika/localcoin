@@ -1,3 +1,42 @@
+/**
+ * 
+ * @param {*} sub_num submitting account number
+ * @param {*} rec_num receiving account number
+ * @param {*} sub_address submitting wallet address
+ * @param {*} rec_address receiving walle address
+ */
+function openAccountsModal(type,sub_name, rec_name,sub_num,rec_num,sub_address,rec_address){
+
+    $('#accounts_body').empty();
+
+    $('#accounts_body').html(
+        `<div class="row">
+            <div class="col-md-6">
+                <h3>Vendedor</h3>
+                ${type == 1 ? sub_name : rec_name}
+                <hr>
+                <h5>Cuenta bancaria:</h5>
+                <p>${type == 1 ? sub_num : rec_num}</p>
+                <br/>
+                <h5>Wallet:</h5>
+                <p><small>${type == 1 ? sub_address : rec_address}</small></p>
+            </div>
+            <div class="col-md-6">
+                <h3>Comprador</h3>
+                ${type == 1 ? rec_name : sub_name}
+                <hr>
+                <h5>Cuenta bancaria:</h5>
+                <p>${type == 1 ? rec_num : sub_num}</p>
+                <br/>
+                <h5>Wallet:</h5>
+                <p><small>${type == 1 ? rec_address : sub_address}</small></p>
+            </div>
+         </div>`
+    );
+
+    $('#accountsModal').modal('show');
+}
+
 function approve(approve_url,token){
     swal({
         title: "¿Está usted seguro de querer aprobar esta transacción?",

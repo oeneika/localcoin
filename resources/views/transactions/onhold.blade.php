@@ -37,6 +37,7 @@
                                             <th>Fecha</th>
                                             <th>Cantidad</th>
                                             <th>Precio</th>
+                                            <th>Cuentas</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -56,12 +57,10 @@
                                                 <td>{{ $transaction->quantity }}</td>
                                                 <td>{{ $transaction->price }} {{ $transaction->abv }}</td>
                                                 <td>
-                                                    <!-- Si la transaccion no está aprobada mostrar este boton -->
-                                                    <button type="button" onclick='approve( "{{ route('approveTransaction',$transaction->id_transaction) }}","{{ csrf_token() }}" )' class="btn btn-primary" ><i class="fa fa-check text-navy"> </i> Aprobar Transacción</button>
+                                                    <button type="button" onclick="openAccountsModal({{ $transaction->type }},'{{ $transaction->sub_name }} {{ $transaction->sub_lastname }}','{{ $transaction->rec_name }} {{ $transaction->rec_lastname }}','{{ $transaction->submitting_number }}','{{ $transaction->receiving_number }}','{{ $transaction->sub_address }}','{{ $transaction->rec_address }}')" class="btn btn-primary"><i class="fa fa-eye text-navy"></i> Ver cuentas</button>
                                                 </td>
                                                 <td>
-                                                    <!-- Si la transaccion no está aprobada mostrar este boton -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountsModal"><i class="fa fa-eye text-navy"></i> Ver cuentas</button>
+                                                    <button type="button" onclick='approve( "{{ route('approveTransaction',$transaction->id_transaction) }}","{{ csrf_token() }}" )' class="btn btn-primary" ><i class="fa fa-check text-navy"> </i> Aprobar Transacción</button>
                                                 </td>
                                             </tr>
                                         @endforeach

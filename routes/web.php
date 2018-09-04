@@ -32,7 +32,7 @@ Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
 Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell');
 
 //Transactions on queue for aproval/Transacciones en espera de aprovacion
-Route::get('/onHold','TransactionsController@onHold')->name('onHold');
+Route::get('/onHold','TransactionsController@onHold')->name('onHold')->middleware('role');
 Route::put('/approveTrasaction/{id}','TransactionsController@approveTransaction')->name('approveTransaction');
 
 
@@ -59,7 +59,7 @@ Route::post('storeWallet','WalletController@store')->name('storeWallet');
 Route::get('/showUser/{id}','UsersController@show')->name('showUser');
 
 //List of users/Listado de usuarios
-Route::get('/users','UsersController@showUsers')->name('showUsers');
+Route::get('/users','UsersController@showUsers')->name('showUsers')->middleware('role');
 
 //Rank an user reputation/Puntuar la reputacion de un usuario
 Route::post('/rank','UsersController@rank')->name('rankUser');

@@ -30,33 +30,33 @@
                         <label class="control-label">Nombre y apellido <span class="text-danger">*</span></label>
                         <div class="row row-space-10">
                             <div class="col-md-6 m-b-15">
-                                <input name="name" type="text" class="form-control" placeholder="Nombre" />
+                                <input name="name" type="text" value="{{ old('name') }}" class="form-control" placeholder="Nombre" />
                             </div>
                             <div class="col-md-6 m-b-15">
-                                <input name="lastname" type="text" class="form-control" placeholder="Apellido" />
+                                <input name="lastname" type="text" value="{{ old('lastname') }}" class="form-control" placeholder="Apellido" />
                             </div>
                         </div>
                         
                         <div class="row m-b-15">
                             <div class="col-md-6">
                                 <label class="control-label">País<span class="text-danger">*</span></label>
-                                <input name="country" type="text" class="form-control" placeholder="País" />
+                                <input name="country" type="text" value="{{ old('country') }}" class="form-control" placeholder="País" />
                                 <br>
                                 <label class="control-label">Estado<span class="text-danger">*</span></label>
-                                <input name="state" type="text" class="form-control" placeholder="Estado" />
+                                <input name="state" type="text" value="{{ old('state') }}" class="form-control" placeholder="Estado" />
                                 <br>
                                 <label class="control-label">Dirección<span class="text-danger">*</span></label>
-                                <input name="address" type="text" class="form-control" placeholder="Télefono" />
+                                <input name="address" type="text" value="{{ old('address') }}" class="form-control" placeholder="Télefono" />
                             </div>
                             <div class="col-md-6">
                                 <label class="control-label">Ciudad<span class="text-danger">*</span></label>
-                                <input name="city" type="text" class="form-control" placeholder="Ciudad" />
+                                <input name="city" type="text" value="{{ old('city') }}" class="form-control" placeholder="Ciudad" />
                                 <br>
                                 <label class="control-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
-                                <input name="birthday" type="date" class="form-control" placeholder="Dirección" />
+                                <input name="birthday" type="date" value="{{ old('birthday') }}" class="form-control" placeholder="Dirección" />
                                 <br>
                                 <label class="control-label">Télefono<span class="text-danger">*</span></label>
-                                <input name="phone" type="text" class="form-control" placeholder="Télefono" />
+                                <input name="phone" type="text" value="{{ old('phone') }}" class="form-control" placeholder="Télefono" />
                             </div>
                         </div>
                         
@@ -89,13 +89,13 @@
                         <label class="control-label">Email <span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="email" type="text" class="form-control" placeholder="Correo electronico" />
+                                <input name="email" type="text" value="{{ old('email') }}" class="form-control" placeholder="Correo electronico" />
                             </div>
                         </div>
                         <label class="control-label">Nombre de Usuario<span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="user" type="text" class="form-control" placeholder="Nombre de Usuario" />
+                                <input name="user" type="text" value="{{ old('user') }}" class="form-control" placeholder="Nombre de Usuario" />
                             </div>
                         </div>
                         
