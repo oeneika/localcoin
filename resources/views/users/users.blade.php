@@ -40,20 +40,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Alexander</td>
-                                            <td>De Azevedo</td>
-                                            <td>25</td>
-                                            <td>
-                                                <small class="label label-warning"><i class="fa fa-clock-o"></i> Confiable</small>
-                                                <!-- Se coloca label-danger si es no confiable el usuario -->
-                                                <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> Confiable</small> -->
-                                            </td>
-                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#puntuarModal">Puntuar</button>
-                                            </td>
-                                        </tr>
+                                        
+                                        @foreach ($users as $user)
+                                            <tr>
+                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->lastname }}</td>
+                                                <td>{{ $user->transactions_by_user }}</td>
+                                                <td>{{ $user->rank }}<i class="fa fa-star"></i></td>
+                                                <td><button type="button" class="btn btn-primary" onclick="showRankModal({{ $user->id }},{{ $user->rank }})" data-toggle="modal" data-target="#puntuarModal">Puntuar</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         
                                     </tbody>
                                 </table>
@@ -65,7 +63,8 @@
             <!-- end panel -->        
 </div>
 <!-- end #content -->
-@include('usuarios.puntuar')
+@include('users.rank')
 @endsection
 @section('footer_section')
+    <script src="{{ asset('js/users/rank.js') }}"></script>
 @endsection

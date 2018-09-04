@@ -57,6 +57,7 @@
                                         <th>#</th>
                                         <th>Comprador</th>
                                         <th>Usuario</th>
+                                        <th>Reputación</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
                                         <th>Acción</th>
@@ -72,10 +73,11 @@
                                                     <td>{{ $buy->id_transaction }}</td>
                                                     <td>{{ $buy->name }} {{ $buy->lastname }}</td>
                                                     <td>{{ $buy->user }}</td>
+                                                    <td>{{ $buy->reputation }} <i class="fa fa-star"></i></td>
                                                     <td>{{ $buy->price }}</td>
                                                     <td>{{ $buy->quantity }}</td>
                                                     @if(Auth::user()->id != $buy->id)
-                                                        <td><button type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
+                                                        <td><button @if (count(Auth::user()->wallets) < 1) disabled @endif type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
                                                     @endif
                                                 </tr>
                                             </tr>
@@ -108,6 +110,7 @@
                                             <th>#</th>
                                             <th>Vendedor</th>
                                             <th>Usuario</th>
+                                            <th>Reputación</th>
                                             <th>Precio</th>
                                             <th>Cantidad</th>
                                             <th>Acción</th>
@@ -123,10 +126,11 @@
                                                     <td>{{ $sell->id_transaction }}</td>
                                                     <td>{{ $sell->name }} {{ $sell->lastname }}</td>
                                                     <td>{{ $sell->user }}</td>
+                                                    <td>{{ $sell->reputation }} <i class="fa fa-star"></i></td>
                                                     <td>{{ $sell->price }}</td>
                                                     <td>{{ $sell->quantity }}</td>
                                                     @if(Auth::user()->id != $sell->id)
-                                                        <td><button type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
+                                                        <td><button @if (count(Auth::user()->wallets) < 1) disabled @endif type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
                                                     @endif
                                                 </tr>
                                             @endforeach

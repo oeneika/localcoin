@@ -31,21 +31,37 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Usuario inicializador</th>
-                                            <th>Codigo QR</th>
+                                            <th>#</th>
+                                            <th>Vendedor</th>
+                                            <th>Comprador</th>
+                                            <th>Fecha</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Alexander De Azevedo</td>
-                                            <td>Codigo QR</td>
-                                            <td>
-                                                <!-- Si la transaccion no está aprobada mostrar este boton -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aprobarTransaccion"><i class="fa fa-check text-navy"> </i> Aprobar Transacción</button>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#puntuarModal">Cancelar</button>
-                                            </td>
-                                        </tr>
+                                        @
+                                        @foreach ($transactions as $transaction)
+                                            <tr>
+                                                <td>{{ $transaction->id_transaction }}</td>
+                                                @if ($transaction->type == 1)
+                                                    <td>{{ $transaction->sub_name }} {{ $transaction->sub_lastname }}</td>
+                                                    <td>{{ $transaction->rec_name }} {{ $transaction->rec_lastname }}</td>
+                                                @else
+                                                    <td>{{ $transaction->rec_name }} {{ $transaction->rec_lastname }}</td>
+                                                    <td>{{ $transaction->sub_name }} {{ $transaction->sub_lastname }}</td>
+                                                @endif
+                                                <td>{{ date('m/d/Y', date_timestamp_get($transaction->updated_at)) }}</td>
+                                                <td>{{ $transaction->quantity }}</td>
+                                                <td>{{ $transaction->price }} {{ $transaction->abv }}</td>
+                                                <td>
+                                                    <!-- Si la transaccion no está aprobada mostrar este boton -->
+                                                    <button type="button" onclick='approve( "{{ route('approveTransaction',$transaction->id_transaction) }}","{{ csrf_token() }}" )' class="btn btn-primary" ><i class="fa fa-check text-navy"> </i> Aprobar Transacción</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -58,9 +74,5 @@
 <!-- end #content -->
 @endsection
 @section('footer_section')
-<script>
-    function aprobacion(){
-
-    }
-</script>
+    <script src="{{ asset('js/transaction/approve.js') }}"></script>
 @endsection

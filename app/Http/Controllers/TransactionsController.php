@@ -197,7 +197,20 @@ class TransactionsController extends Controller
 
 
     public function onHold(){
-        return view('transactions.onhold');
+
+        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')
+        ->join('bank_account AS submitting_bank','submitting_bank.id_bank_account','=','transaction.id_submitting_account')
+        ->join('bank_account AS receiving_bank','receiving_bank.id_bank_account','=','transaction.id_receiving_account')
+        ->join('users AS submitting_user','submitting_user.id','=','submitting_bank.id_bank_account')
+        ->join('users AS receiving_user','receiving_user.id','=','receiving_bank.id_bank_account')
+        ->selectRaw('submitting_user.name as sub_name, submitting_user.lastname sub_lastname,
+                     receiving_user.name as rec_name, receiving_user.lastname rec_lastname,
+                     transaction.*, currency.name AS currency_name, currency.abv')
+        ->where('transaction.status',1)->get();
+
+        return view('transactions.onhold',array(
+            'transactions'=> $transactions
+        ));
     }
 
     /**
@@ -211,8 +224,8 @@ class TransactionsController extends Controller
 
         if($validator->passes()){
             $transaction = \CorpBinary\Transaction::find($request->input('id_transaction'));
-            $transaction->status = 2;
-            $transaction->id_recieving_account = $request->input('bank_account');
+            $transaction->status = 1;
+            $transaction->id_receiving_account = $request->input('bank_account');
             $transaction->save();
 
             return response()->json(array('success'=>1,'message'=>'Transacción realizada con éxito'));
@@ -228,15 +241,32 @@ class TransactionsController extends Controller
 
         $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')
         ->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
-        ->join('bank_account AS recieving_account','recieving_account.id_bank_account','=','transaction.id_recieving_account')
+        ->join('bank_account AS receiving_account','receiving_account.id_bank_account','=','transaction.id_receiving_account')
         ->join('users','users.id','=','bank_account.id_user')
-        ->where('recieving_account.id_user',auth()->user('id')['id'])
+        ->where('receiving_account.id_user',auth()->user('id')['id'])
         ->selectRaw('bank_account.*, users.name, users.lastname, users.user, transaction.*, currency.name AS currency_name')
         ->get();
 
         return view('transactions.completedtransactions',array(
             'transactions'=>$transactions
         ));
+    }
+
+    /**
+     * Aprove a transaction/Aprueba una transaccion
+     * 
+     * @param int $id: Transaction id
+     */
+    public function approveTransaction($id){
+
+        $transaction = \CorpBinary\Transaction::find($id);
+
+        $transaction->status = 2;
+
+        $transaction->save();
+
+        return response()->json(array('success'=>1,'message'=>'Transacción aprovada con éxito'));
+
     }
 
     /**

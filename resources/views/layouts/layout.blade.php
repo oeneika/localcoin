@@ -100,7 +100,9 @@
                     updateBuy:              '{{ route('updateBuy') }}',
                     updateSell:             '{{ route('updateSell') }}',
                     makeTransaction:        '{{ route('makeTransaction') }}',
-                    storeBankAccount:       '{{ route('storeBankAccount') }}'}
+                    storeBankAccount:       '{{ route('storeBankAccount') }}',
+                    rankUser:               '{{ route('rankUser') }}',
+                    storeWallet:            '{{ route('storeWallet') }}'}
     </script>
         
 </body>

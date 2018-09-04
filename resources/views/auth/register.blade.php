@@ -53,7 +53,7 @@
                                 <input name="city" type="text" class="form-control" placeholder="Ciudad" />
                                 <br>
                                 <label class="control-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
-                                <input name="birthday" type="date" class="form-control" placeholder="Télefono" />
+                                <input name="birthday" type="date" class="form-control" placeholder="Dirección" />
                                 <br>
                                 <label class="control-label">Télefono<span class="text-danger">*</span></label>
                                 <input name="phone" type="text" class="form-control" placeholder="Télefono" />

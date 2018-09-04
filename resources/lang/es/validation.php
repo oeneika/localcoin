@@ -146,5 +146,6 @@ return [
         'identification'        => 'documento de identificación',
         'birthday'              => 'fecha de nacimiento',
         'quantity'              => 'cantidad',
+        'rank'                  => 'puntuación'
     ],
 ];

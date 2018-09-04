@@ -16,7 +16,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                <button class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalSell()"> Crear Venta </button>
+                <button @if (count(Auth::user()->wallets) < 1) disabled @endif class="btn btn-primary" style="float:right; margin-bottom: 10px;" onclick="openModalSell()"> Crear Venta </button>
                 </div>
             </div>
 

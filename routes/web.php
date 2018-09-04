@@ -25,17 +25,20 @@ Route::get('/createBuy','TransactionsController@createBuy')->name('createBuy');
 Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy');
 Route::put('/updateBuy','TransactionsController@updateBuy')->name('updateBuy');
 
-Route::get('/usuarios','UsersController@showUsuarios')->name('usuarios');
 
 Route::get('/mySells','TransactionsController@mySells')->name('mySells');
 Route::get('/createSell','TransactionsController@createSell')->name('createSell');
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
 Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell');
+
+//Transactions on queue for aproval/Transacciones en espera de aprovacion
 Route::get('/onHold','TransactionsController@onHold')->name('onHold');
+Route::put('/approveTrasaction/{id}','TransactionsController@approveTransaction')->name('approveTransaction');
+
 
 Route::get('/completedTransactions','TransactionsController@completedTransactions')->name('completedTransactions');
 
-Route::delete('/delete/{id}','TransactionsController@destroy')->name('deleteTransaction');
+//Route::delete('/delete/{id}','TransactionsController@destroy')->name('deleteTransaction');
 
 Route::put('/makeTransaction','TransactionsController@make')->name('makeTransaction');
 
@@ -47,5 +50,16 @@ Route::put('editUser/{id}','ProfilesController@edit')->name('editUser');
 Route::post('storeBankAccount','BankAccountsController@store')->name('storeBankAccount');
 Route::delete('/deleteBankAccount/{id}','BankAccountsController@destroy')->name('deleteBankAccount');
 
-#User detail
+#Wallet Routes
+Route::post('storeWallet','WalletController@store')->name('storeWallet');
+
+#Users
+
+//User detail/Detalles de usuarios
 Route::get('/showUser/{id}','UsersController@show')->name('showUser');
+
+//List of users/Listado de usuarios
+Route::get('/users','UsersController@showUsers')->name('showUsers');
+
+//Rank an user reputation/Puntuar la reputacion de un usuario
+Route::post('/rank','UsersController@rank')->name('rankUser');

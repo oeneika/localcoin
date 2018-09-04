@@ -30,9 +30,16 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get Bank Accounts of conected user
+     * Get Bank Accounts of connected user
      */
     public function BankAccounts(){
         return $this->hasMany('CorpBinary\BankAccount','id_user');
+    }
+
+    /**
+     * Get Wallet of connected user
+     */
+    public function wallets(){
+        return $this->hasMany('CorpBinary\Wallet','id_user');
     }
 }

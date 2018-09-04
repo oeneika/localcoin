@@ -72,7 +72,6 @@
                                                     <tr>
                                                         <th>Banco</th>
                                                         <th>Número de Cuenta</th>
-                                                        <th>Acciones</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -80,10 +79,6 @@
                                                     <tr>
                                                         <td>{{ $bank_account->name }}</td>
                                                         <td>{{ $bank_account->number }}</td>
-                                                        <td class="with-btn" nowrap>
-                                                            <a href="#" class="btn btn-sm btn-white width-80" onclick="delete_item('{{ route('deleteBankAccount',['id'=>$bank_account->id_bank_account]) }}','{{ csrf_token() }}')" >Eliminar</a>
-                                                            
-                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                     </tbody>
@@ -103,7 +98,7 @@
                                 <!-- end panel-heading -->
                                 <!-- begin panel-body -->
                                 <div class="panel-body">
-                                     <button class="btn btn-xs btn-inverse" onclick="()"><i class="fa fa-plus"></i>Añadir wallet</button>
+                                     <button class="btn btn-xs btn-inverse" onclick="openStoreWalletModal()"><i class="fa fa-plus"></i>Añadir wallet</button>
                                         <!-- begin table-responsive -->
                                         <div class="table-responsive">
                                                 <table class="table table-striped m-b-0">
@@ -111,20 +106,17 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Número de Wallet</th>
-                                                        <th>Acciones</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>12345678912345678912</td>
-                                                        <td class="with-btn" nowrap>
-                                                            <a href="#" class="btn btn-sm btn-white width-80">Eliminar</a>
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                    
+                                                    @foreach (Auth::user()->wallets as $wallet)
+                                                        <tr>
+                                                            <td>{{ $wallet->id_wallet }}</td>
+                                                            <td>{{ $wallet->label }} {{ $wallet->address }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                        
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -249,8 +241,9 @@
         </div>
         <!-- end #content -->
 @include('bankAccounts.create')
+@include('wallet.create')
 @section('footer_section')
     <script src="{{ asset('js/bankaccount/store.js') }}"></script>
-    <script src="{{ asset('js/bankaccount/updatebuy.js') }}"></script>
+    <script src="{{ asset('js/wallet/store.js') }}"></script>
 @endsection
 @endsection
