@@ -25,7 +25,7 @@
                         <li class="dropdown-header">NOTIFICACIONES ({{ count(Auth::user()->notifications) }})</li>
                         @foreach (Auth::user()->notifications as $notification)
                             <li class="media">
-                                <a href="javascript:;">
+                                <a href="{{ route('completedTransactions') }}">
                                     <div class="media-left">
                                         <img src="img/user/user-1.jpg" class="media-object" alt="" />
                                         <i class="fab fa-facebook-messenger text-primary media-object-icon"></i>

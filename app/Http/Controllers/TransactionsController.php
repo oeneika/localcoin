@@ -249,6 +249,8 @@ class TransactionsController extends Controller
         ->join('bank_account AS receiving_account','receiving_account.id_bank_account','=','transaction.id_receiving_account')
         ->join('users','users.id','=','bank_account.id_user')
         ->where('receiving_account.id_user',auth()->user('id')['id'])
+        ->where('transaction.status','=','2')
+        ->orWhere('bank_account.id_user',auth()->user('id')['id'])
         ->selectRaw('bank_account.*, users.name, users.lastname, users.user, transaction.*, currency.name AS currency_name')
         ->get();
 
