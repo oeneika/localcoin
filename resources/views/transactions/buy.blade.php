@@ -45,8 +45,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Cuenta Bancaria</label>
-                                    <input type="text" class=""></input>
+                                    <label>Número de Transferencia</label>
+                                    <input type="text" name="transfer_number" class="form-control"></input>
                                 </div>
                             </div>
                         </div>
