@@ -22,7 +22,7 @@ function storeSell(){
                 },1000);
             } 
             else {
-                json.errors.forEach(element => {
+                json.errors.forEach(function(element){
                     toastr.error(element); 
                 });
             }

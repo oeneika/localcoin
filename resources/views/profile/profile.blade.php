@@ -98,7 +98,9 @@
                                 <!-- end panel-heading -->
                                 <!-- begin panel-body -->
                                 <div class="panel-body">
-                                     <button class="btn btn-xs btn-inverse" onclick="openStoreWalletModal()"><i class="fa fa-plus"></i>Añadir wallet</button>
+                                    @if(count(Auth::user()->wallets)<1)
+                                        <button class="btn btn-xs btn-inverse" onclick="openStoreWalletModal()"><i class="fa fa-plus"></i>Añadir wallet</button>
+                                    @endif
                                         <!-- begin table-responsive -->
                                         <div class="table-responsive">
                                                 <table class="table table-striped m-b-0">

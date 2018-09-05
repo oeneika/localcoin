@@ -58,8 +58,6 @@ class RegisterController extends Controller
             'state' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'user' => 'required|alpha_dash|max:255|unique:users',
-            'passport' => 'required|file|image',
-            'identification' => 'required|file|image',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -77,8 +75,6 @@ class RegisterController extends Controller
 
         $passport_path = $request->passport->store('passport');
         $identification_path = $request->identification->store('identification');
-
-        var_dump($data);
 
 
         return User::create([
