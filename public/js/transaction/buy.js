@@ -3,10 +3,7 @@
  */
 function showDetailsModal(name,lastname,phone,mobile,bank,price,quantity,email,transaction){
             $('#names_details').html(`${name} ${lastname}`);
-            $('#email_details').html(`e-mail:</abbr> ${email}`);
-            $('#local_details').html(`Teléfono Local: ${phone}`);
-            $('#mobile_details').html(`Teléfono movíl: ${mobile}`);
-            $('#bank_details').html(`Banco: ${bank}`);
+            $('#bank_details').html(`${bank}`);
             $('#id_transaction_details').val(transaction);
             $('#details_body').html(
                 `<tr>

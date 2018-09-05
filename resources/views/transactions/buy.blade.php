@@ -11,14 +11,6 @@
                         <div class="col-md-12">
                             <h3 class="mt-sm mb-xs" id="names_details"></h3>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p style="margin-bottom: 6px"><span style="font-weight: bold">Correo electronico:</span><div id="email_details"></div></p>
-                                    <p style="margin-bottom: 6px"><span style="font-weight: bold">Teléfono local:</span><div id="local_details"></div></p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="margin-bottom: 6px"><span style="font-weight: bold">Teléfono movil:</span><div id="mobile_details"></div></p>
-                                    <p style="margin-bottom: 6px"><span style="font-weight: bold">Banco:</span><div id="bank_details"></div></p>
-                                </div>
                             </div>
                             
                             <table class="table table-bordered">
@@ -47,6 +39,14 @@
                                             <option value="{{ $account->id_bank_account }}">{{ $account->number }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Cuenta Bancaria</label>
+                                    <input type="text" class=""></input>
                                 </div>
                             </div>
                         </div>

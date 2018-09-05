@@ -13,7 +13,7 @@ function delete_item(delete_url,token) {
         buttons: true,
         dangerMode: true,
       })
-      .then((willDelete) => {
+      .then(function(willDelete){
         if (willDelete) {
             $.ajax({
                 headers: {
@@ -30,7 +30,7 @@ function delete_item(delete_url,token) {
                         },1000);
                     } 
                     else {
-                        json.errors.forEach(element => {
+                        json.errors.forEach(function(element){
                             toastr.error(element); 
                         });
                     }

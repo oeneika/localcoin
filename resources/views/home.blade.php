@@ -25,7 +25,7 @@
                         </div>
                         <div class="panel-body">
                             <p>
-                                Bitcoin. Grafica en tiempo real
+                                Bitcoin. Gráfica en tiempo real
                             </p>
                             <div>
                                 <canvas id="line-chart" data-render="chart-js" height="80"></canvas>
@@ -43,7 +43,7 @@
                         <!-- begin panel-heading -->
                         <div class="panel-heading">
                             
-                            <h4 class="panel-title">Compras</h4>
+                            <h4 class="panel-title">Vender</h4>
                         </div>
                         <!-- end panel-heading -->
 
@@ -55,9 +55,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Comprador</th>
-                                        <th>Usuario</th>
-                                        <th>Reputación</th>
+                                        <th>Reputación del Usuario</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
                                         <th>Acción</th>
@@ -71,9 +69,7 @@
                                                 @endif
                                                 <tr>
                                                     <td>{{ $buy->id_transaction }}</td>
-                                                    <td>{{ $buy->name }} {{ $buy->lastname }}</td>
-                                                    <td>{{ $buy->user }}</td>
-                                                    <td>{{ $buy->reputation }} <i class="fa fa-star"></i></td>
+                                                    <td>@for ($i = 0; $i < $buy->reputation; $i++) <i class="fa fa-star"></i> @endfor</td>
                                                     <td>{{ $buy->price }}</td>
                                                     <td>{{ $buy->quantity }}</td>
                                                     @if(Auth::user()->id != $buy->id)
@@ -96,7 +92,7 @@
                         <!-- begin panel-heading -->
                         <div class="panel-heading">
                            
-                            <h4 class="panel-title">Ventas</h4>
+                            <h4 class="panel-title">Comprar</h4>
                         </div>
                         <!-- end panel-heading -->
 
@@ -108,9 +104,7 @@
                                    <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Vendedor</th>
-                                            <th>Usuario</th>
-                                            <th>Reputación</th>
+                                            <th>Reputación del Usuario</th>
                                             <th>Precio</th>
                                             <th>Cantidad</th>
                                             <th>Acción</th>
@@ -124,9 +118,7 @@
                                                 @endif
                                                 <tr>
                                                     <td>{{ $sell->id_transaction }}</td>
-                                                    <td>{{ $sell->name }} {{ $sell->lastname }}</td>
-                                                    <td>{{ $sell->user }}</td>
-                                                    <td>{{ $sell->reputation }} <i class="fa fa-star"></i></td>
+                                                    <td>@for ($i = 0; $i < $sell->reputation; $i++) <i class="fa fa-star"></i> @endfor</td>
                                                     <td>{{ $sell->price }}</td>
                                                     <td>{{ $sell->quantity }}</td>
                                                     @if(Auth::user()->id != $sell->id)
