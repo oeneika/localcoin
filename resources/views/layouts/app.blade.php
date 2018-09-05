@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="{{ asset('plugins/animate/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/password-indicator/css/password-indicator.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/style-responsive.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/default/theme/default.css') }}" rel="stylesheet" id="theme" />
     <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
@@ -65,11 +66,14 @@
     <script src="{{ asset('js/demo/dashboard.min.js') }}"></script>
     <script src="{{ asset('plugins/chart-js/Chart.min.js') }}"></script>
     <script src="{{ asset('js/demo/chart-js.demo.min.js') }}"></script>
+    <script src="{{ asset('plugins/password-indicator/js/password-indicator.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-show-password/bootstrap-show-password.js') }}"></script>
     <!-- ================== END PAGE LEVEL JS ================== -->
     
     <script>
         $(document).ready(function() {
             App.init();
+            FormPlugins.init();
         });
     </script>
 

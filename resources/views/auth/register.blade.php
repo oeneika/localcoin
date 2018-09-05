@@ -99,16 +99,16 @@
                             </div>
                         </div>
                         
-                        <label class="control-label">Password <span class="text-danger">*</span></label>
+                        <label class="control-label">Contraseña <span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="password" type="password" class="form-control" placeholder="Password" />
+                                <input name="password" type="password" class="form-control m-b-5" placeholder="Contraseña"/>
                             </div>
                         </div>
-                        <label class="control-label">Confirmar Password <span class="text-danger">*</span></label>
+                        <label class="control-label">Confirmar Contraseña <span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input name="password_confirmation" type="password" class="form-control" placeholder="Password" />
+                                <input name="password_confirmation" type="password" class="form-control" placeholder="Confirmar Contraseña" />
                             </div>
                         </div>
                         <div class="checkbox checkbox-css m-b-30">
