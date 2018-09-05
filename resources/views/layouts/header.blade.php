@@ -2,7 +2,7 @@
         <div id="header" class="header navbar-default">
             <!-- begin navbar-header -->
             <div class="navbar-header">
-                <a href="index-2.html" class="navbar-brand"><span class="navbar-logo"></span> <b>Corp</b>binary</a>
+                <a href="home/" class="navbar-brand"><span class="navbar-logo"></span> <b>Corp</b>binary</a>
                 <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -26,10 +26,7 @@
                         @foreach (Auth::user()->notifications as $notification)
                             <li class="media">
                                 <a href="{{ route('completedTransactions') }}">
-                                    <div class="media-left">
-                                        <img src="img/user/user-1.jpg" class="media-object" alt="" />
-                                        <i class="fab fa-facebook-messenger text-primary media-object-icon"></i>
-                                    </div>
+                                
                                     <div class="media-body">
                                         <h6 class="media-heading">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</h6>
                                         <p>{{ $notification->data['message'] }}.</p>
