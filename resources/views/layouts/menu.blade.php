@@ -38,10 +38,21 @@
                             <li><a href="{{ route('myBuys') }}">Compra BTC</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('completedTransactions') }}"><i class="fa fa-calendar"></i> <span>Transacciones realizadas</span></a></li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-handshake"></i>
+                            <span>Transacciones</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ route('completedTransactions') }}">Realizadas</a></li>
+                            @if (Auth::user()->role == 1)
+                            <li><a href="{{ route('onHold') }}">En espera</a></li>
+                            @endif
+                        </ul>
+                    </li>
                     
                     @if (Auth::user()->role == 1)
-                        <li><a href="{{ route('onHold') }}"><i class="fa fa-calendar"></i> <span>Transacciones en espera</span></a></li>
                         <li><a href="{{ route('showUsers') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
                     @endif
                     

@@ -9,93 +9,23 @@
             <div class="modal-body">
                 <form id="rank_form">
                     {{ csrf_field() }}
-                    <input type='hidden' id='user_id' name="id_user" value=''>
-                    <div class="row">
-                        <div class="col-md-2">
-
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="rank">1</label>
-                                <br/>
-                                <input type="radio" name="rank" id="rank" value="1">
+                    <input type='hidden' id='user_id' name="id_user" value="0">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center">
+                                <select id="star-rating">
+                                    <option value="">Selecciona tu puntuación</option>
+                                    <option value="5">5 estrellas</option>
+                                    <option value="4">4 estrellas</option>
+                                    <option value="3">3 estrellas</option>
+                                    <option value="2">2 estrellas</option>
+                                    <option value="1">1 estrella</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="rank">2</label>
-                                <br/>
-                                <input type="radio" name="rank" id="rank" value="2">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="rank">3</label>
-                                <br/>
-                                <input type="radio" name="rank" id="rank" value="3">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="rank">4</label>
-                                <br/>
-                                <input type="radio" name="rank" id="rank" value="4">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="rank">5</label>
-                                <br/>
-                                <input type="radio" name="rank" id="rank" value="5">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-2">
-
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="radio3">
-                                    <i class="fa fa-star"></i>    
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="radio3">
-                                    <i class="fa fa-star"></i>    
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="radio3">
-                                    <i class="fa fa-star"></i>    
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="radio3">
-                                    <i class="fa fa-star"></i>    
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="radio radio-danger">
-                                <label for="radio3">
-                                    <i class="fa fa-star"></i>    
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-
-                        </div>
-                    </div>
+                    
+                    
                 </form>
             </div>
             <div class="modal-footer">

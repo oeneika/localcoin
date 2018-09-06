@@ -3,7 +3,7 @@
             <div class="modal-content animated flipInY">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title">Comprar/Vender</h4>
+                    <h4 class="modal-title">Compra</h4>
                     <small class="font-bold">CorpBinary</small>
                 </div>
                 <div class="modal-body">
@@ -47,6 +47,22 @@
                                 <div class="form-group">
                                     <label>Número de Transferencia</label>
                                     <input type="text" name="transfer_number" class="form-control"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Cuentas bancarias de Corpbinary</label>
+                                    <p><strong>Banco plaza:</strong> 012301230123</p>
+                                    <p><strong>Banco Plus:</strong> 012301230123</p>
+                                    <p><strong>Banco Activo:</strong> 012301230123</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Wallet de Corpbinary</label>
+                                    <p><strong>Wallet:</strong> 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN0</p>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('content')
 <!-- begin #content -->
 <div id="content" class="content">
@@ -35,7 +34,7 @@
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>No. Transacciones</th>
-                                            <th>Puntuacion</th>
+                                            <th>Puntuación</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -47,7 +46,7 @@
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->lastname }}</td>
                                                 <td>{{ $user->transactions_by_user }}</td>
-                                                <td>{{ $user->rank }}<i class="fa fa-star"></i></td>
+                                                <td>{{ $user->rank }} <i class="fa fa-star amarillito"></i></td>
                                                 <td><button type="button" class="btn btn-primary" onclick="showRankModal({{ $user->id }},{{ $user->rank }})" data-toggle="modal" data-target="#puntuarModal">Puntuar</button>
                                                 </td>
                                             </tr>
@@ -67,4 +66,10 @@
 @endsection
 @section('footer_section')
     <script src="{{ asset('js/users/rank.js') }}"></script>
+    <script>
+// Using vanilla javascript:
+var starrating = new StarRating( document.getElementById( 'star-rating' ));
+// OR - Using jQuery:
+$( '#star-rating' ).starrating();
+</script>
 @endsection

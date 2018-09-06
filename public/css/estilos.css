@@ -1,3 +1,38 @@
 .colorwhite i{
 	color: white;
 }
+
+.amarillito{
+	color: #f59c1a;
+}
+
+.blanco{
+	color: white;
+}
+
+.panel-inverse>.panel-heading{
+	background: #f0d162;
+}
+
+.btn.btn-primary, .btn.btn-primary.disabled, .btn.btn-primary.disabled:focus,
+.btn.btn-primary.disabled:hover, .btn.btn-primary[disabled],
+.btn.btn-primary[disabled]:focus, .btn.btn-primary[disabled]:hover, .btn-primary:active,
+.btn-primary:active:hover, .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active,
+label.btn.btn-primary.active.focus, .btn.btn-success{
+	background: #ff8f42;
+	border-color: #ff8f42;
+}
+
+.sidebar, .sidebar-bg{
+	background: #2d2c25;
+}
+
+body{
+	background: #f9f9f9;
+}
+
+.header .navbar-logo, .login .login-header .brand .logo,
+.header .navbar-nav > li > a .label, .label.label-theme,
+.btn.btn-scroll-to-top{
+background: #ff5000;
+}

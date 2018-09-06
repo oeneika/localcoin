@@ -26,9 +26,13 @@
     <link href="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/star-rating/dist/star-rating.css') }}" rel="stylesheet" />
+
 
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
+
+    @yield('header_section')
     
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
@@ -61,6 +65,7 @@
     <!-- ================== END BASE JS ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="{{ asset('plugins/star-rating/dist/star-rating.min.js') }}"></script>
     <script src="{{ asset('plugins/gritter/js/jquery.gritter.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/demo/ui-modal-notification.demo.min.js') }}"></script>

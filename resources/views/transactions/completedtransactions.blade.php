@@ -42,9 +42,9 @@
                                         @foreach($transactions as $transaction)
                                         <tr>
                                             @if($transaction->type == 0)
-                                                <td><span class="label label-primary">Compra {{ $transaction->id_transaction }}</span></td>
+                                                <td><span class="label label-warning">Compra {{ $transaction->id_transaction }}</span></td>
                                             @else
-                                                <td><span class="label label-primary">Venta {{ $transaction->id_transaction }}</span></td>
+                                                <td><span class="label label-danger">Venta {{ $transaction->id_transaction }}</span></td>
                                             @endif
                                             <td>{{ $transaction->quantity }}</td>
                                             <td>{{ number_format($transaction->price,2,',','.') }}</td>
