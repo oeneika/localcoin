@@ -5,7 +5,7 @@
  * @param {*} sub_address submitting wallet address
  * @param {*} rec_address receiving walle address
  */
-function openAccountsModal(type,sub_name, rec_name,sub_num,rec_num,sub_address,rec_address){
+function openAccountsModal(type,sub_name, rec_name,sub_num,rec_num,sub_address,rec_address,sub_num_trans,rec_num_trans){
 
     $('#accounts_body').empty();
 
@@ -20,6 +20,8 @@ function openAccountsModal(type,sub_name, rec_name,sub_num,rec_num,sub_address,r
                 <br/>
                 <h5>Wallet:</h5>
                 <p><small>${type == 1 ? sub_address : rec_address}</small></p>
+                <h5>Número de Transferencia:</h5>
+                <p><small>${type == 1 ? sub_num_trans : rec_num_trans}</small></p>
             </div>
             <div class="col-md-6">
                 <h3>Comprador</h3>
@@ -30,6 +32,8 @@ function openAccountsModal(type,sub_name, rec_name,sub_num,rec_num,sub_address,r
                 <br/>
                 <h5>Wallet:</h5>
                 <p><small>${type == 1 ? rec_address : sub_address}</small></p>
+                <h5>Número de Transferencia:</h5>
+                <p><small>${type == 1 ? rec_num_trans : sub_num_trans}</small></p>
             </div>
          </div>`
     );

@@ -146,6 +146,8 @@ return [
         'identification'        => 'documento de identificación',
         'birthday'              => 'fecha de nacimiento',
         'quantity'              => 'cantidad',
-        'rank'                  => 'puntuación'
+        'rank'                  => 'puntuación',
+        'transfer_date'         => 'fecha de transferencia',
+        'transfer_number'       => 'número de transferencia',
     ],
 ];

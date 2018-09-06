@@ -49,6 +49,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Número de Transferencia</label>
+                                    <input class="form-control" type="number" name="transfer_number" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Fecha de transferencia</label>
+                                    <input type="date" class="form-control" name="transfer_date" id="">
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

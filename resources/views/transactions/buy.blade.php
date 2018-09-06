@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label class="font-normal">Fecha de la transferencia</label>
                                     <div class="input-group date fechalacra">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input name="transfer_date" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center">
-                                <select id="star-rating">
+                                <select id="star-rating" name="rank">
                                     <option value="">Selecciona tu puntuación</option>
                                     <option value="5">5 estrellas</option>
                                     <option value="4">4 estrellas</option>

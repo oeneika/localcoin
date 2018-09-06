@@ -64,13 +64,17 @@ class TransactionsController extends Controller
             'bank_account'=>'required',
             'price'=>'required|numeric',
             'quantity'=>'required|numeric',
-            'currency'=>'required'
+            'currency'=>'required',
+            'transfer_number'=>'required',
+            'transfer_date'=>'required',
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
             $transaction->price = $request->input('price');
             $transaction->id_currency = $request->input('currency');
+            $transaction->submitting_transfer_number = $request->input('transfer_number');
+            $transaction->submitting_transfer_date = $request->input('transfer_date');
             $transaction->quantity = $request->input('quantity');
             $transaction->type = 0;
             $transaction->id_submitting_account = $request->input('bank_account');
@@ -143,13 +147,17 @@ class TransactionsController extends Controller
             'bank_account'=>'required',
             'price'=>'required|numeric',
             'quantity'=>'required|numeric',
-            'currency'=>'required'
+            'currency'=>'required',
+            'transfer_number'=>'required',
+            'transfer_date'=>'required',
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
             $transaction->price = $request->input('price');
             $transaction->quantity = $request->input('quantity');
+            $transaction->submitting_transfer_number = $request->input('transfer_number');
+            $transaction->submitting_transfer_date = $request->input('transfer_date');
             $transaction->id_currency = $request->input('currency');
             $transaction->type = 1;
             $transaction->id_submitting_account = $request->input('bank_account');
@@ -224,12 +232,15 @@ class TransactionsController extends Controller
     public function make(Request $request){
 
         $validator = Validator::make($request->all(),[
-            'bank_account'=>'required'
+            'bank_account'=>'required|numeric',
+            'transfer_number'=>'required|numeric',
         ]);
 
         if($validator->passes()){
             $transaction = \CorpBinary\Transaction::find($request->input('id_transaction'));
             $transaction->status = 1;
+            $transaction->receiving_transfer_number = $request->input('transfer_number');
+            $transaction->receiving_transfer_date = date_create_from_format('d/m/Y', $request->input('transfer_date'));
             $transaction->id_receiving_account = $request->input('bank_account');
             $transaction->save();
 
