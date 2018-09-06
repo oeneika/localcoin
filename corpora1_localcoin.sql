@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2018 at 11:31 PM
+-- Generation Time: Sep 06, 2018 at 06:38 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -128,8 +128,8 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
-('b6cc946b-18a8-45d0-9c95-af75ffcb27e8', 'CorpBinary\\Notifications\\approvedTransaction', 'CorpBinary\\User', 2, '{\"id_transaction\":2,\"price\":2000,\"quantity\":9,\"message\":\"La transacción 2 ha sido aprovada\"}', NULL, '2018-09-05 00:29:16', '2018-09-05 00:29:16'),
-('d796d869-3439-4c78-b206-be2f271a99e5', 'CorpBinary\\Notifications\\approvedTransaction', 'CorpBinary\\User', 1, '{\"id_transaction\":2,\"price\":2000,\"quantity\":9,\"message\":\"La transacción 2 ha sido aprovada\"}', NULL, '2018-09-05 00:29:16', '2018-09-05 00:29:16');
+('61170c99-6b7f-4c18-956e-0e147037544a', 'CorpBinary\\Notifications\\approvedTransaction', 'CorpBinary\\User', 1, '{\"id_transaction\":9,\"price\":1,\"quantity\":1,\"message\":\"La transacci\\u00f3n 9 ha sido aprovada\"}', NULL, '2018-09-06 08:30:02', '2018-09-06 08:30:02'),
+('cd4f3bc1-c952-42c3-bfb8-bfac061ec925', 'CorpBinary\\Notifications\\approvedTransaction', 'CorpBinary\\User', 2, '{\"id_transaction\":9,\"price\":1,\"quantity\":1,\"message\":\"La transacci\\u00f3n 9 ha sido aprovada\"}', NULL, '2018-09-06 08:30:02', '2018-09-06 08:30:02');
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,7 @@ CREATE TABLE `reputation` (
 --
 
 INSERT INTO `reputation` (`id_user`, `reputation`) VALUES
-(1, 3),
+(1, 5),
 (2, 5);
 
 -- --------------------------------------------------------
@@ -197,6 +197,10 @@ CREATE TABLE `transaction` (
   `id_receiving_account` bigint(255) UNSIGNED DEFAULT NULL,
   `type` tinyint(2) UNSIGNED NOT NULL COMMENT '0:compra/buy,1:venta/sell',
   `status` int(2) UNSIGNED NOT NULL DEFAULT '0' COMMENT '0:open;1:pending;2:processed',
+  `submitting_transfer_number` bigint(255) UNSIGNED DEFAULT NULL,
+  `submitting_transfer_date` datetime DEFAULT NULL,
+  `receiving_transfer_number` bigint(255) UNSIGNED DEFAULT NULL,
+  `receiving_transfer_date` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -205,13 +209,17 @@ CREATE TABLE `transaction` (
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id_transaction`, `price`, `quantity`, `id_currency`, `id_submitting_account`, `id_receiving_account`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1, NULL, 1, 0, '2018-09-04 03:24:39', '2018-09-04 03:24:39'),
-(2, 2000, 9, 1, 2, 1, 0, 2, '2018-09-04 03:35:49', '2018-09-04 20:29:16'),
-(3, 1, 1, 1, 3, 2, 1, 1, '2018-09-04 18:40:58', '2018-09-04 18:42:20'),
-(4, 2, 0.0009, 1, 3, NULL, 1, 0, '2018-09-04 18:41:11', '2018-09-04 18:41:11'),
-(5, 1, 1, 2, 3, 2, 0, 1, '2018-09-04 18:41:26', '2018-09-04 18:43:12'),
-(6, 2, 2, 1, 3, NULL, 0, 0, '2018-09-04 18:41:34', '2018-09-04 18:41:34');
+INSERT INTO `transaction` (`id_transaction`, `price`, `quantity`, `id_currency`, `id_submitting_account`, `id_receiving_account`, `type`, `status`, `submitting_transfer_number`, `submitting_transfer_date`, `receiving_transfer_number`, `receiving_transfer_date`, `created_at`, `updated_at`) VALUES
+(7, 1, 1, 1, 2, 1, 1, 1, 1, '2018-09-11 00:00:00', 12312, '2018-08-27 04:29:27', '2018-09-06 04:27:01', '2018-09-06 04:29:27'),
+(8, 2, 1, 1, 2, 3, 1, 1, 1, '2018-09-05 00:00:00', 155, '2018-09-26 04:35:43', '2018-09-06 04:27:18', '2018-09-06 04:35:43'),
+(9, 1, 1, 1, 2, 1, 0, 2, 1, '2018-09-03 00:00:00', 1, '2018-09-17 04:28:26', '2018-09-06 04:27:34', '2018-09-06 04:30:02'),
+(10, 1, 1, 2, 2, NULL, 0, 0, 1, '2018-09-18 00:00:00', NULL, NULL, '2018-09-06 04:27:45', '2018-09-06 04:27:45'),
+(11, 1, 1, 1, 3, NULL, 1, 0, 2, '2018-09-04 00:00:00', NULL, NULL, '2018-09-06 04:31:07', '2018-09-06 04:31:07'),
+(12, 1, 2, 2, 3, NULL, 1, 0, 3, '2018-09-03 00:00:00', NULL, NULL, '2018-09-06 04:31:22', '2018-09-06 04:31:22'),
+(13, 1, 2, 2, 3, NULL, 0, 0, 1, '2018-09-04 00:00:00', NULL, NULL, '2018-09-06 04:31:36', '2018-09-06 04:31:36'),
+(14, 1, 1, 1, 1, NULL, 1, 0, 1, '2018-09-04 00:00:00', NULL, NULL, '2018-09-06 04:33:44', '2018-09-06 04:33:44'),
+(15, 1, 1, 1, 1, NULL, 1, 0, 2, '2018-09-03 00:00:00', NULL, NULL, '2018-09-06 04:34:03', '2018-09-06 04:34:03'),
+(16, 1, 1, 1, 3, NULL, 0, 0, 34, '2018-09-02 00:00:00', NULL, NULL, '2018-09-06 04:34:41', '2018-09-06 04:34:41');
 
 -- --------------------------------------------------------
 
@@ -248,9 +256,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `role`, `name`, `lastname`, `gender`, `passport`, `identification`, `phone`, `mobile`, `fax`, `address`, `country`, `city`, `state`, `birthday`, `user`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-(1, 'deadgreen_spk@hotmail.com', 0, 'Antonio', 'Gúzman', 'm', 'passport/BMvzEBMmuE8743hTYN2DYnBTjuvxGfmG4cHx15FW.jpeg', NULL, '021235562718', NULL, NULL, 'En la esquina', 'Venezuela', 'Caracas', 'Dto Capital', '1986-09-24', 'presidente', '$2y$10$xagW3M0YIL9l1Vh9VbrKhub8v3GpnkkOyP/SSNbvZMKO543SL..Fi', '2018-09-01 22:19:21', '2018-09-01 22:19:21', 'q3lordGDDmD71ESh7r7Et4nSv8fK5lzopre9ijokqa3nr8WwFMWMeDbSC5HZ'),
-(2, 'admin@gmail.com', 1, 'Sergio', 'García', 'm', 'passport/rmhrjgAdn69GD2BLvG6sn5LwEZ2AnWnQZQriHDnu.jpeg', NULL, '04241844847', NULL, NULL, 'En la esquina', 'Venezuela', 'Caracas', 'Dto Capital', '1995-03-14', 'sergio', '$2y$10$vvgVRsgiKMwGxauCsVqUhe05N28JLvy7h7FhLQZn.BAPGumpofd32', '2018-09-03 21:39:40', '2018-09-03 21:41:25', 'lNVRM7VOGW9VeTpfacWZy7xMRoconfzsZjTFUgCTW73YNgaM9xzJ89M0XziU'),
-(3, 'salazarseijas@gmail.com', 0, 'Marcos', 'Seijas', 'm', 'passport/pDjrqNEOKgbFo10mm0Bqo0mdWmgMzHVRZBBPZig4.png', NULL, '042412343212', NULL, NULL, 'Bello Monte', 'Venezuela', 'Caracas', 'Dto Capital', '1971-01-01', 'marcos', '$2y$10$SSvjZdFdNb2y50tAw4wTKuQ1xc6aC6XOQOuAR5FRWaeU4VtClKFui', '2018-09-04 18:36:14', '2018-09-04 18:36:31', 'dKrrcYTi0ueUD1xetDkTEZSYgrZ0sU84ERq7b5Zeq3UatjsRpioqWpZ7xd0P');
+(1, 'deadgreen_spk@hotmail.com', 0, 'Antonio', 'Gúzman', 'm', 'passport/BMvzEBMmuE8743hTYN2DYnBTjuvxGfmG4cHx15FW.jpeg', NULL, '021235562718', NULL, NULL, 'En la esquina', 'Venezuela', 'Caracas', 'Dto Capital', '1986-09-24', 'presidente', '$2y$10$xagW3M0YIL9l1Vh9VbrKhub8v3GpnkkOyP/SSNbvZMKO543SL..Fi', '2018-09-01 22:19:21', '2018-09-01 22:19:21', '68Vh7RQZZppNpUBmULsKTyvPUQzuRGUQzEmLaJs7UUOe0XtPlBc4JGeOfWpp'),
+(2, 'admin@gmail.com', 1, 'Sergio', 'García', 'm', 'passport/rmhrjgAdn69GD2BLvG6sn5LwEZ2AnWnQZQriHDnu.jpeg', NULL, '04241844847', NULL, NULL, 'En la esquina', 'Venezuela', 'Caracas', 'Dto Capital', '1995-03-14', 'sergio', '$2y$10$vvgVRsgiKMwGxauCsVqUhe05N28JLvy7h7FhLQZn.BAPGumpofd32', '2018-09-03 21:39:40', '2018-09-03 21:41:25', 'N3pZ0rSvEwYFjkDx7qIVhtAuQ2DOb6ZMf8HR9VsTt0JtVkPXFkKLMQ1311gP'),
+(3, 'salazarseijas@gmail.com', 0, 'Marcos', 'Seijas', 'm', 'passport/pDjrqNEOKgbFo10mm0Bqo0mdWmgMzHVRZBBPZig4.png', NULL, '042412343212', NULL, NULL, 'Bello Monte', 'Venezuela', 'Caracas', 'Dto Capital', '1971-01-01', 'marcos', '$2y$10$SSvjZdFdNb2y50tAw4wTKuQ1xc6aC6XOQOuAR5FRWaeU4VtClKFui', '2018-09-04 18:36:14', '2018-09-04 18:36:31', 'dKrrcYTi0ueUD1xetDkTEZSYgrZ0sU84ERq7b5Zeq3UatjsRpioqWpZ7xd0P'),
+(4, 'w@w.com', 0, 'w', 'w', 'm', 'passport/qp4AmkAWpD9Ne4BpUJQ6cawELN36h8hR1UkC6gtR.png', NULL, 'w', NULL, NULL, 'w', 'w', 'w', 'w', '1111-11-11', '2', '$2y$10$WoefuOlQaFKhnyyD7siP1OkIpQxPhgIZv0n8L5Wi73yPRwHt1UD3C', '2018-09-05 00:49:45', '2018-09-05 00:49:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -390,13 +399,13 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id_transaction` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_transaction` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wallet`
