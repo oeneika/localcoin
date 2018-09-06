@@ -1,9 +1,9 @@
 <div class="modal inmodal" id="_BuyModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated flipInY">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title">Compra</h4>
+                    <h4 class="modal-title">Compra ó Venta</h4>
                     <small class="font-bold">CorpBinary</small>
                 </div>
                 <div class="modal-body">
@@ -42,27 +42,48 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
+                        <div class="row" data-sortable-id="form-plugins-1">
+                            <div class="col-md-8">
                                 <div class="form-group">
-                                    <label>Número de Transferencia</label>
-                                    <input type="text" name="transfer_number" class="form-control"></input>
+                                    <label>Número de transferencia</label>
+                                    <input type="text" name="transfer_number" class="form-control" placeholder="Indique el número de transferencia"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-normal">Fecha de la transferencia</label>
+                                    <div class="input-group date fechalacra">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
+                            <label>Cuentas bancarias de Corpbinary</label>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Cuentas bancarias de Corpbinary</label>
                                     <p><strong>Banco plaza:</strong> 012301230123</p>
+                                </div>
+                            </div>
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label> </label>
                                     <p><strong>Banco Plus:</strong> 012301230123</p>
+                                </div>
+                            </div>
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label> </label>
                                     <p><strong>Banco Activo:</strong> 012301230123</p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Wallet de Corpbinary</label>
-                                    <p><strong>Wallet:</strong> 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN0</p>
+                                    <p><strong>Wallet:</strong></p>
+                                    <p>1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN0</p>
                                 </div>
                             </div>
                         </div>

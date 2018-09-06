@@ -143,4 +143,13 @@
 @section('footer_section')
     <script src="{{ asset('js/transaction/buy.js') }}"></script>
     <script src="{{ asset('js/home/homelinechart.js') }}"></script>
+    <script>
+        $('.fechalacra input').datepicker({
+                format: "dd/mm/yyyy",
+                todayBtn: "linked",
+                language: "es",
+                autoclose: true,
+                todayHighlight: true
+            });
+    </script>
 @endsection

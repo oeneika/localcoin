@@ -25,6 +25,7 @@
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <link href="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/star-rating/dist/star-rating.css') }}" rel="stylesheet" />
 
@@ -65,6 +66,7 @@
     <!-- ================== END BASE JS ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('plugins/star-rating/dist/star-rating.min.js') }}"></script>
     <script src="{{ asset('plugins/gritter/js/jquery.gritter.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
