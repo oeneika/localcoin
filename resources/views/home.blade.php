@@ -69,7 +69,7 @@
                                                 @endif
                                                 <tr>
                                                     <td>{{ $buy->id_transaction }}</td>
-                                                    <td>@for ($i = 0; $i < $buy->reputation; $i++) <i class="fa fa-star"></i> @endfor</td>
+                                                    <td>@for ($i = 0; $i < $buy->reputation; $i++) <i class="fa fa-star amarillito"></i> @endfor</td>
                                                     <td>{{ $buy->price }}</td>
                                                     <td>{{ $buy->quantity }}</td>
                                                     @if(Auth::user()->id != $buy->id)
@@ -118,7 +118,7 @@
                                                 @endif
                                                 <tr>
                                                     <td>{{ $sell->id_transaction }}</td>
-                                                    <td>@for ($i = 0; $i < $sell->reputation; $i++) <i class="fa fa-star"></i> @endfor</td>
+                                                    <td>@for ($i = 0; $i < $sell->reputation; $i++) <i class="fa fa-star amarillito"></i> @endfor</td>
                                                     <td>{{ $sell->price }}</td>
                                                     <td>{{ $sell->quantity }}</td>
                                                     @if(Auth::user()->id != $sell->id)

@@ -51,7 +51,7 @@
                                             <td>{{ number_format($transaction->price,2,',','.') }}</td>
                                             <td>{{ $transaction->name }}</td>
                                             @if($transaction->status == 0)
-                                                <td><span class="label label-primary">Abierta</span></td>
+                                                <td><span class="label label-success">Abierta</span></td>
                                             @elseif($transaction->status == 1)
                                                 <td><span class="label label-info">Pendiente</span></td>
                                             @else

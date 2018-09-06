@@ -23,11 +23,11 @@ function lineChartData(){
             datasets: [
                 {
                     label: "Precios",
-                    backgroundColor: '#f59c1a',
-                    borderColor: '#F3BF73',
+                    backgroundColor: '#DFC392',
+                    borderColor: '#B69967',
                     fillColor: "rgba(200,140,0,0.5)",
-                    strokeColor: "#f59c1a",
-                    pointColor: "#f59c1a",
+                    strokeColor: "#000",
+                    pointColor: "#000",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(200,140,0,1)",

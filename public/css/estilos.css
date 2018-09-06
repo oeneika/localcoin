@@ -11,16 +11,16 @@
 }
 
 .panel-inverse>.panel-heading{
-	background: #f0d162;
+	background: #f59c1a;
 }
 
 .btn.btn-primary, .btn.btn-primary.disabled, .btn.btn-primary.disabled:focus,
 .btn.btn-primary.disabled:hover, .btn.btn-primary[disabled],
 .btn.btn-primary[disabled]:focus, .btn.btn-primary[disabled]:hover, .btn-primary:active,
 .btn-primary:active:hover, .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active,
-label.btn.btn-primary.active.focus, .btn.btn-success{
-	background: #ff8f42;
-	border-color: #ff8f42;
+label.btn.btn-primary.active.focus, .btn.btn-success, .btn.btn-inverse{
+	background: #ff5b57; /* ROJO */
+	border-color: #ff5b57;
 }
 
 .sidebar, .sidebar-bg{
