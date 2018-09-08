@@ -66,6 +66,10 @@
     <!-- ================== END BASE JS ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="{{ asset('plugins/kline-master/lib/jquery.mousewheel.js') }}"></script>
+    <script src="{{ asset('plugins/kline-master/lib/sockjs.js') }}"></script>
+    <script src="{{ asset('plugins/kline-master/lib/stomp.js') }}"></script>
+    <script src="{{ asset('plugins/kline-master/dist/kline.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('plugins/star-rating/dist/star-rating.min.js') }}"></script>
     <script src="{{ asset('plugins/gritter/js/jquery.gritter.js') }}"></script>
