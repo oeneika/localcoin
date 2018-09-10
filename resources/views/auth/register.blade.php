@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-        <!-- begin register -->
-        <div class="register register-with-news-feed">
+<!-- begin register -->
+<div class="register register-with-news-feed" style="overflow: scroll;">
             <!-- begin news-feed -->
             <div class="news-feed">
                 <div class="news-image" style="background-image: url(img/login-bg/login-bg-9.jpg)"></div>
@@ -134,6 +133,6 @@
                 <!-- end register-content -->
             </div>
             <!-- end right-content -->
-        </div>
-        <!-- end register -->
+</div>
+<!-- end register -->
 @endsection

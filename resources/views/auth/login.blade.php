@@ -3,7 +3,7 @@
 @section('content')
 <!-- begin #page-container -->
         <!-- begin login -->
-        <div class="login login-with-news-feed">
+        <div class="login login-with-news-feed" style="overflow: scroll;">
             <!-- begin news-feed -->
             <div class="news-feed">
                 <div class="news-image" style="background-image: url(img/login-bg/login-bg-11.jpg)"></div>
