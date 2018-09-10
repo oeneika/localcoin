@@ -26,6 +26,9 @@ Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy');
 Route::put('/updateBuy','TransactionsController@updateBuy')->name('updateBuy');
 
 
+Route::get('/exchange','ExchangeController@index')->name('exchange');
+
+
 Route::get('/mySells','TransactionsController@mySells')->name('mySells');
 Route::get('/createSell','TransactionsController@createSell')->name('createSell');
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
