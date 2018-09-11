@@ -62,12 +62,15 @@
     <script> 
         /*Responsive de la grafica*/
         var mediaquery = window.matchMedia("(min-width: 1280px)");
-        if (mediaquery.matches) {
-        var e1 = document.getElementById("chart_mainCanvas");
-        e1.style.width = 1000px;
+        var e = document.getElementById("chart_toolbar");
+        var e2 = document.getElementById("chart_toolbar");    
+        var e3 = document.getElementById("chart_tabbar");    
+        if (mediaquery.matches) {  
+            e.style.width = "100%";
+            e3.style.width = "100%";
         } else {
-            var e2 = document.getElementById("chart_overlayCanvas");    
-            e2.style.width = 668px;
+            e2.style.width = "100%";
+            e3.style.width = "100%";
         }
     </script>
 @endsection

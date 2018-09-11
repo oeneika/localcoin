@@ -40,7 +40,7 @@
 <body>
         <!-- begin #page-container -->
         <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
-            @include('layouts.header')
+            @include('layouts.header-exchange')
             @include('inc.messages')
             @yield('content')
             @yield('layouts.scroll')
