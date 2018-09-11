@@ -28,15 +28,17 @@ class HomeController extends Controller
         ->join('users','users.id','=','bank_account.id_user')
         ->leftJoin('reputation','users.id','=','reputation.id_user')
         ->join('bank','bank_account.id_bank','=','bank.id_bank')
+        ->join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',1)
-        ->where('status',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name, reputation.reputation')->get();
+        ->where('status',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name, reputation.reputation, currency.abv')->get();
 
         $buys = \CorpBinary\Transaction::join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
         ->join('users','users.id','=','bank_account.id_user')
         ->leftJoin('reputation','users.id','=','reputation.id_user')
         ->join('bank','bank_account.id_bank','=','bank.id_bank')
+        ->join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',0)
-        ->where('status',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name, reputation.reputation')->get();
+        ->where('status',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name, reputation.reputation, currency.abv')->get();
         
         return view('home',array(
             'buys'=>$buys,

@@ -61,7 +61,7 @@ class approvedTransaction extends Notification
             'id_transaction'    => $this->transaction->id_transaction,
             'price'             => $this->transaction->price,
             'quantity'          => $this->transaction->quantity,
-            'message'           => 'La transacción '.$this->transaction->id_transaction.' ha sido aprovada'
+            'message'           => 'La transacción '.$this->transaction->id_transaction.' ha sido aprobada'
         ];
     }
 }

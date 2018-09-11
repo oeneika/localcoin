@@ -259,10 +259,13 @@ class TransactionsController extends Controller
         ->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
         ->join('bank_account AS receiving_account','receiving_account.id_bank_account','=','transaction.id_receiving_account')
         ->join('users','users.id','=','bank_account.id_user')
-        ->where('receiving_account.id_user',auth()->user('id')['id'])
+        ->join('users AS receiving_users','receiving_users.id','=','receiving_account.id_user')
+        ->when(auth()->user()['role'] != 1, function($query){
+            return $query->where('receiving_account.id_user',auth()->user('id')['id'])
+                         ->orWhere('bank_account.id_user',auth()->user('id')['id']);
+        })
         ->where('transaction.status','=','2')
-        ->orWhere('bank_account.id_user',auth()->user('id')['id'])
-        ->selectRaw('bank_account.*, users.name, users.lastname, users.user, transaction.*, currency.name AS currency_name')
+        ->selectRaw('bank_account.*, users.user,receiving_users.user AS receiving_user, transaction.*, currency.name AS currency_name')
         ->get();
 
         return view('transactions.completedtransactions',array(

@@ -33,7 +33,7 @@
                                             <th>Cantidad</th>
                                             <th>Precio</th>
                                             <th>Moneda</th>
-                                            <th>Usuario</th>
+                                            <th>Usuarios</th>
                                             <th>Cuenta de Corpbinary</th>
                                             <th>Fecha de Realización</th>
                                         </tr>
@@ -49,7 +49,7 @@
                                             <td>{{ $transaction->quantity }}</td>
                                             <td>{{ number_format($transaction->price,2,',','.') }}</td>
                                             <td>{{ $transaction->currency_name }}</td>
-                                            <td>{{ $transaction->name }} {{ $transaction->lastname }} - {{ $transaction->user }}</td>
+                                            <td>{{ $transaction->user }} - {{ $transaction->receiving_user }}</td>
                                             <td>72839182738492810</td>
                                             <td>{{ date('m/d/Y', date_timestamp_get($transaction->updated_at)) }}</td>
                                         </tr>

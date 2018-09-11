@@ -31,7 +31,7 @@
                         <a href="javascript:;">
                             <b class="caret"></b>
                             <i class="fa fa-image"></i>
-                            <span>Ordenes</span>
+                            <span>Órdenes</span>
                         </a>
                         <ul class="sub-menu">
                             <li><a href="{{ route('mySells') }}">Venta BTC</a></li>

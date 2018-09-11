@@ -49,6 +49,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Nombre de Usuario</th>
                                         <th>Reputación del Usuario</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
@@ -63,9 +64,10 @@
                                                 @endif
                                                 <tr>
                                                     <td>{{ $buy->id_transaction }}</td>
+                                                    <td>{{ $buy->user }}</td>
                                                     <td>@for ($i = 0; $i < $buy->reputation; $i++) <i class="fa fa-star amarillito"></i> @endfor</td>
-                                                    <td>{{ $buy->price }}</td>
-                                                    <td>{{ $buy->quantity }}</td>
+                                                    <td>{{ number_format($buy->price,2,'.',',') }} {{ $buy->abv }}</td>
+                                                    <td>{{ number_format($buy->quantity,2,'.',',') }} BTC</td>
                                                     @if(Auth::user()->id != $buy->id)
                                                         <td><button @if (count(Auth::user()->wallets) < 1) disabled @endif type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
                                                     @endif
@@ -98,6 +100,7 @@
                                    <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Nombre de Usuario</th>
                                             <th>Reputación del Usuario</th>
                                             <th>Precio</th>
                                             <th>Cantidad</th>
@@ -112,9 +115,10 @@
                                                 @endif
                                                 <tr>
                                                     <td>{{ $sell->id_transaction }}</td>
+                                                    <td>{{ $sell->user }}</td>
                                                     <td>@for ($i = 0; $i < $sell->reputation; $i++) <i class="fa fa-star amarillito"></i> @endfor</td>
-                                                    <td>{{ $sell->price }}</td>
-                                                    <td>{{ $sell->quantity }}</td>
+                                                    <td>{{ number_format($sell->price,2,'.',',') }} {{ $sell->abv }}</td>
+                                                    <td>{{ number_format($sell->quantity,2,'.',',') }} BTC</td>
                                                     @if(Auth::user()->id != $sell->id)
                                                         <td><button @if (count(Auth::user()->wallets) < 1) disabled @endif type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
                                                     @endif
