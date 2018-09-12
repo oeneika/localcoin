@@ -1,9 +1,57 @@
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+
 .content{
-	padding: 20px 5px;
+	padding: 20px 10px;
 	margin-left: 0;
 }
 
 
-h1{
-	color: #ffd748;
+h3{
+	color: #2A2A2A!important;
+}
+
+.panel-title{
+	font-size: 18px;
+}
+
+div.panel-body.border{
+border: 2px solid #A1A1A1!important;
+}
+
+.panel-inverse>.panel-heading{
+	background: #e5e5e5;
+}
+
+.btn.btn-primary, .btn.btn-primary.disabled, .btn.btn-primary.disabled:focus,
+.btn.btn-primary.disabled:hover, .btn.btn-primary[disabled],
+.btn.btn-primary[disabled]:focus, .btn.btn-primary[disabled]:hover, .btn-primary:active,
+.btn-primary:active:hover, .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active,
+label.btn.btn-primary.active.focus, .btn.btn-success, .btn.btn-inverse{
+	background: #33710d; /* VERDE */
+	border-color: #33710d;
+}
+
+.fab{
+	color: #94FF97;
+}
+
+p,a,td,th{
+	font-size: 14px;
+}
+
+
+.container a{
+	color:#333!important;
+}
+
+.container .nav li{
+	position: relative;
+	display: block!important;
+	width: 100%;
+}
+
+.footer-block{
+	padding-bottom: 30px;
 }

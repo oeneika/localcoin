@@ -5,40 +5,46 @@
 @section('content')
 <!-- begin #content -->
     <div id="content" class="content">
-
-            <form action="" method="POST">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <input name="cantidad" type="text" value="" class="form-control" placeholder="Cantidad" />
-                        </div>
-                        <div class="col-md-2">
-                            <select name="moneda" id="moneda" class="form-control">
-                                <option selected value>Moneda</option>
-                                <option value="usd">usd</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select name="moneda" id="moneda" class="form-control">
-                                <option selected value>País</option>
-                                <option value="venezuela">Venezuela</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select name="moneda" id="moneda" class="form-control">
-                                <option selected value>Tipo de oferta</option>
-                                <option value="of1">oferta 1</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-primary" style="width: 100%">Buscar</button>
-                        </div>
+            <hr>
+                <div class="panel panel-inverse" data-sortable-id="chart-js-1">
+                    
+                
+                    <div class="panel-body border">
+                        <h3 class="panel-title" align="center"><strong>Búsqueda rápida</strong></h3>
+                        <br>
+                        <form action="" method="POST">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <input name="cantidad" type="text" value="" class="form-control" placeholder="Cantidad" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="moneda" id="moneda" class="form-control">
+                                            <option selected value>Moneda</option>
+                                            <option value="usd">usd</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="moneda" id="moneda" class="form-control">
+                                            <option selected value>País</option>
+                                            <option value="venezuela">Venezuela</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="moneda" id="moneda" class="form-control">
+                                            <option selected value>Tipo de oferta</option>
+                                            <option value="of1">oferta 1</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary" style="width: 100%">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>  
                     </div>
                 </div>
-            </form>  
-
-            <br>
-
+            <hr>
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-12 -->
@@ -47,7 +53,7 @@
                     <div class="panel panel-inverse" data-sortable-id="chart-js-1">
                         <div class="panel-heading">
                             
-                            <h4 class="panel-title">Últimas ofertas de compra</h4>
+                            <h3 class="panel-title"><strong>Últimas ofertas de compra</strong></h3>
                         </div>
                         <div class="panel-body">
                         <!-- begin table-responsive -->
@@ -95,7 +101,7 @@
                     <div class="panel panel-inverse" data-sortable-id="chart-js-1">
                         <div class="panel-heading">
                             
-                            <h4 class="panel-title">Últimas ofertas de venta</h4>
+                            <h3 class="panel-title"><strong>Últimas ofertas de venta</strong></h3>
                         </div>
                         <div class="panel-body">
                         <!-- begin table-responsive -->
@@ -131,6 +137,7 @@
                     <!-- end panel -->
                 </div>
                 <!-- end col-12 -->
+                <br>
             </div>
             <!-- end row -->
     </div>

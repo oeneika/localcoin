@@ -2,7 +2,7 @@
         <div id="header" class="header navbar-default">
             <!-- begin navbar-header -->
             <div class="navbar-header">
-                <a href="home/" class="navbar-brand"><span class="navbar-logo"></span> <b>Corp</b>binary</a>
+                <a href="home/" class="navbar-brand"><b>Corp</b>binary</a>
             </div>
             <!-- end navbar-header -->
             
