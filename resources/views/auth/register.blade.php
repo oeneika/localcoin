@@ -36,61 +36,6 @@
                             </div>
                         </div>
                         
-                        <div class="row m-b-15">
-                            <div class="col-md-6">
-                                <label class="control-label">País<span class="text-danger">*</span></label>
-                                <input name="country" type="text" value="{{ old('country') }}" class="form-control" placeholder="País" />
-                                <br>
-                                <label class="control-label">Estado<span class="text-danger">*</span></label>
-                                <input name="state" type="text" value="{{ old('state') }}" class="form-control" placeholder="Estado" />
-                                <br>
-                                <label class="control-label">Dirección<span class="text-danger">*</span></label>
-                                <input name="address" type="text" value="{{ old('address') }}" class="form-control" placeholder="Télefono" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="control-label">Ciudad<span class="text-danger">*</span></label>
-                                <input name="city" type="text" value="{{ old('city') }}" class="form-control" placeholder="Ciudad" />
-                                <br>
-                                <label class="control-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
-                                <input name="birthday" type="date" value="{{ old('birthday') }}" class="form-control" placeholder="Dirección" />
-                                <br>
-                                <label class="control-label">Télefono<span class="text-danger">*</span></label>
-                                <input name="phone" type="text" value="{{ old('phone') }}" class="form-control" placeholder="Télefono" />
-                            </div>
-                        </div>
-                        
-                        <label class="control-label">Genero<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div id="gender" class="btn-group" data-toggle="buttons" style="width: 100%">
-                                <label style="width: 100%" class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                    <input type="radio" name="gender" id="m" value="m" > &nbsp; Masculino &nbsp;
-                                </label>
-                                <label style="width: 100%" class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                    <input type="radio" name="gender" id="f" value="f"> Femenino
-                                </label>
-                            </div>
-                        </div>
-
-                        <label class="control-label">Pasaporte<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
-                                <input name="passport" type="file" class="" placeholder="Pasaporte" />
-                            </div>
-                        </div>
-
-                        <label class="control-label">Documento de Identificación<span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
-                                <input name="identification" type="file" class="" placeholder="Identificacion" />
-                            </div>
-                        </div>
-
-                        <label class="control-label">Email <span class="text-danger">*</span></label>
-                        <div class="row m-b-15">
-                            <div class="col-md-12">
-                                <input name="email" type="text" value="{{ old('email') }}" class="form-control" placeholder="Correo electronico" />
-                            </div>
-                        </div>
                         <label class="control-label">Nombre de Usuario<span class="text-danger">*</span></label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
