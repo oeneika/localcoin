@@ -21,6 +21,13 @@ class ProfilesController extends Controller
     }
 
     /**
+     * Mostrar perfil en el Trade
+     */
+    public function showProfileTrade(){
+        return view ('profile.perfil-trade');
+    }
+
+    /**
      * Show profile of authenticated user
      */
     public function show(){

@@ -118,6 +118,8 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="g-recaptcha" data-sitekey="6LeAL3AUAAAAAIQEQ74UXDeGLL2ttwYFA-szhyuq"></div>
+                        <br>
                         <div class="register-buttons">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Registrarse</button>
                         </div>
@@ -128,6 +130,7 @@
                         <p class="text-center">
                             &copy; Corpbinary All Right Reserved 2018
                         </p>
+
                     </form>
                 </div>
                 <!-- end register-content -->

@@ -16,6 +16,11 @@ class TradeController extends Controller
         return view('trade.trade');
     }
 
+    public function buyTrade()
+    {
+        return view('transactions.buy-trade');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

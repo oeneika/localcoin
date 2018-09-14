@@ -37,7 +37,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <button class="btn btn-primary" style="width: 100%">Buscar</button>
+                                        <a class="btn btn-primary" href="#" role="button">Buscar</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                                 <td>Transferencias con un banco específico: BANESCO</td>
                                                 <td>123.123.123,00</td>
                                                 <td>897 - 27,300 VES</td>
-                                                <td><button class="btn btn-primary">Comprar</button></td>
+                                                <td><a class="btn btn-primary" href="{{ route('buyTrade') }}" role="button">Comprar</a></td>
                                             </tr>
                                     </tbody>
                                 </table>
@@ -126,7 +126,7 @@
                                                 <td>Transferencias con un banco específico: BANESCO</td>
                                                 <td>123.123.123,00</td>
                                                 <td>897 - 27,300 VES</td>
-                                                <td><button class="btn btn-primary">Vender</button></td>
+                                                <td><a class="btn btn-primary" href="{{ route('buyTrade') }}" role="button">Vender</a></td>
                                             </tr>
                                     </tbody>
                                 </table>

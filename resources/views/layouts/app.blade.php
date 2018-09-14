@@ -67,6 +67,7 @@
     <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('plugins/password-indicator/js/password-indicator.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-show-password/bootstrap-show-password.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <!-- ================== END PAGE LEVEL JS ================== -->
     
     <script>

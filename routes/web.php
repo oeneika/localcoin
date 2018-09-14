@@ -27,7 +27,10 @@ Route::put('/updateBuy','TransactionsController@updateBuy')->name('updateBuy');
 
 
 Route::get('/exchange','ExchangeController@index')->name('exchange');
+
 Route::get('/trade','TradeController@index')->name('trade');
+Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradeProfile');
+Route::get('/buyTrade','TradeController@buyTrade')->name('buyTrade');
 
 
 Route::get('/mySells','TransactionsController@mySells')->name('mySells');

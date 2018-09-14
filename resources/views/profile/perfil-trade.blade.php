@@ -1,5 +1,7 @@
 @extends('layouts.layout-trade')
-
+@section('header_section')
+<link href="{{ asset('css/estilos-trade.css') }}" rel="stylesheet" />
+@endsection
 @section('content')
         <!-- begin #content -->
         <div id="content" class="content">
@@ -19,7 +21,7 @@
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
                             
-                            <h4 class="panel-title">Perfil de usuario</h4>
+                            <h3 class="panel-title"><strong>Perfil de usuario</strong></h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -27,22 +29,22 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h3 class="mt-sm mb-xs"></h3>                                               
-                                                <p><strong>Nombre y Apellido: </strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
-                                                <p><strong>E-mail: </strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
-                                                <p><strong>Usuario: </strong>{{ Auth::user()->user }}</p>  
+                                                <p><strong>Nombre y Apellido: </strong></p>
+                                                <p><strong>E-mail: </strong><a href="mailto:#"></a></p>
+                                                <p><strong>Usuario: </strong></p>  
                                                 <hr> 
-                                                <p><strong>Teléfono Local: </strong> {{ Auth::user()->phone }}</p> 
-                                                <p><strong>Teléfono Móvil: </strong>{{ Auth::user()->mobile }}</p>
-                                                <p><strong>Sexo: </strong> @if( Auth::user()->gender == 'm' ) Masculino @else Femenino @endif </p>
+                                                <p><strong>Teléfono Local: </strong> </p> 
+                                                <p><strong>Teléfono Móvil: </strong></p>
+                                                <p><strong>Sexo: </strong></p>
                                                 <hr>
                                             </div>
                                             <div class="col-md-6">
                                                 <h3 class="mt-sm mb-xs"></h3>              
-                                                <p><strong>Fecha de nacimiento: </strong>{{ Auth::user()->birthday }}</p>
-                                                <p><strong>País: </strong>{{ Auth::user()->country }}</p> 
-                                                <p><strong>Ciudad: </strong>{{ Auth::user()->city }}</p>
-                                                <p><strong>Estado: </strong>{{ Auth::user()->state }}</p> 
-                                                <p><strong>Dirección: </strong>{{ Auth::user()->address }}</p>
+                                                <p><strong>Fecha de nacimiento: </strong></p>
+                                                <p><strong>País: </strong></p> 
+                                                <p><strong>Ciudad: </strong></p>
+                                                <p><strong>Estado: </strong></p> 
+                                                <p><strong>Dirección: </strong></p>
                                                 <hr>
                                             </div>
                                         </div>
@@ -57,9 +59,8 @@
                     <div class="panel panel-inverse" data-sortable-id="table-basic-1">
                                 <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    
-                                    <h4 class="panel-title">Cuentas bancarias
-                                    </h4>
+                                    <h3 class="panel-title">Cuentas bancarias
+                                    </h3>
                                 </div>
                                 <!-- end panel-heading -->
                                 <!-- begin panel-body -->
@@ -75,12 +76,11 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($bank_accounts as $bank_account)
                                                     <tr>
-                                                        <td>{{ $bank_account->name }}</td>
-                                                        <td>{{ $bank_account->number }}</td>
+                                                        <td></td>
+                                                        <td></td>
                                                     </tr>
-                                                    @endforeach
+                                                    
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -91,16 +91,15 @@
                     <div class="panel panel-inverse" data-sortable-id="table-basic-1">
                                 <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    
-                                    <h4 class="panel-title">Wallet bitcoin
-                                    </h4>
+                                    <h3 class="panel-title">Wallet bitcoin
+                                    </h3>
                                 </div>
                                 <!-- end panel-heading -->
                                 <!-- begin panel-body -->
                                 <div class="panel-body">
-                                    @if(count(Auth::user()->wallets)<1)
+                                    
                                         <button class="btn btn-xs btn-inverse" onclick="openStoreWalletModal()"><i class="fa fa-plus"></i>Añadir wallet</button>
-                                    @endif
+                                   
                                         <!-- begin table-responsive -->
                                         <div class="table-responsive">
                                                 <table class="table table-striped m-b-0">
@@ -111,14 +110,10 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    
-                                                    @foreach (Auth::user()->wallets as $wallet)
                                                         <tr>
-                                                            <td>{{ $wallet->id_wallet }}</td>
-                                                            <td>{{ $wallet->label }} {{ $wallet->address }}</td>
+                                                            <td></td>
+                                                            <td></td>
                                                         </tr>
-                                                    @endforeach
-                                        
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -128,10 +123,7 @@
                 </div>
         </div>
         <!-- end #content -->
-@include('bankAccounts.create')
-@include('wallet.create')
+
 @section('footer_section')
-    <script src="{{ asset('js/bankaccount/store.js') }}"></script>
-    <script src="{{ asset('js/wallet/store.js') }}"></script>
 @endsection
 @endsection

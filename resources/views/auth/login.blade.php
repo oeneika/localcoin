@@ -9,9 +9,6 @@
                 <div class="news-image" style="background-image: url(img/login-bg/login-bg-11.jpg)"></div>
                 <div class="news-caption">
                     <h4 class="caption-title"><b>Corp</b>binary</h4>
-                    <p>
-                        Download the Localcoin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
                 </div>
             </div>
             <!-- end news-feed -->
@@ -54,6 +51,9 @@
                                 Recuerdame
                             </label>
                         </div>
+                        <!-- ESTE ES EL LINK DEL RECAPTCHA https://webdesign.tutsplus.com/es/tutorials/how-to-integrate-no-captcha-recaptcha-in-your-website--cms-23024 -->
+                        <div class="g-recaptcha" data-sitekey="6LeAL3AUAAAAAIQEQ74UXDeGLL2ttwYFA-szhyuq"></div>
+                        <br>
                         <div class="login-buttons">
                             <button type="submit" class="btn btn-success btn-block btn-lg">{{ __('Iniciar Sesión') }}</button>
                         </div>
@@ -64,6 +64,7 @@
                         <p class="text-center text-grey-darker">
                             &copy; Corpbinary | Todos los derechos reservados 2018
                         </p>
+
                     </form>
                 </div>
                 <!-- end login-content -->

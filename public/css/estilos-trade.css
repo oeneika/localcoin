@@ -1,5 +1,6 @@
 body{
 	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
 }
 
 .content{
@@ -8,8 +9,21 @@ body{
 }
 
 
-h3{
+h3,h4{
 	color: #2A2A2A!important;
+}
+
+.font-11{
+	font-size: 11px;
+	margin: 0;
+}
+
+.font-11.rojo{
+	color: red;
+}
+
+.font-22{
+	font-size: 22px;
 }
 
 .panel-title{
@@ -20,6 +34,11 @@ div.panel-body.border{
 border: 2px solid #A1A1A1!important;
 }
 
+div.panel-body.dashed{
+	border-style: dashed;
+
+}
+
 .panel-inverse>.panel-heading{
 	background: #e5e5e5;
 }
@@ -28,7 +47,7 @@ border: 2px solid #A1A1A1!important;
 .btn.btn-primary.disabled:hover, .btn.btn-primary[disabled],
 .btn.btn-primary[disabled]:focus, .btn.btn-primary[disabled]:hover, .btn-primary:active,
 .btn-primary:active:hover, .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active,
-label.btn.btn-primary.active.focus, .btn.btn-success, .btn.btn-inverse{
+label.btn.btn-primary.active.focus, .btn.btn-success, .btn.btn-inverse, .verdecito{
 	background: #33710d; /* VERDE */
 	border-color: #33710d;
 }
@@ -46,10 +65,24 @@ p,a,td,th{
 	color:#333!important;
 }
 
+.container .nav{
+	height: auto!important;
+}
+
 .container .nav li{
 	position: relative;
 	display: block!important;
 	width: 100%;
+}
+
+.fondo{
+	background: #F7CD4B;
+	padding: 10px 0;
+}
+
+footer{
+	padding: 30px 0;
+	background: #e7e7e7;
 }
 
 .footer-block{
