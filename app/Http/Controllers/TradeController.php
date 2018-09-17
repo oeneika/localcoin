@@ -13,7 +13,7 @@ class TradeController extends Controller
      */
     public function index()
     {
-        return view('trade.trade');
+        //
     }
 
     public function buyTrade()

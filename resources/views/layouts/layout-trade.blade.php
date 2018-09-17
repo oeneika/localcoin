@@ -81,7 +81,7 @@
     <script src="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.min.js') }}"></script>
     <script src="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('plugins/chart-js/Chart.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
 
     <script src="{{ asset('js/demo/dashboard.min.js') }}"></script>
 
@@ -94,7 +94,6 @@
     <script>
         $(document).ready(function() {
             App.init();
-            ChartJs.init();
             Dashboard.init();
             Notification.init();
         });

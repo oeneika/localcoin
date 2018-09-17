@@ -1,11 +1,97 @@
-@extends('layouts.layout')
+@extends('layouts.layout-trade')
+@section('header_section')
+<link href="{{ asset('css/estilos-trade.css') }}" rel="stylesheet" />
+@endsection
 @section('content')
 <!-- begin #content -->
     <div id="content" class="content">
-            
-            <!-- begin page-header -->
-            <h1 class="page-header">Dashboard</h1>
-            <!-- end page-header -->   
+            <hr>
+                <div class="panel panel-inverse" data-sortable-id="chart-js-1">
+                    
+                
+                    <div class="panel-body border">
+                        <h3 class="panel-title" align="center"><strong>Búsqueda rápida</strong></h3>
+                        <br>
+                        <form action="" method="POST">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <input name="cantidad" type="text" value="" class="form-control" placeholder="Cantidad" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="moneda" id="moneda" class="form-control">
+                                            <option selected value>Moneda</option>
+                                            <option value="usd">usd</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="moneda" id="moneda" class="form-control">
+                                            <option selected value>País</option>
+                                            <option value="venezuela">Venezuela</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="moneda" id="moneda" class="form-control">
+                                            <option selected value>Tipo de oferta</option>
+                                            <option value="of1">oferta 1</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a class="btn btn-primary" href="#" role="button">Buscar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>  
+                    </div>
+                </div>
+            <hr>
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="chart-js-1">
+                        <div class="panel-heading">
+                            
+                            <h3 class="panel-title"><strong>Últimas ofertas de compra</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                        <!-- begin table-responsive -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vendedor</th>
+                                            <th># Transferencias ejecutadas</th>
+                                            <th>Puntuación</th>
+                                            <th>Forma de pago</th>
+                                            <th>Precio/BTC</th>
+                                            <th>Limites</th>
+                                            <th>Acción</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <td>oeneikaphotos</td>
+                                                <td>87</td>
+                                                <td>3 <i class="fa fa-star amarillito"></i></td>
+                                                <td>Transferencias con un banco específico: BANESCO</td>
+                                                <td>123.123.123,00</td>
+                                                <td>897 - 27,300 VES</td>
+                                                <td><a class="btn btn-primary" href="{{ route('buyTrade') }}" role="button">Comprar</a></td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->                     
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+            <!-- end row -->
 
             <!-- begin row -->
             <div class="row">
@@ -15,139 +101,49 @@
                     <div class="panel panel-inverse" data-sortable-id="chart-js-1">
                         <div class="panel-heading">
                             
-                            <h4 class="panel-title">Bitcoin</h4>
+                            <h3 class="panel-title"><strong>Últimas ofertas de venta</strong></h3>
                         </div>
                         <div class="panel-body">
-                            <p>
-                                Bitcoin. Gráfica en tiempo real
-                            </p>
-                            <div>
-                                <canvas id="line-chart" data-render="chart-js" height="80"></canvas>
+                        <!-- begin table-responsive -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Comprador</th>
+                                            <th># Transferencias ejecutadas</th>
+                                            <th>Puntuación</th>
+                                            <th>Forma de pago</th>
+                                            <th>Precio/BTC</th>
+                                            <th>Limites</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <td>oeneikaphotos</td>
+                                                <td>87</td>
+                                                <td>3 <i class="fa fa-star amarillito"></i></td>
+                                                <td>Transferencias con un banco específico: BANESCO</td>
+                                                <td>123.123.123,00</td>
+                                                <td>897 - 27,300 VES</td>
+                                                <td><a class="btn btn-primary" href="{{ route('buyTrade') }}" role="button">Vender</a></td>
+                                            </tr>
+                                    </tbody>
+                                </table>
                             </div>
+                            <!-- end table-responsive -->                     
                         </div>
                     </div>
                     <!-- end panel -->
                 </div>
                 <!-- end col-12 -->
+                <br>
             </div>
             <!-- end row -->
-            
-            <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
-                        <!-- begin panel-heading -->
-                        <div class="panel-heading">
-                            
-                            <h4 class="panel-title">Vender</h4>
-                        </div>
-                        <!-- end panel-heading -->
-
-                        <!-- begin panel-body -->
-                        <div class="panel-body">
-                            <!-- begin table-responsive -->
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nombre de Usuario</th>
-                                        <th>Reputación del Usuario</th>
-                                        <th>Precio</th>
-                                        <th>Cantidad</th>
-                                        <th>Acción</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($buys as $buy)
-                                            <tr>
-                                                @if($buy->status == 2)
-                                                    @continue
-                                                @endif
-                                                <tr>
-                                                    <td>{{ $buy->id_transaction }}</td>
-                                                    <td>{{ $buy->user }}</td>
-                                                    <td>@for ($i = 0; $i < $buy->reputation; $i++) <i class="fa fa-star amarillito"></i> @endfor</td>
-                                                    <td>{{ number_format($buy->price,2,'.',',') }} {{ $buy->abv }}</td>
-                                                    <td>{{ number_format($buy->quantity,2,'.',',') }} BTC</td>
-                                                    @if(Auth::user()->id != $buy->id)
-                                                        <td><button @if (count(Auth::user()->wallets) < 1) disabled @endif type="button" onclick="showDetailsModal('{{$buy->name}}','{{$buy->lastname}}','{{$buy->phone}}','{{$buy->mobile}}','{{$buy->bank_name}}',{{$buy->price}},{{$buy->quantity}},'{{$buy->email}}',{{ $buy->id_transaction }})" class="btn btn-primary" on>Vender</button></td>
-                                                    @endif
-                                                </tr>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end table-responsive -->
-                        </div>
-                        <!-- end panel-body -->
-            </div>
-            <!-- end panel -->
-            
-            <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
-                        <!-- begin panel-heading -->
-                        <div class="panel-heading">
-                           
-                            <h4 class="panel-title">Comprar</h4>
-                        </div>
-                        <!-- end panel-heading -->
-
-                        <!-- begin panel-body -->
-                        <div class="panel-body">
-                            <!-- begin table-responsive -->
-                            <div class="table-responsive">
-                                <table class="table">
-                                   <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nombre de Usuario</th>
-                                            <th>Reputación del Usuario</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th>Acción</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            @foreach($sells as $sell)
-                                                @if($sell->status == 2)
-                                                    @continue
-                                                @endif
-                                                <tr>
-                                                    <td>{{ $sell->id_transaction }}</td>
-                                                    <td>{{ $sell->user }}</td>
-                                                    <td>@for ($i = 0; $i < $sell->reputation; $i++) <i class="fa fa-star amarillito"></i> @endfor</td>
-                                                    <td>{{ number_format($sell->price,2,'.',',') }} {{ $sell->abv }}</td>
-                                                    <td>{{ number_format($sell->quantity,2,'.',',') }} BTC</td>
-                                                    @if(Auth::user()->id != $sell->id)
-                                                        <td><button @if (count(Auth::user()->wallets) < 1) disabled @endif type="button" onclick="showDetailsModal('{{$sell->name}}','{{$sell->lastname}}','{{$sell->phone}}','{{$sell->mobile}}','{{$sell->bank_name}}',{{$sell->price}},{{$sell->quantity}},'{{$sell->email}}',{{ $sell->id_transaction }})" class="btn btn-primary" on>Comprar</button></td>
-                                                    @endif
-                                                </tr>
-                                            @endforeach
-                                        </tr>
-                                        </tbody>
-                                </table>
-                            </div>
-                            <!-- end table-responsive -->
-                        </div>
-                        <!-- end panel-body -->
-            </div>
-            <!-- end panel -->
     </div>
 <!-- end #content -->
-@include('transactions.buy')
 @endsection
 
 @section('footer_section')
-    <script src="{{ asset('js/transaction/buy.js') }}"></script>
-    <script src="{{ asset('js/home/homelinechart.js') }}"></script>
-    <script>
-        $('.fechalacra input').datepicker({
-                format: "dd/mm/yyyy",
-                todayBtn: "linked",
-                language: "es",
-                autoclose: true,
-                todayHighlight: true
-            });
-    </script>
+
 @endsection
