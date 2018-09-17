@@ -20,4 +20,11 @@ class BankAccount extends Model
      * No timestamp
      */
     public $timestamps = false;
+
+    /**
+     * Get Bank Accounts of connected user
+     */
+    public function Bank(){
+        return $this->hasOne('CorpBinary\Bank','id_bank','id_bank');
+    }
 }

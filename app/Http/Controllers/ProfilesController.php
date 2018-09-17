@@ -24,7 +24,9 @@ class ProfilesController extends Controller
      * Mostrar perfil en el Trade
      */
     public function showProfileTrade(){
-        return view ('profile.perfil-trade');
+        return view ('profile.profile-trade',[
+            'banks'=>\CorpBinary\Bank::all()
+        ]);
     }
 
     /**

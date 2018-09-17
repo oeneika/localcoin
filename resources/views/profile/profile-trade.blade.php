@@ -29,22 +29,22 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h3 class="mt-sm mb-xs"></h3>                                               
-                                                <p><strong>Nombre y Apellido: </strong></p>
-                                                <p><strong>E-mail: </strong><a href="mailto:#"></a></p>
-                                                <p><strong>Usuario: </strong></p>  
+                                                <p><strong>Nombre y Apellido: </strong>{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
+                                                <p><strong>E-mail: </strong><a href="mailto:#"> {{ Auth::user()->email }}</a></p>
+                                                <p><strong>Usuario: </strong>{{ Auth::user()->user }}</p>  
                                                 <hr> 
-                                                <p><strong>Teléfono Local: </strong> </p> 
-                                                <p><strong>Teléfono Móvil: </strong></p>
-                                                <p><strong>Sexo: </strong></p>
+                                                <p><strong>Teléfono Local: </strong> {{ Auth::user()->phone }}</p> 
+                                                <p><strong>Teléfono Móvil: </strong>{{ Auth::user()->mobile }}</p>
+                                                <p><strong>Sexo: </strong> @if( Auth::user()->gender == 'm' ) Masculino @else Femenino @endif </p>
                                                 <hr>
                                             </div>
                                             <div class="col-md-6">
                                                 <h3 class="mt-sm mb-xs"></h3>              
-                                                <p><strong>Fecha de nacimiento: </strong></p>
-                                                <p><strong>País: </strong></p> 
-                                                <p><strong>Ciudad: </strong></p>
-                                                <p><strong>Estado: </strong></p> 
-                                                <p><strong>Dirección: </strong></p>
+                                                <p><strong>Fecha de nacimiento: </strong>{{ Auth::user()->birthday }}</p>
+                                                <p><strong>País: </strong>{{ Auth::user()->country }}</p> 
+                                                <p><strong>Ciudad: </strong>{{ Auth::user()->city }}</p>
+                                                <p><strong>Estado: </strong>{{ Auth::user()->state }}</p> 
+                                                <p><strong>Dirección: </strong>{{ Auth::user()->address }}</p>
                                                 <hr>
                                             </div>
                                         </div>
@@ -76,11 +76,12 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @foreach(Auth::user()->BankAccounts as $bank_account)
                                                     <tr>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td>{{ $bank_account->Bank['name'] }}</td>
+                                                        <td>{{ $bank_account->number }}</td>
                                                     </tr>
-                                                    
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -97,9 +98,9 @@
                                 <!-- end panel-heading -->
                                 <!-- begin panel-body -->
                                 <div class="panel-body">
-                                    
-                                        <button class="btn btn-xs btn-inverse" onclick="openStoreWalletModal()"><i class="fa fa-plus"></i>Añadir wallet</button>
-                                   
+                                        @if(count(Auth::user()->wallets)<1)
+                                            <button class="btn btn-xs btn-inverse" onclick="openStoreWalletModal()"><i class="fa fa-plus"></i>Añadir wallet</button>
+                                        @endif
                                         <!-- begin table-responsive -->
                                         <div class="table-responsive">
                                                 <table class="table table-striped m-b-0">
@@ -110,10 +111,12 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
+                                                        @foreach (Auth::user()->wallets as $wallet)
+                                                            <tr>
+                                                                <td>{{ $wallet->id_wallet }}</td>
+                                                                <td>{{ $wallet->label }} {{ $wallet->address }}</td>
+                                                            </tr>
+                                                         @endforeach
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -123,7 +126,11 @@
                 </div>
         </div>
         <!-- end #content -->
-
+        
+@include('bankAccounts.create')
+@include('wallet.create')
 @section('footer_section')
+    <script src="{{ asset('js/bankaccount/store.js') }}"></script>
+    <script src="{{ asset('js/wallet/store.js') }}"></script>
 @endsection
 @endsection

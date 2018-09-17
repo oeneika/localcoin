@@ -100,6 +100,23 @@
         });
     </script>
 
+    <!-- important routes -->
+    <script>
+            var url = {
+                    storeSell:              '{{ route('storeSell') }}',
+                    storeBuy:               '{{ route('storeBuy') }}',
+                    updateBuy:              '{{ route('updateBuy') }}',
+                    updateSell:             '{{ route('updateSell') }}',
+                    makeTransaction:        '{{ route('makeTransaction') }}',
+                    storeBankAccount:       '{{ route('storeBankAccount') }}',
+                    rankUser:               '{{ route('rankUser') }}',
+                    storeWallet:            '{{ route('storeWallet') }}'}
+    </script>
+
+    <script>
+        var btc_current_price = 0;
+    </script>
+
     @include('inc.toastrmessages')
         
 </body>

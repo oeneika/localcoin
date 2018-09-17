@@ -42,6 +42,13 @@
                                 <input name="user" type="text" value="{{ old('user') }}" class="form-control" placeholder="Nombre de Usuario" />
                             </div>
                         </div>
+
+                        <label class="control-label">Correo Electrónico<span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input name="email" type="email" value="{{ old('email') }}" class="form-control" placeholder="Correo Electrónico" />
+                            </div>
+                        </div>
                         
                         <label class="control-label">Contraseña <span class="text-danger">*</span></label>
                         <div class="row m-b-15">

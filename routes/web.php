@@ -25,14 +25,6 @@ Route::get('/createBuy','TransactionsController@createBuy')->name('createBuy');
 Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy');
 Route::put('/updateBuy','TransactionsController@updateBuy')->name('updateBuy');
 
-
-Route::get('/exchange','ExchangeController@index')->name('exchange');
-
-Route::get('/trade','TradeController@index')->name('trade');
-Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradeProfile');
-Route::get('/buyTrade','TradeController@buyTrade')->name('buyTrade');
-
-
 Route::get('/mySells','TransactionsController@mySells')->name('mySells');
 Route::get('/createSell','TransactionsController@createSell')->name('createSell');
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
@@ -70,3 +62,11 @@ Route::get('/users','UsersController@showUsers')->name('showUsers')->middleware(
 
 //Rank an user reputation/Puntuar la reputacion de un usuario
 Route::post('/rank','UsersController@rank')->name('rankUser');
+
+#Exchange
+Route::get('/exchange','ExchangeController@index')->name('exchange');
+
+#Trade routes
+Route::get('/trade','TradeController@index')->name('trade');
+Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradeProfile');
+Route::get('/buyTrade','TradeController@buyTrade')->name('buyTrade');

@@ -49,11 +49,11 @@
                                 <div class="row">
                                     <div class="col-md-6 fondo">
                                         <label class="control-label">Monto en bolívares</label>
-                                        <input name="cantidad" type="text" value="" class="form-control" placeholder="0.00" />
+                                        <input id="id_price" name="cantidad" type="number" value="" class="form-control" placeholder="0.00" disabled />
                                     </div>
                                     <div class="col-md-6 fondo">
                                         <label class="control-label">Monto en bitcoin</label>
-                                        <input name="cantidad" type="text" value="" class="form-control" placeholder="0.00" />
+                                        <input id="id_quantity" name="cantidad" type="number" value="" class="form-control" placeholder="0.00" disabled />
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                             </div>
                             <div id="collapseThree" class="collapse" data-parent="#accordion">
                                 <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably havent heard of them accusamus labore sustainable VHS.
                                 </div>
                             </div>
                         </div> -->
@@ -160,5 +160,5 @@
 @endsection
 
 @section('footer_section')
-
-@endsection
+    <script src="{{ asset('js/transaction/calculator.js') }}"></script>
+@endsection 
