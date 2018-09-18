@@ -4,6 +4,7 @@ namespace CorpBinary\Http\Controllers;
 
 use Illuminate\Http\Request;
 use CorpBinary\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use CorpBinary\User;
 use CorpBinary\Transaction;
@@ -43,10 +44,10 @@ class TransactionsController extends Controller
      */
     public function myBuys()
     {
-        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',0)->get();
+        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_submitting_user',Auth::user()->id)->where('transaction.type',0)->get();
         return view('transactions.mybuys',array(
             'transactions' => $transactions,
-            'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
+            'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',Auth::user()->id)->get(),
             'currencies' => \CorpBinary\Currency::all()
         ));
     }
@@ -65,19 +66,25 @@ class TransactionsController extends Controller
             'price'=>'required|numeric',
             'quantity'=>'required|numeric',
             'currency'=>'required',
-            'transfer_number'=>'required',
-            'transfer_date'=>'required',
+            'terms'=>'required',
+            'upper_limit'=>'required|numeric',
+            'bottom_limit'=>'required|numeric',
+            'payment_method'=>'required',
+            'payment_window'=>'required',
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
             $transaction->price = $request->input('price');
             $transaction->id_currency = $request->input('currency');
-            $transaction->submitting_transfer_number = $request->input('transfer_number');
-            $transaction->submitting_transfer_date = $request->input('transfer_date');
             $transaction->quantity = $request->input('quantity');
+            $transaction->terms = $request->input('terms');
+            $transaction->upper_limit = $request->input('upper_limit');
+            $transaction->bottom_limit = $request->input('bottom_limit');
+            $transaction->payment_method = $request->input('payment_method');
+            $transaction->payment_window = $request->input('payment_window');
             $transaction->type = 0;
-            $transaction->id_submitting_account = $request->input('bank_account');
+            $transaction->id_submitting_account = Auth::user()->id;
 
             $transaction->save();
 
@@ -122,14 +129,14 @@ class TransactionsController extends Controller
     }
 
     /**
-     * Show sells meda by user in session
+     * Show sells made by user in session
      */
     public function mySells()
     {
-        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')->where('bank_account.id_user',auth()->user('id')['id'])->where('transaction.type',1)->get();
+        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_submitting_user',Auth::user()->id)->where('transaction.type',1)->get();
         return view('transactions.mysells',array(
             'transactions' => $transactions,
-            'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',auth()->user('id')['id'])->get(),
+            'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',Auth::user()->id)->get(),
             'currencies' => \CorpBinary\Currency::all()
         ));
     }
@@ -148,19 +155,25 @@ class TransactionsController extends Controller
             'price'=>'required|numeric',
             'quantity'=>'required|numeric',
             'currency'=>'required',
-            'transfer_number'=>'required',
-            'transfer_date'=>'required',
+            'terms'=>'required',
+            'upper_limit'=>'required|numeric',
+            'bottom_limit'=>'required|numeric',
+            'payment_method'=>'required',
+            'payment_window'=>'required',
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
             $transaction->price = $request->input('price');
-            $transaction->quantity = $request->input('quantity');
-            $transaction->submitting_transfer_number = $request->input('transfer_number');
-            $transaction->submitting_transfer_date = $request->input('transfer_date');
             $transaction->id_currency = $request->input('currency');
+            $transaction->quantity = $request->input('quantity');
+            $transaction->terms = $request->input('terms');
+            $transaction->upper_limit = $request->input('upper_limit');
+            $transaction->bottom_limit = $request->input('bottom_limit');
+            $transaction->payment_method = $request->input('payment_method');
+            $transaction->payment_window = $request->input('payment_window');
             $transaction->type = 1;
-            $transaction->id_submitting_account = $request->input('bank_account');
+            $transaction->id_submitting_account = Auth::user()->id;
 
             $transaction->save();
 
@@ -232,15 +245,15 @@ class TransactionsController extends Controller
     public function make(Request $request){
 
         $validator = Validator::make($request->all(),[
-            'bank_account'=>'required|numeric',
-            'transfer_number'=>'required|numeric',
+            'quantity'=>'required|numeric',
+            'price'=>'required|numeric',
         ]);
 
         if($validator->passes()){
             $transaction = \CorpBinary\Transaction::find($request->input('id_transaction'));
             $transaction->status = 1;
-            $transaction->receiving_transfer_number = $request->input('transfer_number');
-            $transaction->receiving_transfer_date = date_create_from_format('d/m/Y', $request->input('transfer_date'));
+            $transaction->quantity = $request->input('quantity');
+            $transaction->price = $request->input('price');
             $transaction->id_receiving_account = $request->input('bank_account');
             $transaction->save();
 
@@ -261,8 +274,8 @@ class TransactionsController extends Controller
         ->join('users','users.id','=','bank_account.id_user')
         ->join('users AS receiving_users','receiving_users.id','=','receiving_account.id_user')
         ->when(auth()->user()['role'] != 1, function($query){
-            return $query->where('receiving_account.id_user',auth()->user('id')['id'])
-                         ->orWhere('bank_account.id_user',auth()->user('id')['id']);
+            return $query->where('receiving_account.id_user',Auth::user()->id)
+                         ->orWhere('bank_account.id_user',Auth::user()->id);
         })
         ->where('transaction.status','=','2')
         ->selectRaw('bank_account.*, users.user,receiving_users.user AS receiving_user, transaction.*, currency.name AS currency_name')
