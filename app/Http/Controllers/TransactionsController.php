@@ -142,6 +142,21 @@ class TransactionsController extends Controller
     }
 
     /**
+     * Show sells made by user in session
+     */
+    public function mySellsTrade()
+    {
+        
+        return view('transactions.mySellsTrade');
+    }
+
+    public function myBuysTrade()
+    {
+        
+        return view('transactions.myBuysTrade');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

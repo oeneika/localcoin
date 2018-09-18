@@ -1,5 +1,5 @@
 <div class="modal inmodal" id="createSellModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content animated flipInY">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
@@ -21,18 +21,59 @@
                                     <label>Moneda</label>
                                     <select name="currency" id="" class="form-control">
                                         <option selected value>Seleccione moneda</option>
-                                        @foreach($currencies as $currency)
-                                            <option value="{{ $currency->id_currency }}">{{ $currency->name }}</option>
-                                        @endforeach
+                                        
+                                            <option value=""></option>
+                                        
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cantidad BTC</label>
                                     <input class="form-control" type="number" name="quantity" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ubicación</label>
+                                    <input class="form-control" type="text" name="location" placeholder="País">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            	
+                                <div class="form-group">
+                                    <label>Forma de pago</label>
+                                    <input class="form-control" type="number" name="method" placeholder="Transferencia">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            	<label>Límites comerciales</label>
+                            	<div class="row">
+                            		<div class="col-md-6">
+                            			<div class="form-group">
+		                                    
+		                                    <input class="form-control" type="number" name="start" placeholder="Inicio">
+		                                </div>
+                            		</div>
+                            		<div class="col-md-6">
+                            			<div class="form-group">
+		                                    
+		                                    <input class="form-control" type="number" name="end" placeholder="Fin">
+		                                </div>
+                            		</div>
+                            	</div>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Ventana de pago</label>
+                                    <input class="form-control" type="number" name="window" placeholder="4 horas y 30 minutos">
                                 </div>
                             </div>
                         </div>
@@ -42,24 +83,19 @@
                                     <label>Banco</label>
                                     <select name="bank_account" id="" class="form-control">
                                         <option selected value>Seleccione Cuenta Bancaria</option>
-                                        @foreach($bank_accounts as $account)
-                                            <option value="{{ $account->id_bank_account }}">{{ $account->number }}</option>
-                                        @endforeach
+                                        
+                                            <option value=""></option>
+                                        
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Número de Transferencia</label>
-                                    <input class="form-control" type="number" name="transfer_number" placeholder="0">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Fecha de transferencia</label>
-                                    <input type="date" class="form-control" name="transfer_date" id="">
+                                    <label>Término de pago</label>
+                                    <textarea name="" id="" rows="3" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
