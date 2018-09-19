@@ -9,11 +9,17 @@
             <!-- begin header-nav -->
             <ul class="navbar-nav navbar-right">
                 
-                <li><a href="{{ route('myBuysTrade') }}">Comprar btc </a></li>
-                <li><a href="{{ route('mySellsTrade') }}"> Vender btc </a></li>
-                <li><a href="{{ route('login') }}"> Iniciar sesión </a></li>
-                <li><a href="{{ route('register') }}"> Registrarse</a></li>
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item">Finalizar Sesión</a></li>
+                
+                @if (Auth::user())
+                    <li><a href="{{ route('myBuysTrade') }}">Comprar btc </a></li>
+                    <li><a href="{{ route('mySellsTrade') }}"> Vender btc </a></li>
+                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item">Finalizar Sesión</a></li>
+                @else
+                    <li><a href="{{ route('register') }}">Comprar btc </a></li>
+                    <li><a href="{{ route('register') }}"> Vender btc </a></li>
+                    <li><a href="{{ route('login') }}"> Iniciar sesión </a></li>
+                    <li><a href="{{ route('register') }}"> Registrarse</a></li>
+                @endif
             </ul>
             <!-- end header navigation right -->
         </div>

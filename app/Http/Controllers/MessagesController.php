@@ -15,4 +15,11 @@ class MessagesController extends Controller
     {
         return view('messages.sell');
     }
+
+    /**
+     * Send messages/Envia mensajes
+     */
+    public function sendMessage(Request $request){
+
+    }
 }

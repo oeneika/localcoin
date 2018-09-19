@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'CorpBinary\Events\Event' => [
-            'CorpBinary\Listeners\EventListener',
+        'CorpBinary\Events\MessageSent' => [
+            'CorpBinary\Listeners\MessageSentListener',
         ],
     ];
 

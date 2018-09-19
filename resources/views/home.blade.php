@@ -53,7 +53,7 @@
                     <div class="panel panel-inverse" data-sortable-id="chart-js-1">
                         <div class="panel-heading">
                             
-                            <h3 class="panel-title"><strong>Últimas ofertas de compra</strong></h3>
+                            <h3 class="panel-title"><strong>Vender</strong></h3>
                         </div>
                         <div class="panel-body">
                         <!-- begin table-responsive -->
@@ -61,7 +61,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Vendedor</th>
+                                            <th>Comprador</th>
                                             <th># Transferencias ejecutadas</th>
                                             <th>Puntuación</th>
                                             <th>Forma de pago</th>
@@ -72,15 +72,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <tr>
-                                                <td>oeneikaphotos</td>
-                                                <td>87</td>
-                                                <td>3 <i class="fa fa-star amarillito"></i></td>
-                                                <td>Transferencias con un banco específico: BANESCO</td>
-                                                <td>123.123.123,00</td>
-                                                <td>897 - 27,300 VES</td>
-                                                <td><a class="btn btn-primary" href="{{ route('buyTrade') }}" role="button">Comprar</a></td>
-                                            </tr>
+                                            @foreach ($buys as $buy)
+                                                <tr>
+                                                    <td>{{ $buy->submittingUser->user }}</td>
+                                                    <td>{{ sizeof($buy->submittingUser->createdTransactions->where('status',3)) + sizeof($buy->submittingUser->madeTransactions->where('status',3)) }}</td>
+                                                    <td>{{ $buy->submittingUser->rank->reputation }} <i class="fa fa-star amarillito"></i></td>
+                                                    <td>{{ $buy->payment_method }}</td>
+                                                    <td>{{ $buy->price }} {{ $buy->abv }}</td>
+                                                    <td>{{ $buy->bottom_limit }} - {{ $buy->upper_limit }} {{ $buy->abv }}</td>
+                                                    <td><td><a class="btn btn-primary" href="{{ route('buy',['id'=>$buy->id_transaction]) }}" role="button">Vender</a></td></td>
+                                                </tr>
+                                            @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -101,7 +103,7 @@
                     <div class="panel panel-inverse" data-sortable-id="chart-js-1">
                         <div class="panel-heading">
                             
-                            <h3 class="panel-title"><strong>Últimas ofertas de venta</strong></h3>
+                            <h3 class="panel-title"><strong>Comprar</strong></h3>
                         </div>
                         <div class="panel-body">
                         <!-- begin table-responsive -->
@@ -109,7 +111,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Comprador</th>
+                                            <th>Vendedor</th>
                                             <th># Transferencias ejecutadas</th>
                                             <th>Puntuación</th>
                                             <th>Forma de pago</th>
@@ -119,15 +121,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <tr>
-                                                <td>oeneikaphotos</td>
-                                                <td>87</td>
-                                                <td>3 <i class="fa fa-star amarillito"></i></td>
-                                                <td>Transferencias con un banco específico: BANESCO</td>
-                                                <td>123.123.123,00</td>
-                                                <td>897 - 27,300 VES</td>
-                                                <td><a class="btn btn-primary" href="{{ route('buyTrade') }}" role="button">Vender</a></td>
-                                            </tr>
+                                    @foreach ($sells as $sell)
+                                        <tr>
+                                            <td>{{ $sell->submittingUser->user }}</td>
+                                            <td>{{ sizeof($sell->submittingUser->createdTransactions->where('status',3)) + sizeof($sell->submittingUser->madeTransactions->where('status',3)) }}</td>
+                                            <td>{{ $sell->submittingUser->rank->reputation }} <i class="fa fa-star amarillito"></i></td>
+                                            <td>{{ $sell->payment_method }}</td>
+                                            <td>{{ $sell->price }} {{ $sell->abv }}</td>
+                                            <td>{{ $sell->bottom_limit }} - {{ $sell->upper_limit }} {{ $sell->abv }}</td>
+                                            <td><a class="btn btn-primary" href="{{ route('buy',['id'=>$sell->id_transaction]) }}" role="button">Comprar</a></td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

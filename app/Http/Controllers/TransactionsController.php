@@ -45,7 +45,7 @@ class TransactionsController extends Controller
     public function myBuys()
     {
         $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_submitting_user',Auth::user()->id)->where('transaction.type',0)->get();
-        return view('transactions.mybuys',array(
+        return view('transactions.myBuysTrade',array(
             'transactions' => $transactions,
             'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',Auth::user()->id)->get(),
             'currencies' => \CorpBinary\Currency::all()
@@ -62,29 +62,27 @@ class TransactionsController extends Controller
     {
         #Validamos campos
         $validator = Validator::make($request->all(),[
-            'bank_account'=>'required',
             'price'=>'required|numeric',
-            'quantity'=>'required|numeric',
             'currency'=>'required',
             'terms'=>'required',
-            'upper_limit'=>'required|numeric',
+            'upper_limit'=>'required|numeric|gt:bottom_limit',
             'bottom_limit'=>'required|numeric',
             'payment_method'=>'required',
-            'payment_window'=>'required',
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
             $transaction->price = $request->input('price');
             $transaction->id_currency = $request->input('currency');
-            $transaction->quantity = $request->input('quantity');
+            //$transaction->quantity = $request->input('quantity');
             $transaction->terms = $request->input('terms');
             $transaction->upper_limit = $request->input('upper_limit');
             $transaction->bottom_limit = $request->input('bottom_limit');
             $transaction->payment_method = $request->input('payment_method');
-            $transaction->payment_window = $request->input('payment_window');
+            $transaction->location = $request->input('location');
+            //$transaction->payment_window = $request->input('payment_window');
             $transaction->type = 0;
-            $transaction->id_submitting_account = Auth::user()->id;
+            $transaction->id_submitting_user = Auth::user()->id;
 
             $transaction->save();
 
@@ -134,26 +132,11 @@ class TransactionsController extends Controller
     public function mySells()
     {
         $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')->where('id_submitting_user',Auth::user()->id)->where('transaction.type',1)->get();
-        return view('transactions.mysells',array(
+        return view('transactions.mySellsTrade',array(
             'transactions' => $transactions,
             'bank_accounts'=> \CorpBinary\BankAccount::where('id_user',Auth::user()->id)->get(),
             'currencies' => \CorpBinary\Currency::all()
         ));
-    }
-
-    /**
-     * Show sells made by user in session
-     */
-    public function mySellsTrade()
-    {
-        
-        return view('transactions.mySellsTrade');
-    }
-
-    public function myBuysTrade()
-    {
-        
-        return view('transactions.myBuysTrade');
     }
 
     /**
@@ -166,29 +149,27 @@ class TransactionsController extends Controller
     {
         #Validamos campos
         $validator = Validator::make($request->all(),[
-            'bank_account'=>'required',
             'price'=>'required|numeric',
-            'quantity'=>'required|numeric',
             'currency'=>'required',
             'terms'=>'required',
-            'upper_limit'=>'required|numeric',
+            'upper_limit'=>'required|numeric|gt:bottom_limit',
             'bottom_limit'=>'required|numeric',
             'payment_method'=>'required',
-            'payment_window'=>'required',
         ]);
 
         if ($validator->passes()){
             $transaction = new Transaction;
             $transaction->price = $request->input('price');
             $transaction->id_currency = $request->input('currency');
-            $transaction->quantity = $request->input('quantity');
+            //$transaction->quantity = $request->input('quantity');
             $transaction->terms = $request->input('terms');
             $transaction->upper_limit = $request->input('upper_limit');
             $transaction->bottom_limit = $request->input('bottom_limit');
             $transaction->payment_method = $request->input('payment_method');
-            $transaction->payment_window = $request->input('payment_window');
+            $transaction->location = $request->input('location');
+            //$transaction->payment_window = $request->input('payment_window');
             $transaction->type = 1;
-            $transaction->id_submitting_account = Auth::user()->id;
+            $transaction->id_submitting_user = Auth::user()->id;
 
             $transaction->save();
 
@@ -199,106 +180,22 @@ class TransactionsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function updateSell(Request $request)
-    {
-        #Field validation\Validacion de campos
-        $validator = Validator::make($request->all(),[
-            'bank_account'=>'required',
-            'price'=>'required|numeric',
-            'quantity'=>'required|numeric',
-            'currency'=>'required'
-        ]);
-
-        #If validation passes without errors\Si la validacion pasa
-        if ($validator->passes()){
-            $transaction = Transaction::find($request->input('id_transaction'));
-
-            $transaction->id_submitting_account = $request->input('bank_account');
-            $transaction->price = $request->input('price');
-            $transaction->quantity = $request->input('quantity');
-            $transaction->id_currency = $request->input('currency');
-
-            $transaction->save();
-
-            return response()->json(array('success'=>1,'message'=>'Venta editada con éxito'));
-        }
-
-        return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
-    }
-
-
-    public function onHold(){
-
-        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')
-        ->join('bank_account AS submitting_bank','submitting_bank.id_bank_account','=','transaction.id_submitting_account')
-        ->join('bank_account AS receiving_bank','receiving_bank.id_bank_account','=','transaction.id_receiving_account')
-        ->join('users AS submitting_user','submitting_user.id','=','submitting_bank.id_user')
-        ->join('users AS receiving_user','receiving_user.id','=','receiving_bank.id_user')
-        ->join('wallet as submitting_wallet','submitting_wallet.id_user','=','submitting_user.id')
-        ->join('wallet as receiving_wallet','receiving_wallet.id_user','=','receiving_user.id')
-        ->selectRaw('submitting_user.name as sub_name, submitting_user.lastname sub_lastname,
-                     receiving_user.name as rec_name, receiving_user.lastname rec_lastname,
-                     submitting_bank.number AS submitting_number, receiving_bank.number AS receiving_number, 
-                     submitting_wallet.address AS sub_address, receiving_wallet.address AS rec_address,
-                     transaction.*, currency.name AS currency_name, currency.abv')
-        ->where('transaction.status',1)->get();
-
-        return view('transactions.onhold',array(
-            'transactions'=> $transactions
-        ));
-    }
-
-    /**
      * Makes transaction
      */
-    public function make(Request $request){
+    public function make(Request $request, $id){
 
-        $validator = Validator::make($request->all(),[
+        $request->validate([
             'quantity'=>'required|numeric',
             'price'=>'required|numeric',
         ]);
 
-        if($validator->passes()){
-            $transaction = \CorpBinary\Transaction::find($request->input('id_transaction'));
-            $transaction->status = 1;
-            $transaction->quantity = $request->input('quantity');
-            $transaction->price = $request->input('price');
-            $transaction->id_receiving_account = $request->input('bank_account');
-            $transaction->save();
+        $transaction = Transaction::find($id);
+        $transaction->status = 1;
+        $transaction->quantity = $request->input('quantity');
+        $transaction->id_receiving_user = Auth::user()->id;
+        $transaction->save();
 
-            return response()->json(array('success'=>1,'message'=>'Transacción realizada con éxito'));
-        }
-
-        return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));
-    }
-
-    /**
-     * Display all completed transactions
-     */
-    public function completedTransactions(){
-
-        $transactions = \CorpBinary\Transaction::join('currency','currency.id_currency','=','transaction.id_currency')
-        ->join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
-        ->join('bank_account AS receiving_account','receiving_account.id_bank_account','=','transaction.id_receiving_account')
-        ->join('users','users.id','=','bank_account.id_user')
-        ->join('users AS receiving_users','receiving_users.id','=','receiving_account.id_user')
-        ->when(auth()->user()['role'] != 1, function($query){
-            return $query->where('receiving_account.id_user',Auth::user()->id)
-                         ->orWhere('bank_account.id_user',Auth::user()->id);
-        })
-        ->where('transaction.status','=','2')
-        ->selectRaw('bank_account.*, users.user,receiving_users.user AS receiving_user, transaction.*, currency.name AS currency_name')
-        ->get();
-
-        return view('transactions.completedtransactions',array(
-            'transactions'=>$transactions
-        ));
+        return redirect(route('messagesBuy'));
     }
 
     /**
@@ -341,9 +238,11 @@ class TransactionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function buy($id)
     {
-        //
+        return view('transactions.buy',[
+            'transaction' => Transaction::find($id),
+        ]);
     }
 
     /**

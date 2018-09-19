@@ -89,8 +89,6 @@
 
 
     <!-- Page specific scripts -->
-    @yield('footer_section')
-    
     <script>
         $(document).ready(function() {
             App.init();
@@ -104,18 +102,12 @@
             var url = {
                     storeSell:              '{{ route('storeSell') }}',
                     storeBuy:               '{{ route('storeBuy') }}',
-                    updateBuy:              '{{ route('updateBuy') }}',
-                    updateSell:             '{{ route('updateSell') }}',
-                    makeTransaction:        '{{ route('makeTransaction') }}',
                     storeBankAccount:       '{{ route('storeBankAccount') }}',
                     rankUser:               '{{ route('rankUser') }}',
                     storeWallet:            '{{ route('storeWallet') }}'}
     </script>
 
-    <script>
-        var btc_current_price = 0;
-    </script>
-
+    @yield('footer_section')
     @include('inc.toastrmessages')
         
 </body>

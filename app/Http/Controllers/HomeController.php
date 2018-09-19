@@ -14,7 +14,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -24,21 +23,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sells = \CorpBinary\Transaction::join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
-        ->join('users','users.id','=','bank_account.id_user')
+        $sells = \CorpBinary\Transaction::join('users','users.id','=','transaction.id_submitting_user')
         ->leftJoin('reputation','users.id','=','reputation.id_user')
-        ->join('bank','bank_account.id_bank','=','bank.id_bank')
         ->join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',1)
-        ->where('status',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name, reputation.reputation, currency.abv')->get();
+        ->where('status',0)->selectRaw('transaction.*,users.*, reputation.reputation, currency.abv')->get();
 
-        $buys = \CorpBinary\Transaction::join('bank_account','bank_account.id_bank_account','=','transaction.id_submitting_account')
-        ->join('users','users.id','=','bank_account.id_user')
+        $buys = \CorpBinary\Transaction::join('users','users.id','=','transaction.id_submitting_user')
         ->leftJoin('reputation','users.id','=','reputation.id_user')
-        ->join('bank','bank_account.id_bank','=','bank.id_bank')
         ->join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',0)
-        ->where('status',0)->selectRaw('transaction.*,users.*,bank.name AS bank_name, reputation.reputation, currency.abv')->get();
+        ->where('status',0)->selectRaw('transaction.*,users.*, reputation.reputation, currency.abv')->get();
         
         return view('home',array(
             'buys'=>$buys,

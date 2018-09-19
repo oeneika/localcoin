@@ -77,6 +77,12 @@ return [
     'unique'               => ':attribute ya ha sido registrado.',
     'url'                  => 'El formato :attribute es inválido.',
     'captcha'              => 'El código captcha ingresado no es correcto',
+    'gt'                   => [
+        'numeric' => 'El campo :attribute debe ser mayor a :value.',
+        'file'    => 'El campo :attribute debe ser mayor a :value kilobytes.',
+        'string'  => 'El campo :attribute debe ser mayor a :value caractéres.',
+        'array'   => 'El campo :attribute debe tener más de :value items.',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -149,5 +155,8 @@ return [
         'rank'                  => 'puntuación',
         'transfer_date'         => 'fecha de transferencia',
         'transfer_number'       => 'número de transferencia',
+        'upper_limit'           => 'límite superior',
+        'bottom_limit'          => 'límite inferior',
+        'terms'                 => 'términos',
     ],
 ];

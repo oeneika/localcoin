@@ -48,41 +48,22 @@
                                     </thead>
                                     <tbody>
                                         
+                                        @foreach($transactions as $transaction)
                                         <tr>
-                                            <td>1</td>
-                                            <td>5000</td>
-                                            <td>Bolivares</td>
-                                            <td>Activa</td>
-                                            <td>19/12/2018</td>
+                                            <td>{{ $transaction->id_transaction }}</td>
+                                            <td>{{ number_format($transaction->price,2,',','.') }}</td>
+                                            <td>{{ $transaction->name }}</td>
+                                            @if($transaction->status = 0)
+                                                <td><span class="label label-primary">Abierta</span></td>
+                                            @elseif($transaction->status = 1)
+                                                <td><span class="label label-info">Pendiente</span></td>
+                                            @else
+                                                <td><span class="label label-danger">Procesada</span></td>
+                                            @endif
+                                            <td>{{ date('m/d/Y', date_timestamp_get($transaction->created_at)) }}</td>
+                                            
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>5000</td>
-                                            <td>Bolivares</td>
-                                            <td>Activa</td>
-                                            <td>19/12/2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>5000</td>
-                                            <td>Bolivares</td>
-                                            <td>Activa</td>
-                                            <td>19/12/2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>5000</td>
-                                            <td>Bolivares</td>
-                                            <td>Activa</td>
-                                            <td>19/12/2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>5000</td>
-                                            <td>Bolivares</td>
-                                            <td>Activa</td>
-                                            <td>19/12/2018</td>
-                                        </tr>
+                                        @endforeach
                                        
                                     </tbody>
                                 </table>
@@ -99,5 +80,4 @@
 @endsection
 @section('footer_section')
     <script src="{{ asset('js/transaction/storebuy.js') }}"></script>
-    <script src="{{ asset('js/transaction/updatebuy.js') }}"></script>
 @endsection

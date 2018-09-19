@@ -16,4 +16,18 @@ class Transaction extends Model
      */
     protected $primaryKey = 'id_transaction';
     //
+
+    /**
+     * Get Submitting user of connected user
+     */
+    public function submittingUser(){
+        return $this->hasOne('CorpBinary\User','id','id_submitting_user');
+    }
+
+    /**
+     * Get receiving user of connected user
+     */
+    public function receivingUser(){
+        return $this->hasOne('CorpBinary\User','id','id_receiving_user');
+    }
 }

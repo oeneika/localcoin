@@ -20,15 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 #Transaction routes/Rutas de Transacciones
-Route::get('/myBuysTrade','TransactionsController@myBuysTrade')->name('myBuysTrade');
+Route::get('/myBuysTrade','TransactionsController@myBuys')->name('myBuysTrade');
 Route::get('/createBuy','TransactionsController@createBuy')->name('createBuy');
 Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy');
-Route::put('/updateBuy','TransactionsController@updateBuy')->name('updateBuy');
 
-Route::get('/mySellsTrade','TransactionsController@mySellsTrade')->name('mySellsTrade');
+Route::get('/mySellsTrade','TransactionsController@mySells')->name('mySellsTrade');
 Route::get('/createSell','TransactionsController@createSell')->name('createSell');
 Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
-Route::put('/updateSell','TransactionsController@updateSell')->name('updateSell');
 
 //Transactions on queue for aproval/Transacciones en espera de aprovacion
 Route::get('/onHold','TransactionsController@onHold')->name('onHold')->middleware('role');
@@ -39,7 +37,9 @@ Route::get('/completedTransactions','TransactionsController@completedTransaction
 
 //Route::delete('/delete/{id}','TransactionsController@destroy')->name('deleteTransaction');
 
-Route::put('/makeTransaction','TransactionsController@make')->name('makeTransaction');
+
+Route::get('/buyTrade/{id}','TransactionsController@buy')->name('buy');
+Route::put('/makeTransaction/{id}','TransactionsController@make')->name('makeTransaction');
 
 #Profile route
 Route::get('myProfile','ProfilesController@show')->name('myProfile');
@@ -69,7 +69,6 @@ Route::get('/exchange','ExchangeController@index')->name('exchange');
 #Trade routes
 Route::get('/trade','TradeController@index')->name('trade');
 Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradeProfile');
-Route::get('/buyTrade','TradeController@buyTrade')->name('buyTrade');
 
 #Messages routes
 Route::get('/messagesBuy','MessagesController@buy')->name('messagesBuy');

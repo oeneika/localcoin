@@ -3,7 +3,9 @@
 namespace CorpBinary;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use CorpBinary\Transaction;
 
 class User extends Authenticatable
 {
@@ -41,5 +43,26 @@ class User extends Authenticatable
      */
     public function wallets(){
         return $this->hasMany('CorpBinary\Wallet','id_user');
+    }
+
+    /**
+     * Get Rank of connected user
+     */
+    public function rank(){
+        return $this->hasOne('CorpBinary\Rank','id_user','id');
+    }
+
+    /**
+     * Get created transactions of connected user
+     */
+    public function createdTransactions(){
+        return $this->hasMany('CorpBinary\Transaction','id_submitting_user');
+    }
+
+    /**
+     * Get created transactions of connected user
+     */
+    public function madeTransactions(){
+        return $this->hasMany('CorpBinary\Transaction','id_receiving_user');
     }
 }
