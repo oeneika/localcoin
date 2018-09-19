@@ -20,7 +20,7 @@ class Message extends Model
      * Returns user
      */
     public function user(){
-        return $this->belongsTo('CorpBinary\Users','id_user');
+        return $this->belongsTo('CorpBinary\User','id_user');
     }
 
     /**

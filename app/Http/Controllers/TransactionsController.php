@@ -245,6 +245,7 @@ class TransactionsController extends Controller
         ]);
     }
 
+
     /**
      * Remove the specified resource from storage.
      *

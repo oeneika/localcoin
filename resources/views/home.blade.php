@@ -53,6 +53,56 @@
                     <div class="panel panel-inverse" data-sortable-id="chart-js-1">
                         <div class="panel-heading">
                             
+                            <h3 class="panel-title"><strong>Transacciones en proceso</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                        <!-- begin table-responsive -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Usuario</th>
+                                            <th>Tipo</th>
+                                            <th>Puntuación</th>
+                                            <th>Forma de pago</th>
+                                            <th>Precio/BTC</th>
+                                            <th>Limites</th>
+                                            <th>Acción</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            @foreach ($trades as $trade)
+                                                <tr>
+                                                    <td>@if($trade->submittingUser->id == Auth::user()->id){{ $trade->receivingUser->user }}@else {{ $trade->submittingUser->user }} @endif</td>
+                                                    <td>@if($trade->type == 0) Compra @else Venta @endif</td>
+                                                    <td>{{ $trade->submittingUser->rank->reputation }} <i class="fa fa-star amarillito"></i></td>
+                                                    <td>{{ $trade->payment_method }}</td>
+                                                    <td>{{ $trade->price }} {{ $trade->abv }}</td>
+                                                    <td>{{ $trade->bottom_limit }} - {{ $trade->upper_limit }} {{ $trade->abv }}</td>
+                                                    <td><td><a class="btn btn-primary" @if ($trade->submittingUser->id == Auth::user()->id)href="{{ route('messagesSell',['id'=>$trade->id_transaction]) }}" @else href="{{ route('messagesBuy',['id'=>$trade->id_transaction]) }}" @endif role="button">Ir a chat</a></td></td>
+                                                </tr>
+                                            @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->                     
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+            <!-- end row -->
+
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="chart-js-1">
+                        <div class="panel-heading">
+                            
                             <h3 class="panel-title"><strong>Vender</strong></h3>
                         </div>
                         <div class="panel-body">

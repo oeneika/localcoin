@@ -71,5 +71,6 @@ Route::get('/trade','TradeController@index')->name('trade');
 Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradeProfile');
 
 #Messages routes
-Route::get('/messagesBuy','MessagesController@buy')->name('messagesBuy');
-Route::get('/messagesSell','MessagesController@sell')->name('messagesSell');
+Route::get('/messagesBuy/{id}','MessagesController@buy')->name('messagesBuy');
+Route::get('/messagesSell/{id}','MessagesController@sell')->name('messagesSell');
+Route::post('/sendMessage','MessagesController@send')->name('sendMessage');

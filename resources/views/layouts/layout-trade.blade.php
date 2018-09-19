@@ -104,6 +104,7 @@
                     storeBuy:               '{{ route('storeBuy') }}',
                     storeBankAccount:       '{{ route('storeBankAccount') }}',
                     rankUser:               '{{ route('rankUser') }}',
+                    sendMessage:            '{{ route('sendMessage') }}',
                     storeWallet:            '{{ route('storeWallet') }}'}
     </script>
 

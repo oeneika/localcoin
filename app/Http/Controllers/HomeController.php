@@ -3,6 +3,7 @@
 namespace CorpBinary\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use CorpBinary\Transaction;
 
 class HomeController extends Controller
@@ -23,21 +24,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sells = \CorpBinary\Transaction::join('users','users.id','=','transaction.id_submitting_user')
-        ->leftJoin('reputation','users.id','=','reputation.id_user')
-        ->join('currency','transaction.id_currency','=','currency.id_currency')
+        $sells = \CorpBinary\Transaction::join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',1)
-        ->where('status',0)->selectRaw('transaction.*,users.*, reputation.reputation, currency.abv')->get();
+        ->where('status',0)->selectRaw('transaction.*, currency.abv')->get();
 
-        $buys = \CorpBinary\Transaction::join('users','users.id','=','transaction.id_submitting_user')
-        ->leftJoin('reputation','users.id','=','reputation.id_user')
-        ->join('currency','transaction.id_currency','=','currency.id_currency')
+        $buys = \CorpBinary\Transaction::join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',0)
-        ->where('status',0)->selectRaw('transaction.*,users.*, reputation.reputation, currency.abv')->get();
+        ->where('status',0)->selectRaw('transaction.*, currency.abv')->get();
+
         
+        #If there is an authenticated user/Si hay un usuario conectado
+        $trades = collect([]);
+        if(Auth::user()){
+            $trades = \CorpBinary\Transaction::selectRaw('transaction.*, currency.abv')
+            ->join('currency','transaction.id_currency','=','currency.id_currency')
+            ->where('id_submitting_user',Auth::user()->id)
+            ->where('status',0)
+            ->whereNotNull('transaction.id_receiving_user')
+            ->whereNotNull('transaction.id_submitting_user')
+            ->orWhere('id_receiving_user',Auth::user()->id)
+            ->get();
+        }
+
         return view('home',array(
             'buys'=>$buys,
-            'sells'=>$sells
+            'sells'=>$sells,
+            'trades'=>$trades
         ));
     }
 }
