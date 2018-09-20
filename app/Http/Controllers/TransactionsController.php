@@ -24,7 +24,7 @@ class TransactionsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
     
     /**
@@ -86,7 +86,7 @@ class TransactionsController extends Controller
 
             $transaction->save();
 
-            return response()->json(array('success'=>1,'message'=>'Venta creada con éxito'));
+            return response()->json(array('success'=>1,'message'=>'Compra creada con éxito'));
         }
 
         return response()->json(array('success'=>0,'errors'=>$validator->errors()->all()));

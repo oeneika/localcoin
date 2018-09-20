@@ -41,7 +41,6 @@
         <!-- begin #page-container -->
         <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
             @include('layouts.header-trade')
-            @include('inc.messages')
             @yield('content')
             @yield('layouts.scroll')
             @include('layouts.footer')
@@ -111,6 +110,7 @@
 
     @yield('footer_section')
     @include('inc.toastrmessages')
+    @include('inc.messages')
         
 </body>
 </html>

@@ -131,7 +131,7 @@
                     <!-- end panel -->
 
                         @if (Auth::user())
-                            <button type="submit" class="btn btn-primary" href="" role="button" style="width: 100%;">Comprar </button>
+                            <button type="submit" class="btn btn-primary" href="" role="button" style="width: 100%;">@if($transaction->type == 1)Comprar @else Vender @endif </button>
                         @else
                             <div class="panel-body dashed">
                                 <h3 class="font-22" align="center"><strong>¡Regístrese y venda bitcoins al instante!</strong></h3>

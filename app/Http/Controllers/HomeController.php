@@ -22,7 +22,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $sells = \CorpBinary\Transaction::join('currency','transaction.id_currency','=','currency.id_currency')
         ->where('type',1)
@@ -47,10 +47,43 @@ class HomeController extends Controller
             ->get();
         }
 
+        $responses = $this->search($request);
+
         return view('home',array(
             'buys'=>$buys,
             'sells'=>$sells,
-            'trades'=>$trades
+            'trades'=>$trades,
+            'responses'=>$responses,
+            'currencies'=>\CorpBinary\Currency::all()
         ));
+    }
+
+    /**
+     * Display searched transactions
+     */
+    public function search(Request $request){
+
+        $price = $request->input('price');
+        $currency = $request->input('currency');
+        $type = $request->input('type');
+        $location = $request->input('location');
+        $user = Auth::user() ? Auth::user()->id : null;
+
+        $transactions = \CorpBinary\Transaction::when($price ,function($query,$price){
+            return $query->where('bottom_limit','<',$price)
+            ->where('upper_limit','>',$price)
+            ->get();
+        })
+        ->when($type,function($query,$type){
+            return $query->where('type',$type-1)->get();
+        })
+        ->when($location,function($query,$location){
+            return $query->where('location',$location)->get();
+        })
+        ->when($currency,function($query,$currency){
+            return $query->where('id_currency',$currency)->get();
+        });
+
+        return $transactions; 
     }
 }

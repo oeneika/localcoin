@@ -5,6 +5,7 @@ namespace CorpBinary\Http\Controllers\Auth;
 use CorpBinary\User;
 use CorpBinary\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -49,12 +50,30 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $captcha = Request::input('g-recaptcha-response');
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data_post = [
+            'secret'=>'6LcBTHEUAAAAAPzvv71gcg7-EF68xFVLxXUVjxu1',
+            'response'=>$captcha,
+        ];
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data_post));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $response = json_decode($response);
+
+        $data['captcha'] = $response->success;
+
         return Validator::make($data, [
             'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
             'lastname' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'user' => 'required|alpha_dash|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'captcha' => 'accepted',
         ]);
     }
 
@@ -66,6 +85,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
 
         return User::create([
             'name' => $data['name'],

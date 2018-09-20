@@ -70,7 +70,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6LeAL3AUAAAAAIQEQ74UXDeGLL2ttwYFA-szhyuq"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcBTHEUAAAAADYo2Qc4ijQf6QB5spIX4Wxw7ZEy"></div>
                         <br>
                         <div class="register-buttons">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Registrarse</button>

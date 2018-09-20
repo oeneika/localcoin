@@ -20,18 +20,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 #Transaction routes/Rutas de Transacciones
-Route::get('/myBuysTrade','TransactionsController@myBuys')->name('myBuysTrade');
-Route::get('/createBuy','TransactionsController@createBuy')->name('createBuy');
-Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy');
+Route::get('/myBuysTrade','TransactionsController@myBuys')->name('myBuysTrade')->middleware('auth');
+Route::get('/createBuy','TransactionsController@createBuy')->name('createBuy')->middleware('auth');
+Route::post('/storeBuy','TransactionsController@storeBuy')->name('storeBuy')->middleware('auth');
 
-Route::get('/mySellsTrade','TransactionsController@mySells')->name('mySellsTrade');
-Route::get('/createSell','TransactionsController@createSell')->name('createSell');
-Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
+Route::get('/mySellsTrade','TransactionsController@mySells')->name('mySellsTrade')->middleware('auth');
+Route::get('/createSell','TransactionsController@createSell')->name('createSell')->middleware('auth');
+Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell')->middleware('auth');
 
 //Transactions on queue for aproval/Transacciones en espera de aprovacion
 Route::get('/onHold','TransactionsController@onHold')->name('onHold')->middleware('role');
-Route::put('/approvePayment/{id}','TransactionsController@approvePayment')->name('approvePayment');
-Route::put('/approveReceipt/{id}','TransactionsController@approveReceipt')->name('approveReceipt');
+Route::put('/approvePayment/{id}','TransactionsController@approvePayment')->name('approvePayment')->middleware('auth');
+Route::put('/approveReceipt/{id}','TransactionsController@approveReceipt')->name('approveReceipt')->middleware('auth');
 
 
 Route::get('/completedTransactions','TransactionsController@completedTransactions')->name('completedTransactions');
@@ -40,7 +40,7 @@ Route::get('/completedTransactions','TransactionsController@completedTransaction
 
 
 Route::get('/buyTrade/{id}','TransactionsController@buy')->name('buy');
-Route::put('/makeTransaction/{id}','TransactionsController@make')->name('makeTransaction');
+Route::put('/makeTransaction/{id}','TransactionsController@make')->name('makeTransaction')->middleware('auth');
 
 #Profile route
 Route::get('myProfile','ProfilesController@show')->name('myProfile');

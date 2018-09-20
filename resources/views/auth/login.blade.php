@@ -51,8 +51,6 @@
                                 Recuerdame
                             </label>
                         </div>
-                        <!-- ESTE ES EL LINK DEL RECAPTCHA https://webdesign.tutsplus.com/es/tutorials/how-to-integrate-no-captcha-recaptcha-in-your-website--cms-23024 -->
-                        <div class="g-recaptcha" data-sitekey="6LeAL3AUAAAAAIQEQ74UXDeGLL2ttwYFA-szhyuq"></div>
                         <br>
                         <div class="login-buttons">
                             <button type="submit" class="btn btn-success btn-block btn-lg">{{ __('Iniciar Sesión') }}</button>
