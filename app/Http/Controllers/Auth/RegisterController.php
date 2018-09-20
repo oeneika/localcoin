@@ -50,6 +50,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        #Captcha validation logic
         $captcha = Request::input('g-recaptcha-response');
 
         $url = 'https://www.google.com/recaptcha/api/siteverify';

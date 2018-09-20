@@ -61,9 +61,27 @@ trait AuthenticatesUsers
      */
     protected function validateLogin(Request $request)
     {
+        $captcha = $request->input('g-recaptcha-response');
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data_post = [
+            'secret'=>'6LcBTHEUAAAAAPzvv71gcg7-EF68xFVLxXUVjxu1',
+            'response'=>$captcha,
+        ];
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data_post));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $response = json_decode($response);
+
+        $request->request->set('captcha', $response->success);
+
         $this->validate($request, [
             $this->username() => 'required|string',
             'password' => 'required|string',
+            'captcha'  => 'accepted',
         ]);
     }
 

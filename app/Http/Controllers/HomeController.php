@@ -63,25 +63,33 @@ class HomeController extends Controller
      */
     public function search(Request $request){
 
+        $get = false;
+
         $price = $request->input('price');
         $currency = $request->input('currency');
         $type = $request->input('type');
         $location = $request->input('location');
-        $user = Auth::user() ? Auth::user()->id : null;
+        $user = Auth::user() ? Auth::user()->id : -1;
 
-        $transactions = \CorpBinary\Transaction::when($price ,function($query,$price){
+        $transactions = \CorpBinary\Transaction::when($price ,function($query,$price) use(&$get){
+            $get = true;
             return $query->where('bottom_limit','<',$price)
-            ->where('upper_limit','>',$price)
-            ->get();
+            ->where('upper_limit','>',$price);
         })
-        ->when($type,function($query,$type){
-            return $query->where('type',$type-1)->get();
+        ->when($type,function($query,$type) use (&$get){
+            $get = true;
+            return $query->where('type',$type-1);
         })
-        ->when($location,function($query,$location){
-            return $query->where('location',$location)->get();
+        ->when($location,function($query,$location) use (&$get){
+            $get = true;
+            return $query->where('location',$location);
         })
-        ->when($currency,function($query,$currency){
-            return $query->where('id_currency',$currency)->get();
+        ->when($currency,function($query,$currency) use (&$get){
+            $get = true;
+            return $query->where('id_currency',$currency);
+        })
+        ->when($get,function($query) use ($user){
+            return $query->where('id_submitting_user','<>',$user)->get();
         });
 
         return $transactions; 

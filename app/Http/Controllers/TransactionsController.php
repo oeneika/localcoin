@@ -195,7 +195,7 @@ class TransactionsController extends Controller
         $transaction->id_receiving_user = Auth::user()->id;
         $transaction->save();
 
-        return redirect(route('messagesBuy'));
+        return redirect(route('messagesBuy',['id'=>$id]));
     }
 
     /**

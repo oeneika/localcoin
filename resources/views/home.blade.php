@@ -83,7 +83,7 @@
                                                     <td>{{ $buy->payment_method }}</td>
                                                     <td>{{ $buy->price }} {{ $buy->currency->abv }}</td>
                                                     <td>{{ $buy->bottom_limit }} - {{ $buy->upper_limit }} {{ $buy->currency->abv }}</td>
-                                                    @if($buy->type == 1)
+                                                    @if($buy->type == 0)
                                                         <td><td><a class="btn btn-primary"  href="{{ route('buy',['id'=>$buy->id_transaction]) }}"   role="button">Vender</a></td></td>
                                                     @else 
                                                         <td><td><a class="btn btn-primary"  href="{{ route('buy',['id'=>$buy->id_transaction]) }}"   role="button">Comprar</a></td></td>

@@ -51,6 +51,7 @@
                                 Recuerdame
                             </label>
                         </div>
+                        <div class="g-recaptcha" data-sitekey="6LcBTHEUAAAAADYo2Qc4ijQf6QB5spIX4Wxw7ZEy"></div>
                         <br>
                         <div class="login-buttons">
                             <button type="submit" class="btn btn-success btn-block btn-lg">{{ __('Iniciar Sesión') }}</button>
