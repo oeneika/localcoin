@@ -23,13 +23,13 @@
                                             <option selected value>Moneda</option>
                                             
                                             @foreach ($currencies as $currency)
-                                                <option value="{{ $currency->id_currency }}">{{ $currency->abv }}</option>
+                                                <option value="{{ $currency->id_currency }}">{{ $currency->name }}</option>
                                             @endforeach
                                             
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="text" name="location" id="" class="form-control">
+                                        <input type="text" name="location" id="" class="form-control" placeholder="Locación">
                                     </div>
                                     <div class="col-md-3">
                                         <select name="type" id="moneda" class="form-control">
@@ -138,7 +138,9 @@
                                                 <td>{{ $trade->payment_method }}</td>
                                                 <td>{{ $trade->price }} {{ $trade->abv }}</td>
                                                 <td>{{ $trade->bottom_limit }} - {{ $trade->upper_limit }} {{ $trade->abv }}</td>
-                                                <td><td><a class="btn btn-primary" @if ($trade->submittingUser->id == Auth::user()->id)href="{{ route('messagesSell',['id'=>$trade->id_transaction]) }}" @else href="{{ route('messagesBuy',['id'=>$trade->id_transaction]) }}" @endif role="button">Ir a chat</a></td></td>
+                                                <td>
+                                                    <a class="btn btn-primary" @if ($trade->submittingUser->id == Auth::user()->id)href="{{ route('messagesSell',['id'=>$trade->id_transaction]) }}" @else href="{{ route('messagesBuy',['id'=>$trade->id_transaction]) }}" @endif role="button">Ir a chat</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -191,10 +193,10 @@
                                                     <td>{{ $buy->bottom_limit }} - {{ $buy->upper_limit }} {{ $buy->abv }}</td>
                                                     @if(Auth::user())
                                                         @if ($buy->submittingUser->id != Auth::user()->id)
-                                                            <td><td><a class="btn btn-primary" href="{{ route('buy',['id'=>$buy->id_transaction]) }}" role="button">Vender</a></td></td>
+                                                            <td><a class="btn btn-primary" href="{{ route('buy',['id'=>$buy->id_transaction]) }}" role="button">Vender</a></td>
                                                         @endif
                                                     @else
-                                                        <td><td><a class="btn btn-primary" href="{{ route('buy',['id'=>$buy->id_transaction]) }}" role="button">Vender</a></td></td>
+                                                        <td><a class="btn btn-primary" href="{{ route('buy',['id'=>$buy->id_transaction]) }}" role="button">Vender</a></td>
                                                     @endif
                                                 </tr>
                                             @endforeach

@@ -2,7 +2,7 @@
         <div id="header" class="header navbar-default">
             <!-- begin navbar-header -->
             <div class="navbar-header">
-                <a href="home/" class="navbar-brand"><b>Corp</b>binary</a>
+                <a href="{{ route('home') }}" class="navbar-brand"><b>Corp</b>binary</a>
             </div>
             <!-- end navbar-header -->
             
