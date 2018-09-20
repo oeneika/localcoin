@@ -71,14 +71,13 @@ class HomeController extends Controller
 
         $transactions = \CorpBinary\Transaction::when($price ,function($query,$price){
             return $query->where('bottom_limit','<',$price)
-            ->where('upper_limit','>',$price)
-            ->get();
+            ->where('upper_limit','>',$price);
         })
         ->when($type,function($query,$type){
-            return $query->where('type',$type-1)->get();
+            return $query->where('type',$type-1);
         })
         ->when($location,function($query,$location){
-            return $query->where('location',$location)->get();
+            return $query->where('location',$location);
         })
         ->when($currency,function($query,$currency){
             return $query->where('id_currency',$currency)->get();
