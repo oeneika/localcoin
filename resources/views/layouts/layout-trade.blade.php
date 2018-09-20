@@ -51,6 +51,7 @@
         
 
     <!-- common libraries. required for every page-->
+    <script src="../js/app.js"></script>
     <script src="{{ asset('plugins/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/4.1.0/js/bootstrap.bundle.min.js') }}"></script>

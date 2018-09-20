@@ -15,6 +15,6 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('chat.{transactionId}', function ($user, $transactionId) {
-    return $user->id === \CorpBinary\Transaction::findOrNew($orderId)->id_submitting_user || $user->id === Transaction::findOrNew($orderId)->id_receiving_user;
+Broadcast::channel('chat', function ($user) {
+    return true;
 });

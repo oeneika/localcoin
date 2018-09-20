@@ -30,7 +30,8 @@ Route::post('/storeSell','TransactionsController@storeSell')->name('storeSell');
 
 //Transactions on queue for aproval/Transacciones en espera de aprovacion
 Route::get('/onHold','TransactionsController@onHold')->name('onHold')->middleware('role');
-Route::put('/approveTrasaction/{id}','TransactionsController@approveTransaction')->name('approveTransaction');
+Route::put('/approvePayment/{id}','TransactionsController@approvePayment')->name('approvePayment');
+Route::put('/approveReceipt/{id}','TransactionsController@approveReceipt')->name('approveReceipt');
 
 
 Route::get('/completedTransactions','TransactionsController@completedTransactions')->name('completedTransactions');
@@ -71,6 +72,6 @@ Route::get('/trade','TradeController@index')->name('trade');
 Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradeProfile');
 
 #Messages routes
-Route::get('/messagesBuy/{id}','MessagesController@buy')->name('messagesBuy');
-Route::get('/messagesSell/{id}','MessagesController@sell')->name('messagesSell');
+Route::get('/messagesBuy/{id}','MessagesController@buy')->name('messagesBuy')->middleware('belongs_to_transaction');
+Route::get('/messagesSell/{id}','MessagesController@sell')->name('messagesSell')->middleware('belongs_to_transaction');;
 Route::post('/sendMessage','MessagesController@send')->name('sendMessage');

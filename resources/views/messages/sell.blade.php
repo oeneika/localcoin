@@ -21,7 +21,7 @@
                       <!-- end widget-chat-header -->
                       
                       <!-- begin widget-chat-body -->
-                      <div class="widget-chat-body" data-scrollbar="true" data-height="235px">
+                      <div class="widget-chat-body" id="chat_body" data-scrollbar="true" data-height="235px">
                         
                         @foreach ($transaction->messages as $message)
                           @if($message->user->id == Auth::user()->id)
@@ -82,7 +82,7 @@
 				  </div>
 				  <div class="panel-body">
 				    <p><strong>Usuario:</strong> {{ $transaction->receivingUser->user }}</p>
-				    <p><strong>Cantidad en deposito en garantía:</strong> {{ $transaction->quentity }} BTC</p>
+				    <p><strong>Cantidad en deposito en garantía:</strong> {{ $transaction->quantity }} BTC</p>
 				    <p><strong>Cantidad del pago:</strong> {{ $transaction->price }} {{ $transaction->currency->abv }}</p>
 				  </div>
 				</div>
@@ -99,7 +99,12 @@
                                 <div class="card-body">
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
                                     <hr>
-                                    <a href="javascript:;" onclick="liberar()" class="btn btn-warning">Liberar bitcoins</a>
+                                    
+                                    @if ($transaction->approved_receipt == 0)
+                                        <a href="javascript:;" onclick="confirmar()" class="btn btn-warning">Confirmar recibo de pago</a>
+                                    @else
+                                        La transacción ya se confirmó correctamente
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -126,23 +131,63 @@
 
 @section('footer_section')
 <script>
-	function liberar(){
+	function confirmar(){
 		swal({
-  title: "¿Estás seguro?",
-  text: "Vas a liberar tus bitcoins",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    swal("¡Liberaste tus bitcoins!", {
-      icon: "success",
-    });
-  } else {
-    swal("¡Tranquilo!, se canceló la liberación de bitcoins");
-  }
-});
+          title: "¿Estás seguro?",
+          text: "¿Desea confirmar que recibió el pago?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then(function(confirm){
+          if (confirm) {
+            $.ajax({
+                type: 'PUT',
+                url: "{{ route('approveReceipt',['id'=>$transaction->id_transaction]) }}",
+                dataType: 'json',
+                data: { "_token" : "{{ csrf_token() }}" }, 
+                success: function(json){
+                    if(json.success == 1) {
+                        setTimeout(function(){
+                            toastr.success(json.message);
+                            location.reload(true);
+                        },1000);
+                    } 
+                    else{
+                        toastr.error(json.message);
+                    }
+                }
+            });  
+            swal("¡Se ha confirmado el recibo del pago!", {
+              icon: "success",
+            });
+          } else {
+            swal("¡Tranquilo!, se canceló la confirmación");
+          }
+        });
 	}
 </script>
+<script>
+    Echo.private(`chat`)
+    .listen('.message_sent', function(e){
+        console.log('sup');
+        $('#chat_body').append(
+            `<div class="widget-chat-item with-media ${ e.id_user == {{ Auth::user()->id }} ? 'right' : 'left' }">
+              <div class="widget-chat-media">
+                  <img alt="" src="../assets/img/user/user-1.jpg" />
+              </div>
+              <div class="widget-chat-info">
+                  <div class="widget-chat-info-container">
+                      <div class="widget-chat-name text-indigo">${e.user}</div>
+                      <div class="widget-chat-message">${e.content}</div>
+                  </div>
+              </div>
+            </div>`
+            )
+        $('#chat_body').animate({scrollTop:$('#chat_body').height()}, 'slow');
+        $('#chat_form').trigger('reset');
+        
+    });
+</script>
+<script src="{{ asset('js/messages/messages.js') }}"></script>
 @endsection

@@ -156,7 +156,7 @@ return [
          */
         CorpBinary\Providers\AppServiceProvider::class,
         CorpBinary\Providers\AuthServiceProvider::class,
-        // CorpBinary\Providers\BroadcastServiceProvider::class,
+        CorpBinary\Providers\BroadcastServiceProvider::class,
         CorpBinary\Providers\EventServiceProvider::class,
         CorpBinary\Providers\RouteServiceProvider::class,
 

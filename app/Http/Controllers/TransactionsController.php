@@ -202,33 +202,53 @@ class TransactionsController extends Controller
      * Notify the users about an approved transaction
      */
     private function notifyApprovedTransaction(Transaction $transaction){
-        
-        $sub_bank = BankAccount::find($transaction->id_submitting_account);
-        $rec_bank = BankAccount::find($transaction->id_receiving_account);
-
-        $sub_user = User::find($sub_bank->id_user);
-        $rec_user = User::find($rec_bank->id_user);
+        $sub_user = User::find($transaction->id_submitting_user);
+        $rec_user = User::find($transaction->id_receiving_user);
 
         $sub_user->notify(new approvedTransaction($transaction));
         $rec_user->notify(new approvedTransaction($transaction));
     }
 
     /**
-     * Aprove a transaction/Aprueba una transaccion
+     * Aprove a payment/Aprueba un pago
      * 
      * @param int $id: Transaction id
      */
-    public function approveTransaction($id){
+    public function approvePayment($id){
 
         $transaction = Transaction::find($id);
 
+        $transaction->approved_payment = 1;
+
+        $this->notifyApprovedTransaction($transaction);
+
+        $transaction->save();
+
+        return response()->json(array('success'=>1,'message'=>'Pago aprovado con éxito'));
+
+    }
+
+    /**
+     * Aprove a payment/Aprueba un pago
+     * 
+     * @param int $id: Transaction id
+     */
+    public function approveReceipt($id){
+
+        $transaction = Transaction::find($id);
+
+        if($transaction->approved_payment == 0){
+            return response()->json(array('success'=>0,'message'=>'Se debe aprovar el pago primero'));
+        }
+
+        $transaction->approved_receipt = 1;
         $transaction->status = 2;
 
         $this->notifyApprovedTransaction($transaction);
 
         $transaction->save();
 
-        return response()->json(array('success'=>1,'message'=>'Transacción aprovada con éxito'));
+        return response()->json(array('success'=>1,'message'=>'Pago recibido con éxito'));
 
     }
 

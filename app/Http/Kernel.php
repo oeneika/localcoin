@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \CorpBinary\Http\Middleware\CheckRole::class,
+        'belongs_to_transaction' => \CorpBinary\Http\Middleware\BelongsToTransaction::class,
     ];
 }

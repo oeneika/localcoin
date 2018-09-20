@@ -15,13 +15,13 @@
                           <i class="fab fa-earlybirds width-30 height-30 f-s-20 bg-yellow text-inverse text-center rounded-corner" style="line-height: 30px"></i>
                         </div>
                         <div class="widget-chat-header-content">
-                          <h4 class="widget-chat-header-title">Enviar mensaje a {{ $transaction->receivingUser->user }}</h4>
+                          <h4 class="widget-chat-header-title">Enviar mensaje a {{ $transaction->submittingUser->user }}</h4>
                         </div>
                       </div>
                       <!-- end widget-chat-header -->
                       
                       <!-- begin widget-chat-body -->
-                      <div class="widget-chat-body" data-scrollbar="true" data-height="235px">
+                      <div class="widget-chat-body" id="chat_body" data-scrollbar="true" data-height="235px">
                         
                         @foreach ($transaction->messages as $message)
                           @if($message->user->id == Auth::user()->id)
@@ -99,7 +99,11 @@
                                 <div class="card-body">
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
                                     <hr>
-                                    <button class="btn btn-primary">He pagado</button>
+                                    @if($transaction->approved_payment == 0)
+                                        <button onclick="confirmar()" class="btn btn-primary">He pagado</button>
+                                    @else
+                                        Ya confirmó el pago
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -125,5 +129,63 @@
 @endsection
 
 @section('footer_section')
-    <script src="{{ asset('js/messages/messages.js') }}"></script>
+<script>
+	function confirmar(){
+		swal({
+          title: "¿Estás seguro?",
+          text: "¿Desea confirmar el pago?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then(function(confirm){
+          if (confirm) {
+            $.ajax({
+                type: 'PUT',
+                url: "{{ route('approvePayment',['id'=>$transaction->id_transaction]) }}",
+                dataType: 'json',
+                data: { "_token" : "{{ csrf_token() }}" }, 
+                success: function(json){
+                    if(json.success == 1) {
+                        setTimeout(function(){
+                            toastr.success(json.message);
+                            location.reload(true);
+                        },1000);
+                    } 
+                    else{
+                        toastr.error(json.message);
+                    }
+                }
+            });  
+            swal("¡Se ha confirmado el pago!", {
+              icon: "success",
+            });
+          } else {
+            swal("¡Tranquilo!, se canceló la confirmación");
+          }
+        });
+	}
+</script>
+<script>
+    Echo.private(`chat`)
+    .listen('.message_sent', function(e){
+        $('#chat_body').append(
+            `<div class="widget-chat-item with-media ${ e.id_user == {{ Auth::user()->id }} ? 'right' : 'left' }">
+              <div class="widget-chat-media">
+                  <img alt="" src="../assets/img/user/user-1.jpg" />
+              </div>
+              <div class="widget-chat-info">
+                  <div class="widget-chat-info-container">
+                      <div class="widget-chat-name text-indigo">${e.user}</div>
+                      <div class="widget-chat-message">${e.content}</div>
+                  </div>
+              </div>
+            </div>`
+            )
+        $('#chat_body').animate({scrollTop:$('#chat_body').height()}, 'slow');
+        $('#chat_form').trigger('reset');
+        
+    });
+</script>
+<script src="{{ asset('js/messages/messages.js') }}"></script>
 @endsection

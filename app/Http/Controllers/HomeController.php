@@ -38,11 +38,12 @@ class HomeController extends Controller
         if(Auth::user()){
             $trades = \CorpBinary\Transaction::selectRaw('transaction.*, currency.abv')
             ->join('currency','transaction.id_currency','=','currency.id_currency')
-            ->where('id_submitting_user',Auth::user()->id)
-            ->where('status',0)
+            ->where(function($query){
+                $query->where('id_submitting_user',Auth::user()->id)
+                ->orWhere('id_receiving_user',Auth::user()->id);
+            })
             ->whereNotNull('transaction.id_receiving_user')
             ->whereNotNull('transaction.id_submitting_user')
-            ->orWhere('id_receiving_user',Auth::user()->id)
             ->get();
         }
 

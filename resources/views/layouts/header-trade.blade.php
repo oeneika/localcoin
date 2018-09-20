@@ -13,7 +13,7 @@
                 @if (Auth::user())
                     <li><a href="{{ route('myBuysTrade') }}">Comprar btc </a></li>
                     <li><a href="{{ route('mySellsTrade') }}"> Vender btc </a></li>
-                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item">Finalizar Sesión</a></li>
+                    <li><a href="{{ route('logout') }}" class="dropdown-item">Finalizar Sesión</a></li>
                 @else
                     <li><a href="{{ route('register') }}">Comprar btc </a></li>
                     <li><a href="{{ route('register') }}"> Vender btc </a></li>

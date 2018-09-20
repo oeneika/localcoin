@@ -72,17 +72,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            @foreach ($trades as $trade)
-                                                <tr>
-                                                    <td>@if($trade->submittingUser->id == Auth::user()->id){{ $trade->receivingUser->user }}@else {{ $trade->submittingUser->user }} @endif</td>
-                                                    <td>@if($trade->type == 0) Compra @else Venta @endif</td>
-                                                    <td>{{ $trade->submittingUser->rank->reputation }} <i class="fa fa-star amarillito"></i></td>
-                                                    <td>{{ $trade->payment_method }}</td>
-                                                    <td>{{ $trade->price }} {{ $trade->abv }}</td>
-                                                    <td>{{ $trade->bottom_limit }} - {{ $trade->upper_limit }} {{ $trade->abv }}</td>
-                                                    <td><td><a class="btn btn-primary" @if ($trade->submittingUser->id == Auth::user()->id)href="{{ route('messagesSell',['id'=>$trade->id_transaction]) }}" @else href="{{ route('messagesBuy',['id'=>$trade->id_transaction]) }}" @endif role="button">Ir a chat</a></td></td>
-                                                </tr>
-                                            @endforeach
+                                            @if(Auth::user())
+                                                @foreach ($trades as $trade)
+                                                    <tr>
+                                                        <td>@if($trade->submittingUser->id == Auth::user()->id){{ $trade->receivingUser->user }}@else {{ $trade->submittingUser->user }} @endif</td>
+                                                        <td>@if($trade->type == 0) Compra @else Venta @endif</td>
+                                                        <td>{{ $trade->submittingUser->rank->reputation }} <i class="fa fa-star amarillito"></i></td>
+                                                        <td>{{ $trade->payment_method }}</td>
+                                                        <td>{{ $trade->price }} {{ $trade->abv }}</td>
+                                                        <td>{{ $trade->bottom_limit }} - {{ $trade->upper_limit }} {{ $trade->abv }}</td>
+                                                        <td><td><a class="btn btn-primary" @if ($trade->submittingUser->id == Auth::user()->id)href="{{ route('messagesSell',['id'=>$trade->id_transaction]) }}" @else href="{{ route('messagesBuy',['id'=>$trade->id_transaction]) }}" @endif role="button">Ir a chat</a></td></td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                     </tbody>
                                 </table>
                             </div>
