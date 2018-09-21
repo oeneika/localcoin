@@ -63,7 +63,7 @@
                           <div class="widget-input-container">
                             <div class="widget-input-icon"><a href="#" class="text-grey"><i class="fa fa-camera"></i></a></div>
                             <div class="widget-input-box">
-                              <input type="text" name='content' class="form-control form-control-sm" placeholder="Write a message..." />
+                              <input type="text" id="id_content" name='content' class="form-control form-control-sm" placeholder="Write a message..." />
                             </div>
                         
                           </div>
@@ -140,6 +140,7 @@
         })
         .then(function(confirm){
           if (confirm) {
+            $('#id_content').attr('disable','disable');
             $.ajax({
                 type: 'PUT',
                 url: "{{ route('approvePayment',['id'=>$transaction->id_transaction]) }}",
@@ -155,6 +156,9 @@
                     else{
                         toastr.error(json.message);
                     }
+                },
+                complete: function(){
+                    $('#id_content').removeAttr('disable');
                 }
             });  
             swal("¡Se ha confirmado el pago!", {
@@ -182,7 +186,7 @@
               </div>
             </div>`
             )
-        $('#chat_body').animate({scrollTop:$('#chat_body').height()}, 'slow');
+        $('#chat_body').animate({scrollTop:$(document).height()}, 'slow');
         $('#chat_form').trigger('reset');
         
     });
