@@ -38,7 +38,7 @@
                               </div>
                             </div>
                             @if($message->file)
-                                <img src="{{ asset(storage/$message->file) }}" style="width:100px;height:100px;">
+                                <img src="{{ asset('storage/'.$message->file) }}" style="width:100px;height:100px;">
                             @endif
                           @else
                             <div class="widget-chat-item with-media left">
@@ -54,7 +54,7 @@
                               </div>
                             </div>
                             @if($message->file)
-                                <img src="{{ asset(storage/$message->file) }}" style="width:100px;height:100px;">
+                                <img src="{{ asset('storage/'.$message->file) }}" style="width:100px;height:100px;">
                             @endif
                           @endif
                         @endforeach

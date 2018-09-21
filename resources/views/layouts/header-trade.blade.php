@@ -41,8 +41,8 @@
                         </li>
                         <li class="dropdown navbar-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="img/user/user-13.jpg" alt="" /> 
-                                <span class="d-none d-md-inline"></span> <b class="caret"></b>
+                                <img src="{{ asset('img/user/user-13.jpg') }}" alt="" /> 
+                                <span class="d-none d-md-inline">{{ Auth::user()->name }}</span> <b class="caret"></b>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="{{ route('tradeProfile') }}" class="dropdown-item">Editar Perfil</a>
