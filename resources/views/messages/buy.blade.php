@@ -33,13 +33,13 @@
                                   <div class="widget-chat-info-container">
                                       <div class="widget-chat-name text-indigo">{{ $message->user->user }}</div>
                                       <div class="widget-chat-message">{{ $message->content }}</div>
+                                      @if($message->file)
+                                        <a href="http://localhost/localcoin/storage/app/{{ $message->file }}" target="_blank"><img src="http://localhost/localcoin/storage/app/{{ $message->file }}" style="width:100px;height:100px;"></a>
+                                      @endif
                                       {{-- <divclass="widget-chat-time">6:00PM</div> --}}
                                   </div>
                               </div>
                             </div>
-                            @if($message->file)
-                                <img src="{{ asset('storage/'.$message->file) }}" style="width:100px;height:100px;">
-                            @endif
                           @else
                             <div class="widget-chat-item with-media left">
                               <div class="widget-chat-media">
@@ -49,13 +49,14 @@
                                   <div class="widget-chat-info-container">
                                       <div class="widget-chat-name text-indigo">{{ $message->user->user }}</div>
                                       <div class="widget-chat-message">{{ $message->content }}</div>
+                                      @if($message->file)
+                                        <a href="http://localhost/localcoin/storage/app/{{ $message->file }}" target="_blank"><img src="http://localhost/localcoin/storage/app/{{ $message->file }}" style="width:100px;height:100px;"></a>
+                                      @endif
                                       {{-- <divclass="widget-chat-time">6:00PM</div> --}}
                                   </div>
                               </div>
                             </div>
-                            @if($message->file)
-                                <img src="{{ asset('storage/'.$message->file) }}" style="width:100px;height:100px;">
-                            @endif
+                            
                           @endif
                         @endforeach
                       </div>
@@ -192,7 +193,7 @@
                   <div class="widget-chat-info-container">
                       <div class="widget-chat-name text-indigo">${e.user}</div>
                       <div class="widget-chat-message">${e.content}</div>
-                      ${e.file != null ? '<img src="/storage${e.file}></img>' : ''}
+                      ${e.file != null ? '<a href="http://localhost/localcoin/storage/app/'+e.file+'" target="_blank"><img src="http://localhost/localcoin/storage/app/'+e.file+'"style="width:100px;height:100px;"></a>' : ''}
                   </div>
               </div>
             </div>`

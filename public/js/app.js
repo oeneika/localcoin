@@ -13968,6 +13968,7 @@ if (token) {
 window.Pusher = __webpack_require__(37);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
+    authEndpoint: 'http://corporacionjsk.com/corpbinary/broadcasting/auth',
     broadcaster: 'pusher',
     key: 'b0b5df9a095243f966f5',
     cluster: 'us2',

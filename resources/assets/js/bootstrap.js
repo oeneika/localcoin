@@ -49,6 +49,7 @@ import Echo from 'laravel-echo'
 window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
+    authEndpoint : 'http://corporacionjsk.com/corpbinary/broadcasting/auth',
     broadcaster: 'pusher',
     key: 'b0b5df9a095243f966f5',
     cluster: 'us2',
