@@ -6,6 +6,11 @@
 	color: #f59c1a;
 }
 
+.hiddenfile {
+	position: absolute;
+	top:-10000000000px;
+   }
+
 .blanco{
 	color: white;
 }

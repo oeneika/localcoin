@@ -59,6 +59,7 @@ class MessageSent implements ShouldBroadcast
             'content' => $this->message->content,
             'id_user' => $this->message->id_user,
             'id_transaction' => $this->message->id_transaction,
+            'file' => $this->message->file,
             'user' => \CorpBinary\User::find($this->message->id_user)->user,
         ];
     }

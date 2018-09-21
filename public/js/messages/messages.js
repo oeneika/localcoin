@@ -1,10 +1,15 @@
 function send_message(){
+    var form = $('#chat_form')[0];
+
+    var data = new FormData(form)
     $.ajax({
         type : "POST",
-        async: false,
         url : url.sendMessage,
-        dataType: 'json',
-        data : $('#chat_form').serialize(),
+        data : data,
+        enctype: 'multipart/form-data',
+        processData: false,  // Important!
+        contentType: false,
+        cache: false,
         success : function(json) {
             if(json.success == 1) {
                 console.log('Message sent successfully');

@@ -32,12 +32,16 @@ class MessagesController extends Controller
         $validator = Validator::make($request->all(),[
             'content'=>'required',
             'id_transaction'=>'required',
+            'image'=>'file|image'
         ]);
-
+        
         if ($validator->passes()){
             $message = new Message;
             $message->content = $request->input('content');
             $message->id_user = Auth::user()->id;
+            if($request->hasFile('image')){
+                $message->file = $request->image->store('ChatImages');
+            }
             $message->id_transaction = $request->input('id_transaction');
 
             $message->save();

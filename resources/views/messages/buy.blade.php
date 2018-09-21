@@ -37,6 +37,9 @@
                                   </div>
                               </div>
                             </div>
+                            @if($message->file)
+                                <img src="{{ asset("storage/$message->file") }}" style="width:100px;height:100px;">
+                            @endif
                           @else
                             <div class="widget-chat-item with-media left">
                               <div class="widget-chat-media">
@@ -50,6 +53,9 @@
                                   </div>
                               </div>
                             </div>
+                            @if($message->file)
+                                <img src="{{ asset(storage/$message->file) }}" style="width:100px;height:100px;">
+                            @endif
                           @endif
                         @endforeach
                       </div>
@@ -57,11 +63,14 @@
                       
                       <!-- begin widget-input -->
                       <div class="widget-input widget-input-rounded">
-                        <form id="chat_form">
+                        <form id="chat_form" action="javascript:;" enctype="multipart/form-data" method="POST">
                           {{ csrf_field() }}
                           <input type="hidden" name="id_transaction" value="{{ $transaction->id_transaction }}">
                           <div class="widget-input-container">
-                            <div class="widget-input-icon"><a href="#" class="text-grey"><i class="fa fa-camera"></i></a></div>
+                            <div class="widget-input-icon"><a onclick="uploadfile()" class="text-grey"><i class="fa fa-camera"></i></a></div>
+                            <div class="hiddenfile">
+                              <input id="id_file" name="image" type="file">
+                            </div>
                             <div class="widget-input-box">
                               <input type="text" id="id_content" name='content' class="form-control form-control-sm" placeholder="Write a message..." />
                             </div>
@@ -173,6 +182,7 @@
 <script>
     Echo.private(`chat`)
     .listen('.message_sent', function(e){
+        var file = e.file;
         $('#chat_body').append(
             `<div class="widget-chat-item with-media ${ e.id_user == {{ Auth::user()->id }} ? 'right' : 'left' }">
               <div class="widget-chat-media">
@@ -182,6 +192,7 @@
                   <div class="widget-chat-info-container">
                       <div class="widget-chat-name text-indigo">${e.user}</div>
                       <div class="widget-chat-message">${e.content}</div>
+                      ${e.file != null ? '<img src="/storage${e.file}></img>' : ''}
                   </div>
               </div>
             </div>`
@@ -192,4 +203,9 @@
     });
 </script>
 <script src="{{ asset('js/messages/messages.js') }}"></script>
+<script>
+    function uploadfile(){
+        $('#id_file').trigger('click');
+    };
+</script>
 @endsection

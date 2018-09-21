@@ -73,5 +73,5 @@ Route::get('/tradeProfile','ProfilesController@showProfileTrade')->name('tradePr
 
 #Messages routes
 Route::get('/messagesReceive/{id}','MessagesController@buy')->name('messagesBuy')->middleware('belongs_to_transaction');
-Route::get('/messagesSubmitt/{id}','MessagesController@sell')->name('messagesSell')->middleware('belongs_to_transaction');;
+Route::get('/messagesSubmit/{id}','MessagesController@sell')->name('messagesSell')->middleware('belongs_to_transaction');;
 Route::post('/sendMessage','MessagesController@send')->name('sendMessage');
